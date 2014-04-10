@@ -38,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-									<?php $USER = $CI->auth->get_user() ?>
+			<?php $USER = $CI->auth->get_user() ?>
 			<div id='nav-wrapper'>
 				<div id='nav'>
 					<div class='page section' id='page'>

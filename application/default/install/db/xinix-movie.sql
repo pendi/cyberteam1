@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 20, 2014 at 08:43 PM
+-- Generation Time: Apr 10, 2014 at 07:07 PM
 -- Server version: 5.5.35-0ubuntu0.12.04.2
--- PHP Version: 5.3.10-1ubuntu3.9
+-- PHP Version: 5.3.10-1ubuntu3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `image` varchar(255) NOT NULL,
   `status` int(11) unsigned NOT NULL,
   `created_time` datetime NOT NULL,
   `created_by` varchar(255) NOT NULL,
@@ -42,12 +43,12 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `description`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'Horror', 'ini semua film horror', 1, '2014-02-19 13:40:36', '1', '2014-02-19 14:48:12', '1'),
-(2, 'Action', 'ini semua film action', 1, '2014-02-19 13:40:49', '1', '2014-02-19 14:48:20', '1'),
-(3, 'Biography', 'ini semua film biografi', 1, '2014-02-19 14:48:02', '1', '2014-02-19 14:48:02', '1'),
-(4, 'Comedy', 'ini semua film comedy', 1, '2014-02-19 15:26:00', '1', '2014-02-19 15:26:00', '1'),
-(5, 'Other', 'ini semua film other', 1, '2014-02-20 10:29:02', '1', '2014-02-20 10:29:02', '1');
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 'Horror', 'ini semua film horror', 'category/image/dc67fcbf35038442572efbe875729004.png', 1, '2014-02-19 13:40:36', '1', '2014-03-06 12:55:32', '1'),
+(2, 'Action', 'ini semua film action', 'category/image/60d8679b1ca205e166f40d2d0b11738c.png', 1, '2014-02-19 13:40:49', '1', '2014-03-06 13:13:59', '1'),
+(3, 'Biography', 'ini semua film biografi', 'category/image/c152660d361623871688c1b7c7585c71.png', 1, '2014-02-19 14:48:02', '1', '2014-03-06 13:13:08', '1'),
+(4, 'Comedy', 'ini semua film comedy', 'category/image/26644ffa9dcd50b3bb7dd04c0395514f.png', 1, '2014-02-19 15:26:00', '1', '2014-03-06 13:13:25', '1'),
+(5, 'Other', 'ini semua film other', 'category/image/d1f1cabda929054a38021aab088e79cc.png', 1, '2014-02-20 10:29:02', '1', '2014-03-06 13:13:36', '1');
 
 -- --------------------------------------------------------
 
@@ -7638,31 +7639,36 @@ CREATE TABLE IF NOT EXISTS `film` (
   `trailer` varchar(255) NOT NULL,
   `cover` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `size` varchar(255) NOT NULL,
+  `quality` varchar(255) NOT NULL,
+  `publish` int(11) NOT NULL,
+  `film_status` int(11) NOT NULL,
   `status` int(11) unsigned NOT NULL,
   `created_time` datetime NOT NULL,
   `created_by` varchar(255) NOT NULL,
   `updated_time` datetime NOT NULL,
   `updated_by` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `film`
 --
 
-INSERT INTO `film` (`id`, `title`, `description`, `trailer`, `cover`, `category_id`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'Insidious: Chapter 2', 'The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world.', '', 'film/cover/4bb9009ec6649cc809268b644b52f020.jpg', 1, 1, '2014-02-19 11:48:11', '1', '2014-02-19 14:41:57', '1'),
-(2, 'The Conjuring', 'Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.', '', 'film/cover/df071b0e9519a81f06c89d54f2d999a6.jpg', 2, 1, '2014-02-19 11:50:31', '1', '2014-02-19 14:07:51', '1'),
-(3, 'Mama', 'Annabel and Lucas are faced with the challenge of raising his young nieces that were left alone in the forest for 5 years.... but how alone were they?', '', 'film/cover/fcd09db6a5f6f047c0319af6dd6f672d.jpg', 1, 1, '2014-02-19 11:55:15', '1', '2014-02-19 13:55:21', '1'),
-(4, 'Abraham Lincoln Vampire Hunter', 'Abraham Lincoln, the 16th President of the United States, discovers vampires are planning to take over the United States. \nHe makes it his mission to eliminate them.', '', 'film/cover/9ed0b8da974244137ca1f95be8e72212.jpg', 2, 1, '2014-02-19 14:32:05', '1', '2014-02-19 14:32:05', '1'),
-(5, 'After Earth', 'A crash landing leaves Kitai Raige and his father Cypher stranded on Earth, a millennium after events forced humanitys escape. With Cypher injured, Kitai must embark on a perilous journey to signal for help.', '', 'film/cover/3ddfdd28cac1e75df58922628c0ae618.jpg', 2, 1, '2014-02-19 14:35:20', '1', '2014-02-19 14:46:30', '1'),
-(6, 'Avengers', 'Nick Fury is director of S.H.I.E.L.D, an international peace keeping agency. The agency is a whos who of Marvel Super Heroes, with Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When global security is threatened by Loki and his cohorts, Nick Fury and his team will need all their powers to save the world from disaster.', '', 'film/cover/89a797a76bcfa50b67f9318e15292948.jpg', 2, 1, '2014-02-19 14:44:42', '1', '2014-02-19 14:44:42', '1'),
-(7, 'Captain Philips', 'The true story of Captain Richard Phillips and the 2009 hijacking by Somali pirates of the US-flagged MV Maersk Alabama, the first American cargo ship to be hijacked in two hundred years.', '', 'film/cover/b4445a48d747acd7df9f325fb3b2418c.jpg', 3, 1, '2014-02-19 14:49:08', '1', '2014-02-19 14:49:08', '1'),
-(8, 'Chennai Express', 'Rahul (Shahrukh Khan) is a forty-year old bachelor and lives in Mumbai. Rahul''s parents died in a car accident when he was eight years old and it was his grandparents who brought him up. His grandfather has a sweet-selling business - Y.Y. Mithaiwala - and he owns a chain of stores in Mumbai. Before his birth centenary celebration two of Rahul''s friends suggest going to Goa for a vacation which he accepts. Right before the birth centenary, his grandfather dies. His grandmother tells him that his grandfather desired to have his ashes divided into two parts and have one part of it immersed at Rameswaram. She requests Rahul to go to Rameswaram and immerse the ashes. Rahul reluctantly accepts her request. On the other hand he was eager to attend the Goa trip, so, he and his friends make plans to dump the ashes at Goa. But, they were forced to change their plan when Rahul''s grandmother told him that she would be coming to see him off at the station. This forces Rahul to travel by train and he booked a single ticket on the Chennai Express. He plans to meet his friends after commencing the journey at the Kalyan Junction station from where they would travel to Goa by car. Right after commencing the journey from Mumbai railway station, when the train was leaving the platform, Rahul sees a girl running to catch the train. He helps her to board the moving train.', '', 'film/cover/9f0e8bb775e76f54eee629eb0353f6e8.jpg', 2, 1, '2014-02-19 14:56:41', '1', '2014-02-19 14:58:27', '1'),
-(9, 'Curse Of Chucky', 'After her mother''s mysterious death, Nica begins to suspect that the talking, red-haired doll her visiting niece has been playing with may be the key to recent bloodshed and chaos.', '', 'film/cover/d6b2b65585cff34380326fafaec64d3c.jpg', 1, 1, '2014-02-19 15:22:31', '1', '2014-02-19 15:22:31', '1'),
-(10, 'Due West Our Sex Journey', 'After breaking up with girlfriend Zeta, Frankie heads north for prostitution where he meets an attractive girl Celia and develops feeling for her.', '', 'film/cover/2eb83d757630903c8b414ebdafe18046.jpg', 4, 1, '2014-02-19 15:29:28', '1', '2014-02-19 15:29:28', '1'),
-(11, 'Fast and Furious 1', 'Los Angeles police officer Brian O''Connor must decide where his loyalties really lie when he becomes enamored with the street racing world he has been sent undercover to destroy.', '', 'film/cover/108b5f839c0b2e4b5bd991314c1f8a17.jpg', 2, 1, '2014-02-19 15:35:42', '1', '2014-02-19 15:35:42', '1'),
-(12, 'Fast and Furious 2', 'Brian O''Conner and childhood friend Roman Pearce are re-united by the FBI to bring down a Miami drug exporter in exchange for clear records.', '', 'film/cover/a116c16b7b4a16d8ed1e7f54f20c45bd.jpg', 2, 1, '2014-02-19 15:46:54', '1', '2014-02-19 15:46:54', '1');
+INSERT INTO `film` (`id`, `title`, `description`, `trailer`, `cover`, `category_id`, `size`, `quality`, `publish`, `film_status`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 'Insidious: Chapter 2', 'The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world.', 'http://www.youtube.com/watch?v=fBbi4NeebAk', 'film/cover/4bb9009ec6649cc809268b644b52f020.jpg', 1, '733 MB', '2', 2, 0, 1, '2014-02-19 11:48:11', '1', '2014-03-18 14:59:27', '3'),
+(2, 'The Conjuring', 'Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.', 'http://www.youtube.com/watch?v=Vjk2So3KvSQ', 'film/cover/df071b0e9519a81f06c89d54f2d999a6.jpg', 1, '736 MB', '4', 2, 0, 1, '2014-02-19 11:50:31', '1', '2014-03-18 14:57:14', '3'),
+(3, 'Mama', 'Annabel and Lucas are faced with the challenge of raising his young nieces that were left alone in the forest for 5 years.... but how alone were they?', '', 'film/cover/fcd09db6a5f6f047c0319af6dd6f672d.jpg', 1, '734 MB', '2', 2, 0, 1, '2014-02-19 11:55:15', '1', '2014-03-12 18:15:15', '1'),
+(4, 'Abraham Lincoln Vampire Hunter', 'Abraham Lincoln, the 16th President of the United States, discovers vampires are planning to take over the United States. \nHe makes it his mission to eliminate them.', 'https://www.youtube.com/watch?v=34x6m-ahGIo', 'film/cover/9ed0b8da974244137ca1f95be8e72212.jpg', 2, '418 MB', '3', 2, 0, 1, '2014-02-19 14:32:05', '1', '2014-03-18 14:59:29', '3'),
+(5, 'After Earth', 'A crash landing leaves Kitai Raige and his father Cypher stranded on Earth, a millennium after events forced humanitys escape. With Cypher injured, Kitai must embark on a perilous journey to signal for help.', '', 'film/cover/3ddfdd28cac1e75df58922628c0ae618.jpg', 2, '800 MB', '2', 2, 0, 1, '2014-02-19 14:35:20', '1', '2014-03-18 14:59:32', '3'),
+(6, 'Avengers', 'Nick Fury is director of S.H.I.E.L.D, an international peace keeping agency. The agency is a whos who of Marvel Super Heroes, with Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When global security is threatened by Loki and his cohorts, Nick Fury and his team will need all their powers to save the world from disaster.', '', 'film/cover/89a797a76bcfa50b67f9318e15292948.jpg', 2, '1,3 GB', '2', 2, 0, 1, '2014-02-19 14:44:42', '1', '2014-03-18 14:59:35', '3'),
+(7, 'Captain Philips', 'The true story of Captain Richard Phillips and the 2009 hijacking by Somali pirates of the US-flagged MV Maersk Alabama, the first American cargo ship to be hijacked in two hundred years.', '', 'film/cover/b4445a48d747acd7df9f325fb3b2418c.jpg', 3, '1,1 GB', '4', 2, 0, 1, '2014-02-19 14:49:08', '1', '2014-03-18 14:59:38', '3'),
+(8, 'Chennai Express', 'Rahul (Shahrukh Khan) is a forty-year old bachelor and lives in Mumbai. Rahul''s parents died in a car accident when he was eight years old and it was his grandparents who brought him up. His grandfather has a sweet-selling business - Y.Y. Mithaiwala - and he owns a chain of stores in Mumbai. Before his birth centenary celebration two of Rahul''s friends suggest going to Goa for a vacation which he accepts. Right before the birth centenary, his grandfather dies. His grandmother tells him that his grandfather desired to have his ashes divided into two parts and have one part of it immersed at Rameswaram. She requests Rahul to go to Rameswaram and immerse the ashes. Rahul reluctantly accepts her request. On the other hand he was eager to attend the Goa trip, so, he and his friends make plans to dump the ashes at Goa. But, they were forced to change their plan when Rahul''s grandmother told him that she would be coming to see him off at the station. This forces Rahul to travel by train and he booked a single ticket on the Chennai Express. He plans to meet his friends after commencing the journey at the Kalyan Junction station from where they would travel to Goa by car. Right after commencing the journey from Mumbai railway station, when the train was leaving the platform, Rahul sees a girl running to catch the train. He helps her to board the moving train.', '', 'film/cover/9f0e8bb775e76f54eee629eb0353f6e8.jpg', 2, '1 GB', '2', 2, 0, 1, '2014-02-19 14:56:41', '1', '2014-03-13 23:12:05', '1'),
+(9, 'Curse Of Chucky', 'After her mother''s mysterious death, Nica begins to suspect that the talking, red-haired doll her visiting niece has been playing with may be the key to recent bloodshed and chaos.', '', 'film/cover/d6b2b65585cff34380326fafaec64d3c.jpg', 1, '734 MB', '2', 2, 0, 1, '2014-02-19 15:22:31', '1', '2014-03-18 14:59:41', '3'),
+(10, 'Due West Our Sex Journey', 'After breaking up with girlfriend Zeta, Frankie heads north for prostitution where he meets an attractive girl Celia and develops feeling for her.', 'http://www.youtube.com/watch?v=_7fj5j69D9E', 'film/cover/2eb83d757630903c8b414ebdafe18046.jpg', 4, '837 MB', '1', 2, 0, 1, '2014-02-19 15:29:28', '1', '2014-03-18 14:59:44', '3'),
+(11, 'Fast and Furious 1', 'Los Angeles police officer Brian O''Connor must decide where his loyalties really lie when he becomes enamored with the street racing world he has been sent undercover to destroy.', '', 'film/cover/108b5f839c0b2e4b5bd991314c1f8a17.jpg', 2, '1,5 GB', '2', 2, 0, 1, '2014-02-19 15:35:42', '1', '2014-03-13 23:12:56', '1'),
+(12, 'Fast and Furious 2', 'Brian O''Conner and childhood friend Roman Pearce are re-united by the FBI to bring down a Miami drug exporter in exchange for clear records.', '', 'film/cover/a116c16b7b4a16d8ed1e7f54f20c45bd.jpg', 2, '733 MB', '2', 2, 0, 1, '2014-02-19 15:46:54', '1', '2014-03-13 23:13:14', '1'),
+(13, '5CM', 'Genta (Fedi Nuril), Arial (Denny Sumargo), Zafran (Herjunot Ali), Riani (Raline Shah) dan Ian (Igor Saykoji) adalah lima remaja yang telah menjalin persahabatan sepuluh tahun lamanya. Mereka memiliki karakter yang berbeda-beda. Zafran yang puitis, sedikit "gila", apa adanya, idealis, agak narsis, dan memiliki bakat untuk menjadi orang terkenal. Riani yang merupakan gadis cerdas, cerewet, dan mempunyai ambisi untuk cita-citanya. Genta, pria yang tidak senang mementingkan dirinya sendiri sehingga memiliki jiwa pemimpin dan mampu membuat orang lain nyaman di sekitarnya. Arial, pria termacho di antara pemain lainnya, hobi berolah raga, paling taat aturan, namun paling canggung kenalan dengan wanita. Ian, dia memiliki badan yang paling subur dibandingkan teman-temannya, penggemar indomie dan bola, paling telat wisuda. Ada pula Dinda (Pevita Pearce) yang merupakan adik dari Arial, seorang mahasiswi cantik yang sebenarnya dicintai Zafran. Suatu hari mereka berlima merasa jenuh dengan persahabatan mereka dan akhirnya kelimanya memutuskan untuk berpisah, tidak saling berkomunikasi satu sama lain selama tiga bulan lamanya.\n\nSelama tiga bulan berpisah penuh kerinduan, banyak yang terjadi dalam kehidupan mereka berlima', 'http://www.youtube.com/watch?v=s0ncD-MQwKA', 'film/cover/6c98b25881319c7018f5478ad1b71ef9.jpg', 5, '459 MB', '3', 1, 0, 1, '2014-03-18 14:00:44', '3', '2014-03-18 14:00:55', '3');
 
 -- --------------------------------------------------------
 
@@ -7864,6 +7870,56 @@ INSERT INTO `province` (`id`, `code`, `name`, `country_id`, `status`, `created_t
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `question`
+--
+
+CREATE TABLE IF NOT EXISTS `question` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `publish` int(11) NOT NULL,
+  `qa_status` int(11) NOT NULL,
+  `status` int(11) unsigned NOT NULL,
+  `created_time` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_time` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request`
+--
+
+CREATE TABLE IF NOT EXISTS `request` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` int(11) unsigned NOT NULL,
+  `created_time` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_time` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`id`, `content`, `user_id`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 'Gan Minta Film Aku ingin naik haji', 1, 1, '2014-03-13 15:55:27', '1', '2014-03-13 15:55:27', '1'),
+(2, 'Mau Film Avatar', 2, 1, '2014-03-13 15:59:33', '2', '2014-03-13 15:59:33', '2'),
+(3, 'test', 2, 1, '2014-03-13 16:00:15', '2', '2014-03-13 16:00:15', '2'),
+(4, 'testsdfgh', 2, 1, '2014-03-13 16:00:22', '2', '2014-03-13 16:00:22', '2'),
+(5, 'request njir', 3, 1, '2014-03-17 14:35:36', '18', '2014-03-17 14:35:36', '18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `role`
 --
 
@@ -7922,36 +7978,22 @@ CREATE TABLE IF NOT EXISTS `sysparam` (
   `updated_time` datetime NOT NULL,
   `updated_by` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `sysparam`
 --
 
 INSERT INTO `sysparam` (`id`, `sgroup`, `skey`, `svalue`, `lvalue`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'gender', '1', 'Male', 'male', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(2, 'gender', '2', 'Female', 'female', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(3, 'golongan', '1', 'I/a', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(4, 'golongan', '2', 'I/b', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(5, 'golongan', '3', 'I/c', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(6, 'golongan', '4', 'I/d', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(7, 'golongan', '5', 'II/a', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(8, 'golongan', '6', 'II/b', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(9, 'golongan', '7', 'II/c', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(10, 'golongan', '8', 'II/d', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(11, 'golongan', '9', 'III/a', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(12, 'golongan', '10', 'III/b', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(13, 'golongan', '11', 'III/c', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(14, 'golongan', '12', 'III/d', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(15, 'golongan', '13', 'IV/a', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(16, 'golongan', '14', 'IV/b', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(17, 'golongan', '15', 'IV/c', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(18, 'golongan', '16', 'IV/d', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(19, 'golongan', '17', 'IV/e', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(20, 'tipe_pensiun', '1', 'DIBERHENTIKAN DENGAN HORMAT', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(21, 'tipe_pensiun', '2', 'DIBERHENTIKAN DENGAN HORMAT ATAS PERMINTAAN SENDIRI', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(22, 'tipe_pensiun', '3', 'BERHENTI DENGAN HORMAT TIDAK ATAS PERMINTAAN SENDIRI', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0),
-(23, 'tipe_pensiun', '4', 'BERHENTI DENGAN TIDAK HORMAT', '', 1, '2014-02-13 11:15:27', 0, '2014-02-13 11:15:27', 0);
+(1, 'quality', '1', 'Bluray 1024px', 'bluray 1024px', 1, '2014-03-12 18:26:14', 1, '2014-03-12 18:26:14', 1),
+(2, 'quality', '2', 'Bluray 720px', 'bluray 720px', 1, '2014-03-12 18:26:33', 1, '2014-03-12 18:26:33', 1),
+(3, 'quality', '3', 'DVDRip', 'dvdrip', 1, '2014-03-12 18:26:47', 1, '2014-03-12 18:26:47', 1),
+(4, 'quality', '4', 'R6', 'r6', 1, '2014-03-12 18:27:02', 1, '2014-03-12 18:27:02', 1),
+(5, 'quality', '5', 'Cam', 'cam', 1, '2014-03-12 18:27:16', 1, '2014-03-12 18:27:16', 1),
+(6, 'publish', '1', 'Publish', 'publish', 1, '2014-03-12 18:27:32', 1, '2014-03-12 18:27:32', 1),
+(7, 'publish', '2', 'Not Publish', 'publish', 1, '2014-03-12 18:27:47', 1, '2014-03-12 18:27:47', 1),
+(8, 'gender', '1', 'Male', 'male', 1, '2014-03-17 14:33:56', 1, '2014-03-17 14:33:56', 1),
+(9, 'gender', '2', 'Female', 'female', 1, '2014-03-17 14:34:08', 1, '2014-03-17 14:34:08', 1);
 
 -- --------------------------------------------------------
 
@@ -8060,15 +8102,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_by` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `gender`, `image`, `address`, `yahoo_id`, `google_id`, `skype_id`, `timezone`, `locale`, `sso_facebook`, `sso_twitter`, `sso_verified`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@example.net', 'Admin', 'User', 1, '', '', '', '', '', 'UP7', 'en_US', '', '', 0, 1, '2014-02-13 11:15:28', 0, '2014-02-20 15:37:55', 0),
-(2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@user.com', 'User', 'Name', 1, '', '', '', '', '', '', '', '', '', 0, 1, '2014-02-20 12:51:48', 1, '2014-02-20 14:30:40', 0);
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@example.net', 'Admin', 'Ganteng', 0, 'user/5d3039211f46b80e95b45e62cafda344.gif', '', '', '', '', 'UP7', 'en_US', '', '', 0, 1, '2014-02-13 11:15:28', 0, '2014-04-10 17:24:41', 0),
+(2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@user.com', 'User', 'Name', 1, 'user/5d3039211f46b80e95b45e62cafda344.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-02-20 12:51:48', 1, '2014-03-17 14:32:05', 0),
+(3, 'wahyutaufik37', 'ef2fe3b1c1ebc3e1248c937b73d72cef', 'wahyutaufik37@gmail.com', 'Wahyu', 'Ganteng', 0, 'user/896bad1da62a2ad69eb6b576610018a8.gif', '', '', '', '', '', '', '', '', 0, 1, '2014-03-18 13:20:49', 0, '2014-04-10 16:47:32', 0);
 
 -- --------------------------------------------------------
 
@@ -8160,15 +8203,19 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `updated_time` datetime NOT NULL,
   `updated_by` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `user_id`, `role_id`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 1, 1, 1, '2014-02-13 11:15:28', 0, '2014-02-13 11:15:28', 0),
-(3, 2, 2, 1, '2014-02-20 12:52:44', 1, '2014-02-20 12:52:44', 1);
+(3, 2, 2, 1, '2014-02-20 12:52:44', 1, '2014-02-20 12:52:44', 1),
+(4, 1, 1, 1, '2014-03-13 22:30:31', 1, '2014-03-13 22:30:31', 1),
+(5, 18, 1, 1, '2014-03-17 14:35:04', 1, '2014-03-17 14:35:04', 1),
+(6, 19, 2, 1, '2014-03-18 11:34:21', 1, '2014-03-18 11:34:21', 1),
+(7, 20, 1, 1, '2014-03-18 13:13:21', 1, '2014-03-18 13:13:21', 1),
+(8, 3, 1, 1, '2014-03-18 13:21:05', 1, '2014-03-18 13:21:05', 1);
 
 -- --------------------------------------------------------
 
