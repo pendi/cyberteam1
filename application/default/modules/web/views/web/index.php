@@ -22,5 +22,5 @@
             <?php echo $this->pagination->create_links() ?>
         </div>
 	</div>
-	<div class="clear"></div>	
+	<div class="clear"></div>
 </div>

@@ -24,7 +24,7 @@ class web extends app_crud_controller {
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
-        
+
         $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
         $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
         $this->_data['film'] = $film;
@@ -33,16 +33,16 @@ class web extends app_crud_controller {
 
         $config['base_url'] = site_url('web/index');
         $config['total_rows'] = $count;
-        $config['per_page'] = 10; 
+        $config['per_page'] = 10;
         $config['uri_segment'] = 3;
 
-        $a = $this->pagination->initialize($config); 
+        $a = $this->pagination->initialize($config);
 
 
     }
 
     function category(){
-        
+
         $category_film = $this->db->query("SELECT * FROM category")->result_array();
         $this->_data['category_film'] = $category_film;
 
@@ -64,18 +64,18 @@ class web extends app_crud_controller {
 
         $config['base_url'] = site_url('web/cat_list'.'/'.$item['id']);
         $config['total_rows'] = $count;
-        $config['per_page'] = 10; 
+        $config['per_page'] = 10;
         $config['uri_segment'] = 3;
 
         $a = $this->pagination->initialize($config);
-    } 
+    }
 
 
     function request_movie($id=null){
 
         $this->load->helper('format');
         $request = $this->_model('request')->get($id);
-        
+
         $user = $this->auth->get_user();
         $request = $this->db->query("SELECT * FROM request WHERE status !=0 ORDER BY created_time DESC")->result_array();
         $this->_data['request'] = $request;
@@ -101,14 +101,14 @@ class web extends app_crud_controller {
     }
 
     function detail_film($id){
-        
+
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
     }
 
     function detail_user($id=null){
-        
+
         // xlog($id);exit;
         $this->load->helper('format');
         $user = $this->_model('user')->get($id);
@@ -116,12 +116,12 @@ class web extends app_crud_controller {
     }
 
     function privacy(){
-        
+
 
     }
 
     function signup($id=null){
-        
+
         $model = $this->_model('user');
 
         if ($_POST || $_FILES) {
