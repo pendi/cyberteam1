@@ -69,9 +69,9 @@
 		</div>
 	</div>
     <section id="<?php echo empty($uri) ? 'body':'content-body'?>">
-		<?php $uri = $this->uri->segment(1);?>
-        <?php echo xview_error() ?>
-        <?php echo xview_info() ?>
+		<?php //$uri = $this->uri->segment(1);?>
+        <?php //echo xview_error() ?>
+        <?php //echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
 
     </section>
