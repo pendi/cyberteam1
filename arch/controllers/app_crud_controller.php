@@ -22,7 +22,34 @@
 if (!class_exists('app_crud_controller')) {
 
     class app_crud_controller extends crud_controller {
-        //put your code here
+        
+		function __construct() {
+			parent::__construct();
+
+			if ($this->session->userdata('user')) {
+            redirect('login.php');
+        }
+
+			// $this->load->library('session');
+			// lakukan pengecekan
+			// $u = $this->auth->get_user();
+			// xlog($u);
+			// exit();
+			// if($u){
+
+			// 	$now = datetime();
+
+			// 	if(($now - $sessionActivity) > 30menit){
+			// 		redirect('user/logout');
+			// 	}
+
+			// 	$sessionActivity = $_SESSION['userActivity']  = datetime();
+				// bikin untuk nandain dia lagi aktif
+
+			// }
+			// xlog($u);
+	    }
+
     }
 
 }

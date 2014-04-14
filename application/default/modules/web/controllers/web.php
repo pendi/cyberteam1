@@ -9,6 +9,9 @@ class web extends app_crud_controller {
 	function __construct() {
 		parent::__construct();
 		$this->_layout_view = 'layouts/web';
+        // if (!$this->session->userdata('user')) {
+        //     redirect('site_url(user/login)');
+        // }
     }
 
     function _check_access() {
@@ -20,6 +23,7 @@ class web extends app_crud_controller {
     }
 
     function index($offset=0){
+
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
