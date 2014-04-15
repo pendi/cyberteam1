@@ -82,7 +82,6 @@
         </div> -->
         <?php //echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
-        
     </section>
 	<div id="headermenu1">
 		<div class="creditwrap">

@@ -26,6 +26,7 @@
          <div class="span-12">
             <label>Password</label>
             <input type="password"name="password" value="" placeholder="<?php echo l('Password') ?>" />
+            <!-- <input type="password" placeholder="Password"> -->
          </div>
          <div class="span-12">
             <label class="check-label">
