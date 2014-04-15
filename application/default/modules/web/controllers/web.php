@@ -136,13 +136,29 @@ class web extends app_crud_controller {
 
         $model = $this->_model('user');
 
+
         if ($_POST || $_FILES) {
+<<<<<<< HEAD
+
+            // xlog($_POST);
+            // exit();
+
+=======
             // xlog($_POST); exit;
+>>>>>>> c729ee2470a02d3d3609dc609e5899117dd77f41
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
 
                     $this->load->library('upload');
+
+                    // ngambil id role dari table role
+                    $sql = 'SELECT * FROM `role` WHERE name LIKE "member"';
+                    $member = $this->db->query($sql)->result_array();
+                    $_POST['roles'][] = $member[0]['id'];
+
+                    // $_POST['yahoo_id'] = NULL;
+                    // $_POST['google_id'] = NULL;
 
                     if (!empty($_FILES)) {
                         foreach ($_FILES as $key => $file) {
@@ -164,7 +180,6 @@ class web extends app_crud_controller {
                             }
                         }
                     }
-
 
                     $new_id = $this->_model('user')->save($_POST,$id);
                     if ($this->input->is_ajax_request()) {
@@ -195,7 +210,7 @@ class web extends app_crud_controller {
             $is_login = $this->auth->login(($_POST) ? $_POST['login'] : '', ($_POST) ? $_POST['password'] : '', $mode);
             if ($is_login) {
                 $this->_model('user')->add_trail('login');
-                redirect(site_url('web/redirect/'. $this->_get_redirect()));
+                redirect(site_url('web/index/'));
             } else {
                 $this->_data['err_string'] = '<h6>Username/email or password not found<span></h6>';
             }
