@@ -124,12 +124,24 @@ class web extends app_crud_controller {
         
         $model = $this->_model('user');
 
+
         if ($_POST || $_FILES) {
+
+            // xlog($_POST);
+            // exit();
+
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
 
                     $this->load->library('upload');
+
+                    // ngambil id role dari table role
+                    $sql = 'SELECT * FROM `role` WHERE name LIKE "member"';
+                    $member = $this->db->query($sql)->result_array();
+                    $_POST['roles'][] = $member[0]['id'];
+
+                    $_POST['YAHOOID'] = NULL;
 
                     if (!empty($_FILES)) {
                         foreach ($_FILES as $key => $file) {
@@ -151,7 +163,6 @@ class web extends app_crud_controller {
                             }
                         }
                     }
-
 
                     $new_id = $this->_model('user')->save($_POST,$id);
                     if ($this->input->is_ajax_request()) {
