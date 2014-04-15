@@ -82,31 +82,7 @@
 						<label><?php echo l('Re-type Password') ?></label>
 					</div>
 					<div class="span9"><input type="password" name="password" value="<?php echo set_value('password') ?>"></div>
-				</div><!-- 
-				<div class="row-fluid">
-					<div class="span2">
-		            	<label><?php echo l('Gender') ?></label>
-		            </div>
-		            <div class="span9"><?php echo xform_lookup('gender') ?></div>
-		        </div>
-		        <div class="row-fluid">
-					<div class="span2">
-			            <label><?php echo l('Phone') ?></label>
-			        </div>
-		            <div class="span9"><input type="text" value="<?php echo set_value('phone') ?>" name="phone"></div>
-		        </div>
-		        <div class="row-fluid">
-					<div class="span2">
-			            <label><?php echo l('Yahoo ID') ?></label>
-			        </div>
-		            <div class="span9"><input type="text" value="<?php echo set_value('yahoo_id') ?>" name="yahoo_id"></div>
-		        </div>
-		        <div class="row-fluid">
-					<div class="span2">
-			            <label><?php echo l('Google ID') ?></label>
-			        </div>
-		            <div class="span9"><input type="text" value="<?php echo set_value('google_id') ?>" name="google_id"></div>
-		        </div> -->
+				</div>
 				<div class="row-fluid">
 					<div class="span2">
 						<label><?php echo l('Image') ?></label>
