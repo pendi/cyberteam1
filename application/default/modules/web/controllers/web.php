@@ -144,13 +144,13 @@ class web extends app_crud_controller {
 
                     $this->load->library('upload');
 
-                    // ngambil id role dari table role
-                    $sql = 'SELECT * FROM `role` WHERE name LIKE "member"';
-                    $member = $this->db->query($sql)->result_array();
-                    $_POST['roles'][] = $member[0]['id'];
+                    // // ngambil id role dari table role
+                    // $sql = 'SELECT * FROM `role` WHERE name LIKE "member"';
+                    // $member = $this->db->query($sql)->result_array();
+                    // $_POST['roles'][] = $member[0]['id'];
 
-                    // $_POST['yahoo_id'] = NULL;
-                    // $_POST['google_id'] = NULL;
+                    // // $_POST['yahoo_id'] = NULL;
+                    // // $_POST['google_id'] = NULL;
 
                     if (!empty($_FILES)) {
                         foreach ($_FILES as $key => $file) {
