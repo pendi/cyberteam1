@@ -25,7 +25,11 @@
          </div>
          <div class="span-12">
             <label>Password</label>
+<<<<<<< HEAD
             <input type="password"name="password" value="" placeholder="<?php echo l('Password') ?>" />
+=======
+            <input type="password" placeholder="Password">
+>>>>>>> c729ee2470a02d3d3609dc609e5899117dd77f41
          </div>
          <div class="span-12">
             <label class="check-label">
