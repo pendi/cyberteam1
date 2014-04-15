@@ -20,6 +20,7 @@ class web extends app_crud_controller {
     }
 
     function index($offset=0){
+
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
@@ -67,7 +68,7 @@ class web extends app_crud_controller {
         $config['base_url'] = site_url('web/cat_list/'.$id);
         $config['total_rows'] = $count;
         $config['per_page'] = 10;
-        // $config['uri_segment'] = 3;
+        $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
     }
