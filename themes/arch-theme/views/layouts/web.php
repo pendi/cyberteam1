@@ -58,7 +58,7 @@
 									<li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
 									<?php else : ?>
 									<li><a href='<?php echo site_url('user/login')?>'>Login</a></li>
-									<li><a href='<?php echo site_url('')?>'>Register</a></li>
+									<li><a href='<?php echo site_url('web/signup')?>'>Register</a></li>
 									<?php endif ?>
 								</ul>
 							</div>
