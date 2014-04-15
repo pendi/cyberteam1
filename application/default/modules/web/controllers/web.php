@@ -28,15 +28,26 @@ class web extends app_crud_controller {
         redirect(site_url('web/index'));
     }
 
-    function index($offset=0){
+    function index($offset=0,$sort=null){
 
+        if($sort == '1'){
+            $order = 'title ASC';
+        }elseif($sort == '2'){
+            $order = 'title DESC';
+        }elseif($sort == '5'){
+            $order = 'quality ASC';
+        }else{
+            $order = 'created_time DESC';
+        }
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
 
         $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        // xlog("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ");
+        // exit();
+        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ", array(intval($offset), 10))->result_array();
         $this->_data['film'] = $film;
         $count = $countfilm['count'];
         // xlog($this->db->last_query());exit;
