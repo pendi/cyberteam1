@@ -258,7 +258,6 @@ class base_user_model extends app_base_model {
         $this->hooks->add_hook('user:post_save', function($data) {
             $CI =& get_instance();
             if (!empty($data['data']['roles'])) {
-        
                 $CI->_model()->update_user_role($data['id'], $data['data']['roles']);
             }
 
