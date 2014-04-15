@@ -20,11 +20,12 @@ class web extends app_crud_controller {
     }
 
     function index($offset=0){
+
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
-        
+
         $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
         $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
         $this->_data['film'] = $film;
@@ -33,16 +34,16 @@ class web extends app_crud_controller {
 
         $config['base_url'] = site_url('web/index');
         $config['total_rows'] = $count;
-        $config['per_page'] = 10; 
+        $config['per_page'] = 10;
         $config['uri_segment'] = 3;
 
-        $a = $this->pagination->initialize($config); 
+        $a = $this->pagination->initialize($config);
 
 
     }
 
     function category(){
-        
+
         $category_film = $this->db->query("SELECT * FROM category")->result_array();
         $this->_data['category_film'] = $category_film;
 
@@ -52,30 +53,32 @@ class web extends app_crud_controller {
         $this->load->library('pagination');
         $category = $this->db->query('SELECT * FROM category WHERE id = ?',array(intval($id)))->result_array();
         $this->_data['category'] = $category;
-        foreach ($category as $item) {
-            # code...
-        }
+        // foreach ($category as $item) {
+        //     # code...
+        // }
         // xlog($item);exit;
 
-        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        $countfilm = $this->db->query('SELECT count(*) AS count FROM film WHERE category_id = ? AND status !=0 AND publish=1',array(intval($id)))->result_array();
         $film = $this->db->query('SELECT * FROM film WHERE category_id = ? AND status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?', array(intval($id), intval($offset), 10))->result_array();
         $this->_data['film'] = $film;
-        $count = $countfilm['count'];
+        // xlog($countfilm[0]['count']);
+        // exit();
+        $count = $countfilm[0]['count'];
 
-        $config['base_url'] = site_url('web/cat_list'.'/'.$item['id']);
+        $config['base_url'] = site_url('web/cat_list/'.$id);
         $config['total_rows'] = $count;
-        $config['per_page'] = 10; 
-        $config['uri_segment'] = 3;
+        $config['per_page'] = 10;
+        $config['uri_segment'] = 4;
 
-        $a = $this->pagination->initialize($config);
-    } 
+        $this->pagination->initialize($config);
+    }
 
 
     function request_movie($id=null){
 
         $this->load->helper('format');
         $request = $this->_model('request')->get($id);
-        
+
         $user = $this->auth->get_user();
         $request = $this->db->query("SELECT * FROM request WHERE status !=0 ORDER BY created_time DESC")->result_array();
         $this->_data['request'] = $request;
@@ -101,14 +104,14 @@ class web extends app_crud_controller {
     }
 
     function detail_film($id){
-        
+
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
     }
 
     function detail_user($id=null){
-        
+
         // xlog($id);exit;
         $this->load->helper('format');
         $user = $this->_model('user')->get($id);
@@ -116,12 +119,12 @@ class web extends app_crud_controller {
     }
 
     function privacy(){
-        
+
 
     }
 
     function signup($id=null){
-        
+
         $model = $this->_model('user');
 
 
@@ -185,4 +188,21 @@ class web extends app_crud_controller {
         }
     }
 
+    function login($mode = '') {
+        $this->load->helper('format');
+        $this->load->helper('security');
+        $this->_data['err_string'] = '';
+        if ($_POST || !empty($mode)) {
+            $is_login = $this->auth->login(($_POST) ? $_POST['login'] : '', ($_POST) ? $_POST['password'] : '', $mode);
+            if ($is_login) {
+                $this->_model('user')->add_trail('login');
+                redirect(site_url('web/redirect/'. $this->_get_redirect()));
+            } else {
+                $this->_data['err_string'] = '<h6>Username/email or password not found<span></h6>';
+            }
+        } else {
+            $this->_model('user')->add_trail('logout');
+            $this->auth->logout();
+        }
+    }
 }

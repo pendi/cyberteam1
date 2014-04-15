@@ -7,14 +7,17 @@
     <!-- <link href='http://fonts.googleapis.com/css?family=Fauna+One|Quando|Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'> -->
     <link type="image/x-icon" href="<?php echo theme_url('favicon.ico') ?>" rel="Shortcut icon" />
     <link href="<?php echo theme_url('js/code-prettify/prettify.css') ?>" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?php echo theme_url () ?>js/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo theme_url('css/bootstrap.css') ?>" rel="stylesheet" media="screen" />
     <link href="<?php echo theme_url('css/bootstrap-responsive.min.css') ?>" rel="stylesheet" media="screen" />
+    <link href="<?php echo theme_url('css/naked.css') ?>" rel="stylesheet" media="screen" />
     <link href="<?php echo theme_url('css/web.css') ?>" rel="stylesheet" media="screen" />
 
     <script type="text/javascript" src="<?php echo theme_url('js/jquery-1.8.2.min.js') ?>"></script>
     <script type='text/javascript' src="<?php echo theme_url('js/code-prettify/prettify.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo theme_url () ?>js/fancybox/source/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="<?php echo theme_url('js/bootstrap.js') ?>"></script>
-	
+
 
 </head>
 <body>
@@ -57,7 +60,10 @@
 									<li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
 									<li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
 									<?php else : ?>
-									<li><a href='<?php echo site_url('user/login')?>'>Login</a></li>
+									<li>
+										<a data-fancybox-type="ajax" class="popup" href="<?php echo site_url('web/login')?>">Login</a>
+									</li>
+									<li><a href='<?php echo site_url('web/signup')?>'>Register</a></li>
 									<?php endif ?>
 								</ul>
 							</div>
@@ -68,9 +74,9 @@
 		</div>
 	</div>
     <section id="<?php echo empty($uri) ? 'body':'content-body'?>">
-		<?php $uri = $this->uri->segment(1);?>
-        <?php echo xview_error() ?>
-        <?php echo xview_info() ?>
+		<?php //$uri = $this->uri->segment(1);?>
+        <?php //echo xview_error() ?>
+        <?php //echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
         
     </section>
@@ -83,18 +89,18 @@
 				<div style="float:left;text-align:center;">
 					&nbsp;&nbsp;|<a class="sitename" href="<?php echo site_url('site/index')?>">&nbsp;&nbsp;Dashboard</a>
 				</div>
-				<div style="float:right;text-align:right;"> 
+				<div style="float:right;text-align:right;">
 					Proudly powered by <a href="http://xinix.co.id">Xinix Technology</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
-<script>
+<script type="text/javascript">
 	$(function(){
 		$('#menu-phone').on('click', function(){
 			$('#nav-wrapper').toggle(200);
 		});
 	});
-</script>
+</script>​
 </html>

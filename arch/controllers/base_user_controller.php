@@ -108,7 +108,7 @@ class base_user_controller extends app_crud_controller {
             if ($is_login) {
                 $this->_model('user')->add_trail('login');
                 // redirect($this->_get_redirect());
-                redirect(site_url('site/index'));
+                redirect(site_url('web/index'));
             } else {
                 add_error(l('Username/email or password not found'));
             }
