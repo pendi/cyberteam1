@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<?php echo theme_url('js/jquery-1.8.2.min.js') ?>"></script>
     <script type='text/javascript' src="<?php echo theme_url('js/code-prettify/prettify.js') ?>"></script>
     <script type="text/javascript" src="<?php echo theme_url('js/bootstrap.js') ?>"></script>
-	
+
 
 </head>
 <body>
@@ -83,7 +83,7 @@
 				<div style="float:left;text-align:center;">
 					&nbsp;&nbsp;|<a class="sitename" href="<?php echo site_url('site/index')?>">&nbsp;&nbsp;Dashboard</a>
 				</div>
-				<div style="float:right;text-align:right;"> 
+				<div style="float:right;text-align:right;">
 					Proudly powered by <a href="http://xinix.co.id">Xinix Technology</a>
 				</div>
 			</div>

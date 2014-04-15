@@ -67,7 +67,7 @@ class web extends app_crud_controller {
         $config['base_url'] = site_url('web/cat_list/'.$id);
         $config['total_rows'] = $count;
         $config['per_page'] = 10;
-        // $config['uri_segment'] = 3;
+        $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
     }
