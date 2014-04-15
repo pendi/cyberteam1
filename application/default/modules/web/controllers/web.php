@@ -9,6 +9,15 @@ class web extends app_crud_controller {
 	function __construct() {
 		parent::__construct();
 		$this->_layout_view = 'layouts/web';
+        $this->_validation = array(
+            'signup' => array(
+                'email' => array('required'),
+                'first_name' => array('required'),
+                'last_name' => array('required'),
+                'username' => array('required'),
+                'password' => array('required'),
+            ),
+        );
     }
 
     function _check_access() {
@@ -128,6 +137,7 @@ class web extends app_crud_controller {
         $model = $this->_model('user');
 
         if ($_POST || $_FILES) {
+            // xlog($_POST); exit;
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
@@ -194,4 +204,6 @@ class web extends app_crud_controller {
             $this->auth->logout();
         }
     }
+
+
 }
