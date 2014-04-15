@@ -138,14 +138,6 @@ class web extends app_crud_controller {
 
 
         if ($_POST || $_FILES) {
-<<<<<<< HEAD
-
-            // xlog($_POST);
-            // exit();
-
-=======
-            // xlog($_POST); exit;
->>>>>>> c729ee2470a02d3d3609dc609e5899117dd77f41
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
