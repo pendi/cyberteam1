@@ -3,6 +3,7 @@
       color: #000;
    }
 </style>
+
 <div id="login">
    <div class="title">
       <h2>
@@ -11,7 +12,7 @@
          <strong>Xinix-Movie</strong>
       </h2>
    </div>
-   <form>
+   <form action="" method="post">
       <div class="row">
          <div class="span-12">
             <label>Username</label>
@@ -19,7 +20,7 @@
          </div>
          <div class="span-12">
             <label>Password</label>
-            <input type="text" placeholder="Password">
+            <input type="password" placeholder="Password">
          </div>
          <div class="span-12">
             <label class="check-label">
