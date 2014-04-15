@@ -20,6 +20,7 @@ class web extends app_crud_controller {
     }
 
     function index($offset=0){
+
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
@@ -176,4 +177,21 @@ class web extends app_crud_controller {
         }
     }
 
+    function login($mode = '') {
+        $this->load->helper('format');
+        $this->load->helper('security');
+        $this->_data['err_string'] = '';
+        if ($_POST || !empty($mode)) {
+            $is_login = $this->auth->login(($_POST) ? $_POST['login'] : '', ($_POST) ? $_POST['password'] : '', $mode);
+            if ($is_login) {
+                $this->_model('user')->add_trail('login');
+                redirect(site_url('web/redirect/'. $this->_get_redirect()));
+            } else {
+                $this->_data['err_string'] = '<h6>Username/email or password not found<span></h6>';
+            }
+        } else {
+            $this->_model('user')->add_trail('logout');
+            $this->auth->logout();
+        }
+    }
 }
