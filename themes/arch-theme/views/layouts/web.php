@@ -50,11 +50,11 @@
 								<ul>
 									<li><a href='<?php echo site_url()?>'><?php echo l('Home') ?></a></li>
 									<li><a href='<?php echo site_url('web/category')?>'><?php echo l('Category') ?></a></li>
-									<li><a href='<?php echo site_url('web/privacy')?>'>Privacy Policy</a></li>
+									<!-- <li><a href='<?php echo site_url('web/privacy')?>'>Privacy Policy</a></li> -->
 									<?php if($USER['is_login']) : ?>
 									<li><a href='<?php echo site_url('web/request_movie')?>'>Request Film</a></li>
 									<?php else : ?>
-									<li><a href='<?php echo site_url('user/unauthorized')?>'>Request Film</a></li>
+									<li><a href='<?php echo site_url('web/login')?>'>Request Film</a></li>
 									<?php endif ?>
 									<?php if($USER['is_login']) : ?>
 									<li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
@@ -82,7 +82,6 @@
         </div> -->
         <?php //echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
-
     </section>
 	<div id="headermenu1">
 		<div class="creditwrap">
@@ -93,9 +92,9 @@
 				<div style="float:left;text-align:center;">
 					&nbsp;&nbsp;|<a class="sitename" href="<?php echo site_url('site/index')?>">&nbsp;&nbsp;Dashboard</a>
 				</div>
-				<div style="float:right;text-align:right;">
+				<!-- <div style="float:right;text-align:right;"> 
 					Proudly powered by <a href="http://xinix.co.id">Xinix Technology</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

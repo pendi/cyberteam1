@@ -91,7 +91,7 @@
 						<input type='file' name='image' />
 					</div>
 				</div>
-    			<input class="btn btn-primary" type="submit"/>
+    			<input type="submit"/>
 			</div>
 		</form>
 	</div>

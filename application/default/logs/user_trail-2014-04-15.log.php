@@ -140,8 +140,53 @@
 1,web/cat_list,web/cat_list/2,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 10:11:08",admin
 1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 10:12:39",admin
 1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,logout,"2014-04-15 10:12:39",admin
+<<<<<<< HEAD
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,login,"2014-04-15 11:09:16",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:09:16",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:09:45",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:09:45",admin
+1,web/category,web/category,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:09:46",admin
+1,web/category,web/category,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:11:16",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:11:19",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:11:19",admin
+1,web/category,web/category,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:14:53",admin
+1,web/cat_list,web/cat_list/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:14:54",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:31:58",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,logout,"2014-04-15 11:31:58",admin
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,login,"2014-04-15 11:33:55",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:33:55",admin
+1,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:01",admin
+1,user/listing,user/listing,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:08",admin
+1,user/trash,user/trash/4,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:12",admin
+1,user/trash,user/trash/4,GET,"*""confirmed"":""1""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:14",admin
+1,user/listing,user/listing,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:14",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:41",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:41",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:34:44",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,logout,"2014-04-15 11:34:44",admin
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,login,"2014-04-15 11:36:44",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:36:45",admin
+1,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:36:47",admin
+1,user/listing,user/listing,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:36:50",admin
+1,user/edit,user/edit/3,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 11:36:52",admin
+1,user/listing,user/listing,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:40",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:41",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:41",admin
+1,web/category,web/category,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:46",admin
+1,web/cat_list,web/cat_list/2,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:47",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:50",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:50",admin
+1,web/detail_film,web/detail_film/13,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 12:06:52",admin
+=======
 >>>>>>> 2b25277dc37a921ed515e453e8443de54e178124
 >>>>>>> 7f64da9b32b2dd0579d01bae262632eeb194d2c5
+<<<<<<< HEAD
+>>>>>>> 95a226bce0781cab308abea4b1d0a9ae57caa4a9
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,login,"2014-04-15 13:23:25",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 13:23:25",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 13:24:15",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,logout,"2014-04-15 13:24:15",admin
+=======
 1,web/cat_list,web/cat_list/2/10,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 10:37:59",admin
 1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 10:46:50",admin
 1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 10:46:51",admin
@@ -263,6 +308,7 @@
 1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 12:27:43",admin
 1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 12:27:59",admin
 1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,logout,"2014-04-15 12:27:59",admin
+<<<<<<< HEAD
 10,user/login,user/login,POST,"{""continue"":"""",""login"":""tutud"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,login,"2014-04-15 13:30:30",tutud
 10,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:30:30",tutud
 10,user/login,user/login,GET,"{""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/user\/listing""}",127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:30:38",tutud
@@ -279,3 +325,16 @@
 10,user/login,user/login,GET,"{""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/user\/logout""}",127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,logout,"2014-04-15 13:32:13",tutud
 1,user/login,user/login,POST,"{""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,login,"2014-04-15 13:32:18",admin
 1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:32:18",admin
+=======
+>>>>>>> 30f0667a38c24549d956c851d420c39849305f5a
+>>>>>>> c729ee2470a02d3d3609dc609e5899117dd77f41
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:33:53",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:33:53",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:34:20",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:36:44",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:37:16",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:37:36",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:37:59",admin
+1,web/detail_user,web/detail_user/1,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:38:27",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-15 13:53:51",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,logout,"2014-04-15 13:53:51",admin
