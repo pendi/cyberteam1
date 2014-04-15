@@ -42,16 +42,17 @@
 		<div class="switch">
 			<div class="switch-left">
 				<span style="color: #aaa;">Sign</span>Up
-			</div>
+            </div>
 		</div>
 		<form action="" method="POST" enctype="multipart/form-data">
-			<div class="post">
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Email') ?></label>
-					</div>
-					<div class="span9"><input type="text" name="email" value="<?php echo set_value('email') ?>"></div>
-				</div>
+            <?php echo xview_error() ?>
+            <div class="post">
+                <div class="row-fluid">
+                    <div class="span2">
+                        <label><?php echo l('Email') ?></label>
+                    </div>
+                    <div class="span9"><input type="text" name="email" value="<?php echo set_value('email') ?>"></div>
+                </div>
 				<div class="row-fluid">
 					<div class="span2">
 						<label><?php echo l('First Name') ?></label>
@@ -94,5 +95,12 @@
 			</div>
 		</form>
 	</div>
-	<div class="clear"></div>	
+	<div class="clear"></div>
 </div>
+
+
+
+
+
+
+

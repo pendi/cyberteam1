@@ -17,7 +17,7 @@
     <script type='text/javascript' src="<?php echo theme_url('js/code-prettify/prettify.js') ?>"></script>
     <script type="text/javascript" src="<?php echo theme_url () ?>js/fancybox/source/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="<?php echo theme_url('js/bootstrap.js') ?>"></script>
-	
+
 
 </head>
 <body>
@@ -74,6 +74,13 @@
 		</div>
 	</div>
     <section id="<?php echo empty($uri) ? 'body':'content-body'?>">
+		<?php //$uri = $this->uri->segment(1);?>
+        <!-- <div id="outer-wrapper">
+            <div id="wrap2">
+                <?php echo xview_error() ?>
+            </div>
+        </div> -->
+        <?php //echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
     </section>
 	<div id="headermenu1">
