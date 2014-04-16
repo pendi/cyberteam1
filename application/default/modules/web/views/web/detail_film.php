@@ -3,7 +3,7 @@
 	.span2{
 		color: #02ADD8;
 		font-size: 15px;
-	}	
+	}
 </style>
 <!-- <div id="outer-wrapper">
 	<div id="wrap2">
@@ -22,7 +22,7 @@
 				<div class="span6">
 					<div class="row-fluid">
 						<div class="span2">
-							<b><?php echo l('Category') ?></b>		
+							<b><?php echo l('Category') ?></b>
 						</div>
 						<div class="span4">
 							<?php echo format_model_param($film['category_id'],'category'); ?>
@@ -30,7 +30,7 @@
 					</div>
 					<div class="row-fluid">
 						<div class="span2">
-							<b><?php echo l('Size') ?></b>		
+							<b><?php echo l('Size') ?></b>
 						</div>
 						<div class="span4">
 							<?php echo ($film['size']); ?>
@@ -57,14 +57,14 @@
 							<b><?php echo l('Trailer') ?></b>
 						</div>
 						<div class="span9">
-							<?php  
+							<?php
 								$film_code = $film['trailer'];
 								$youtube = explode("v=", $film_code);
 							?>
 							<?php if(!empty($film['trailer'])) : ?>
 								<iframe width="560" height="315" src="//www.youtube.com/embed/<?php echo $youtube[1] ?>" frameborder="0" allowfullscreen></iframe>
 							<?php endif ?>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
