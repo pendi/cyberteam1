@@ -11,7 +11,7 @@
     <meta name="keywords" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia, Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi " />
     <meta name="description" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia,Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="image/x-icon" href="<?php echo theme_url('favicon.ico') ?>" rel="Shortcut icon" />
+	<link type="image/x-icon" href="<?php echo theme_url('img/favicon.ico') ?>" rel="Shortcut icon" />
     <link href="<?php echo theme_url('js/jquery.bxslider/jquery.bxslider.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/naked.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/main.css') ?>" rel="stylesheet" media="all" />
@@ -29,7 +29,7 @@
             <div class="row">
                 <nav>
                     <h1 class="brand">
-                        <a href="index.php">
+                        <a href="<?php echo site_url('web/index') ?>">
                             <span class="logo"></span>
                             Xinix Movie
                         </a>
@@ -100,30 +100,18 @@
             </div>
         </div>
     </header>
+    <?php  
+    	$category_film = $this->db->query("SELECT * FROM category")->result_array();
+        $this->_data['category_film'] = $category_film;
+    ?>
     <div class="category">
         <div class="container">
             <ul class="flat">
+            	<?php foreach ($category_film as $cat):?>
                 <li>
-                    <a href="#">Horror</a>
+                    <a href="<?php echo site_url ('web/cat_list/'.$cat['id']) ?>"><?php echo $cat['name'] ?></a>
                 </li>
-                <li>
-                    <a href="#">Biography</a>
-                </li>
-                <li>
-                    <a href="#">Action</a>
-                </li>
-                <li>
-                    <a href="#">Comedy</a>
-                </li>
-                <li>
-                    <a href="#">Adult</a>
-                </li>
-                <li>
-                    <a href="#">Cartoon</a>
-                </li>
-                <li>
-                    <a href="#">Anime</a>
-                </li>
+                <?php endforeach;?>
             </ul>
         </div>
     </div>
