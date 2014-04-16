@@ -27,15 +27,16 @@
                             <?php foreach ($film as $item):?>
                                 <div class="review-movie">
                                     <div class="image">
-                                        <a href="#"><img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>"></a>
+                                        <img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>">
                                     </div>
                                     <div class="title-desc">
                                         <h6 class="title">
                                             <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                         </h6>
                                         <p class="desc">
-                                            <?php echo $item['description']?><a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
+                                            <?=word_limiter($item['description'],15)."  "?>
                                         </p>
+                                        <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
                                     </div>
                                 </div>
                             <?php endforeach;?>
