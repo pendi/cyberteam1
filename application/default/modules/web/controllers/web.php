@@ -48,6 +48,7 @@ class web extends app_crud_controller {
         // xlog("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ");
         // exit();
         $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        
         $this->_data['film'] = $film;
         $count = $countfilm['count'];
         // xlog($film);exit;
