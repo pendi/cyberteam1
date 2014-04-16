@@ -28,11 +28,11 @@
             <input type="password"name="password" value="" placeholder="<?php echo l('Password') ?>" />
             <!-- <input type="password" placeholder="Password"> -->
          </div>
-         <div class="span-12">
+         <!-- <div class="span-12">
             <label class="check-label">
                <input class="checkbox" type="checkbox">Remember me
             </label>
-         </div>
+         </div> -->
          <div class="span-12">
             <input type="hidden" name="continue" value="" />
             <input type="submit" value="Login" />
