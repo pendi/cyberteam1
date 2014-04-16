@@ -37,9 +37,16 @@
                     </li>
 				<?php endforeach;?>
                 </ul>
-                <div class="more">
-                    <a class="pull-right" href="#">Show All Movies</a>
-                </div>
+                <ul class="pagination">
+                    <li class="arrow-first"><a href="#">&lt;&lt;</a></li>
+                    <li class="prev"><a href="#">&lt;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li class="next"><a href="#">&gt;</a></li>
+                    <li class="arrow-last"><a href="#">&gt;&gt;</a></li>
+                </ul>
+                <div class="clear"></div>
             </div>
         </section>
     </div>

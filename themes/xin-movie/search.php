@@ -9,32 +9,7 @@
         <div class="container">
             <section class="thumbnail">
                 <div class="thumb-movie">
-                    <h2 class="title">Movies</h2>
-                    <div class="sortby">
-                        <ul class="flat">
-                            <li>
-                                <h6>Sortby :</h6>
-                            </li>
-                            <li>
-                                <a href="#">A - Z</a>
-                            </li>
-                            <li>
-                                <a href="#">Z - A</a>
-                            </li>
-                            <li>
-                                <a href="#">Latest</a>
-                            </li>
-                            <li>
-                                <a href="#">Oldest</a>
-                            </li>
-                            <li>
-                                <a href="#">Quality</a>
-                            </li>
-                            <li>
-                                <a href="#">Rate</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <h2 class="title search">Search Result</h2>
                     <ul class="flat">
                         <li>
                             <a href="detail-movie.php">

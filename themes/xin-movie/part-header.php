@@ -12,10 +12,13 @@
                         <div class="menu pull-right">
                             <ul class="flat navigation">
                                 <li>
+                                    <a href="request.php">Request</a>
+                                </li>
+                                <li>
                                     <a href="list-movie.php">Movies</a>
                                 </li>
                                 <li>
-                                    <a href="#">Register</a>
+                                    <a href="register.php">Register</a>
                                 </li>
                                 <li class="login">
                                     <a>Login</a>
@@ -34,11 +37,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="span-12 forgot">
-                                                    <a href="#">Forgot Password?</a>
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="span-12">
                                                     <input value="Login" type="submit" class="submit">
                                                 </div>
@@ -46,25 +44,18 @@
                                         </form>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="search-media">
+                                        <div class="search">
+                                            <form action="search.php">
+                                                <input type="text" placeholder="Search Movie" class="text">
+                                                <span class="search-icon"></span>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
-                            <div class="search-media">
-                                <div class="search">
-                                    <form action="">
-                                        <input type="text" placeholder="Search" class="text">
-                                        <span class="search-icon"></span>
-                                    </form>
-                                </div>
-                                <div class="media">
-                                    <ul class="flat">
-                                        <li class="fb">
-                                            <a href="#">FB</a>
-                                        </li>
-                                        <li class="tw">
-                                            <a href="#">TW</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </div>
                     </nav>
                 </div>
@@ -74,25 +65,25 @@
             <div class="container">
                 <ul class="flat">
                     <li>
-                        <a href="#">Horror</a>
+                        <a href="list-movie.php">Horror</a>
                     </li>
                     <li>
-                        <a href="#">Biography</a>
+                        <a href="list-movie.php">Biography</a>
                     </li>
                     <li>
-                        <a href="#">Action</a>
+                        <a href="list-movie.php">Action</a>
                     </li>
                     <li>
-                        <a href="#">Comedy</a>
+                        <a href="list-movie.php">Comedy</a>
                     </li>
                     <li>
-                        <a href="#">Adult</a>
+                        <a href="list-movie.php">Adult</a>
                     </li>
                     <li>
-                        <a href="#">Cartoon</a>
+                        <a href="list-movie.php">Cartoon</a>
                     </li>
                     <li>
-                        <a href="#">Anime</a>
+                        <a href="list-movie.php">Anime</a>
                     </li>
                 </ul>
             </div>
