@@ -715,3 +715,6 @@
 =======
 >>>>>>> c598b93ab17d3d07fde1b88bdd6dfe6a366ab952
 >>>>>>> 3a9ed57e29adf56c6601a628b9d370524ca144bb
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,login,"2014-04-15 23:29:09",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-15 23:29:09",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",,1,,"2014-04-15 23:32:07",admin

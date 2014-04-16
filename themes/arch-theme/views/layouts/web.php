@@ -40,7 +40,7 @@
                                 <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
                             </li>
                             <li>
-                                <a href="#">Register</a>
+                                <a href="<?php echo site_url('web/signup') ?>">Register</a>
                             </li>
                             <li class="login">
                                 <a>Login</a>
@@ -136,7 +136,7 @@
                             <a href="#">Privacy</a>
                         </li>
                         <li>
-                            <a href="#">Dashboard</a>
+                            <a href="<?php echo site_url('site/index') ?>">Dashboard</a>
                         </li>
                     </ul>
                 </div>
