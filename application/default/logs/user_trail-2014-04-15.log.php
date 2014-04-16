@@ -595,3 +595,34 @@
 >>>>>>> c1eadf3ad7cc844f9a4028d5fb14e6ff87ca9c78
 >>>>>>> 9c34d1fcca89df67f50f49d072450967550bb49a
 >>>>>>> 8565024cb83d4f49cfa4f56cddafebfd62134aa2
+23,web/login,web/login,POST,"*""login"":""tutudd"",""password"":""password"",""continue"":""""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,login,"2014-04-15 15:14:38",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:14:38",tutudd
+23,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:14:48",tutudd
+23,user/unauthorized,user/unauthorized,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:14:48",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:14:50",tutudd
+23,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:01",tutudd
+23,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,logout,"2014-04-15 15:15:01",tutudd
+23,web/login,web/login,POST,"*""login"":""tutudd"",""password"":""password"",""continue"":""""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,login,"2014-04-15 15:15:11",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:11",tutudd
+23,web/detail_film,web/detail_film/12,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:15",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:20",tutudd
+23,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:28",tutudd
+23,user/unauthorized,user/unauthorized,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:28",tutudd
+23,user/login,user/login,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:30",tutudd
+23,user/login,user/login,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,logout,"2014-04-15 15:15:30",tutudd
+23,user/login,user/login,POST,"*""continue"":"""",""login"":""tutudd"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,login,"2014-04-15 15:15:35",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:35",tutudd
+23,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:41",tutudd
+23,user/unauthorized,user/unauthorized,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:41",tutudd
+23,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:44",tutudd
+23,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:48",tutudd
+23,user/unauthorized,user/unauthorized,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:48",tutudd
+23,user/login,user/login,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:50",tutudd
+23,user/login,user/login,GET,"*""continue"":""http:\/\/localhost\/xinix-movie\/index.php\/site\/index""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,logout,"2014-04-15 15:15:50",tutudd
+1,user/login,user/login,POST,"*""continue"":"""",""login"":""admin"",""password"":""password""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,login,"2014-04-15 15:15:57",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:15:57",admin
+1,site/index,site/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:16:02",admin
+1,web/index2,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:16:06",admin
+1,web/index,web/index,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:16:06",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,,"2014-04-15 15:16:08",admin
+1,user/logout,user/logout,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36",,1,logout,"2014-04-15 15:16:08",admin

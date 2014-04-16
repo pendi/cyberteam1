@@ -211,6 +211,4 @@ class web extends app_crud_controller {
             $this->auth->logout();
         }
     }
-
-
 }
