@@ -50,6 +50,12 @@ echo $this->admin_panel->breadcrumb(array(
 					</div>
 					<div class="row-fluid">
 						<span class="span3">
+							<?php echo l('Rate'); ?>
+						</span>
+						<input type="text" class="span9" name="size" value="<?php echo set_value('rate'); ?>">
+					</div>
+					<div class="row-fluid">
+						<span class="span3">
 							<?php echo l('Cover'); ?>
 						</span>
 						<input class='span9' type='file' name='cover' />
