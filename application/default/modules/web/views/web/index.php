@@ -20,22 +20,28 @@
                         </div>
                     </div>
                 </div>
+                <?php 
+                    $offset=0;
+                    $film_rev = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT ?,? ", array(intval($offset), 3))->result_array();
+                    // xlog($film_rev);exit;
+                ?>
                 <div class="span-4">
                     <div class="wrapper">
                         <div class="review">
                             <h4><span class="icon-review"></span>Review</h4>
-                            <?php foreach ($film as $item):?>
+                            <?php foreach ($film_rev as $item):?>
                                 <div class="review-movie">
                                     <div class="image">
-                                        <a href="#"><img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>"></a>
+                                        <img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>">
                                     </div>
                                     <div class="title-desc">
                                         <h6 class="title">
                                             <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                         </h6>
                                         <p class="desc">
-                                            <?php echo $item['description']?><a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
+                                            <?=word_limiter($item['description'],12)."  "?>
                                         </p>
+                                        <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
                                     </div>
                                 </div>
                             <?php endforeach;?>

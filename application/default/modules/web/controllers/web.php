@@ -6,9 +6,9 @@
 
 class web extends app_crud_controller {
 
-    function __construct() {
-        parent::__construct();
-        $this->_layout_view = 'layouts/web';
+	function __construct() {
+		parent::__construct();
+		$this->_layout_view = 'layouts/web';
         $this->_validation = array(
             'signup' => array(
                 'email' => array('required'),
@@ -47,7 +47,8 @@ class web extends app_crud_controller {
         $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
         // xlog("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ");
         // exit();
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        
         $this->_data['film'] = $film;
         $count = $countfilm['count'];
         // xlog($film);exit;
