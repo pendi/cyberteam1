@@ -160,7 +160,7 @@ h2.reg { margin-bottom: 30px; }
     box-shadow: 0px 0px 6px rgba(0,0,0,0.55);
 }
 .thumb-movie li .desc { margin: 0; font-size: 15px; text-align: center; margin-top: 5px; }
-.thumb-movie li .desc a { color: #333; }
+.thumb-movie li .desc a { color: #333; text-overflow: ellipsis; display: block; max-width: 225px; white-space: nowrap; overflow: hidden; }
 .thumb-movie li .desc a:hover { color: #0094c6; }
 .thumb-movie .more { margin-top: 20px; display: table; width: 100%; }
 .thumb-movie .more a { font-size: 17px; color: #E58100; padding-right: 30px; background: url(../img/readmore.png) center right no-repeat; background-size: contain; }

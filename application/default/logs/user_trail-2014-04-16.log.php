@@ -495,3 +495,4 @@
 1,web/detail_user,web/detail_user/1,GET,,192.168.1.140,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-16 19:06:42",admin
 1,web/detail_user,web/detail_user/1,GET,,192.168.1.140,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-16 19:06:43",admin
 1,web/list_movie,web/list_movie,GET,,192.168.1.140,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-16 19:06:52",admin
+1,web/index,web/index,GET,,192.168.1.140,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-16 19:09:14",admin

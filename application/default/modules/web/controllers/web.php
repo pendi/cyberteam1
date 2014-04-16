@@ -203,7 +203,56 @@ class web extends app_crud_controller {
         }
     }
 
-    function list_movie($offset=0){
+    function list_movie($sort=null,$offset=0){
+
+        $order = 'created_time';
+        $q = ' DESC';
+
+        if(isset($sort)){
+            if ($sort == "az") {
+                $order = 'title';
+                $q = ' ASC';
+            }
+            if ($sort == "za") {
+                $order = 'title';
+                $q = ' DESC';
+            }
+            if ($sort == "quality") {
+                $order = 'quality';
+                $q = ' ASC';
+            }
+            if ($sort == "latest") {
+                $order = 'created_time';
+                $q = ' ASC';
+            }
+            if ($sort == "oldest") {
+                $order = 'created_time';
+                $q = ' DESC';
+            }
+        }
+        $this->load->library('pagination');
+        $this->_layout_view = 'layouts/web';
+        $this->load->helper('format');
+        $this->load->helper('security');
+
+        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        $sql = "SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY ".$order.$q." LIMIT ?,?";
+        $film = $this->db->query($sql, array(intval($offset), 8))->result_array();
+        
+        $this->_data['film'] = $film;
+        $count = $countfilm['count'];
+
+        $config['base_url'] = site_url('web/list_movie');
+        $config['total_rows'] = $count;
+        $config['per_page'] = 10;
+        $config['uri_segment'] = 3;
+
+        $a = $this->pagination->initialize($config);
+        // $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        // $this->_data['film'] = $film;
+    }
+
+    function list_movie_old($offset=0){
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
