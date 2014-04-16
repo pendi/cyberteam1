@@ -141,7 +141,7 @@
                                     <h6>Trailer</h6>
                                 </div>
                                 <div class="span-10">
-                                    <?php  
+                                    <?php
 										$film_code = $film['trailer'];
 										$youtube = explode("v=", $film_code);
 									?>
