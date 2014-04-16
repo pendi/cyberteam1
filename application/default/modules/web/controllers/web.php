@@ -39,25 +39,13 @@ class web extends app_crud_controller {
         }else{
             $order = 'created_time DESC';
         }
-        // $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
 
-        // $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
         $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 20))->result_array();
         
         $this->_data['film'] = $film;
-        // $count = $countfilm['count'];
-
-        // $config['base_url'] = site_url('web/index');
-        // $config['total_rows'] = $count;
-        // $config['per_page'] = 10;
-        // $config['uri_segment'] = 3;
-
-        // $a = $this->pagination->initialize($config);
-
-
     }
 
     function category(){
