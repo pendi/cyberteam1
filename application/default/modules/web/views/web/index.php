@@ -23,7 +23,6 @@
                 <?php 
                     $offset=0;
                     $film_rev = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT ?,? ", array(intval($offset), 3))->result_array();
-                    // xlog($film_rev);exit;
                 ?>
                 <div class="span-4">
                     <div class="wrapper">
@@ -50,13 +49,17 @@
                 </div>
             </div>
         </section>
+        <?php 
+            $offset=0;
+            $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 8))->result_array();
+        ?>
         <section class="popular-movie">
             <div class="row">
                 <div class="span-12">
                     <div class="thumb-movie">
                         <h4><span class="icon-popular"></span>Popular Movie</h4>
                         <ul class="flat">
-                            <?php foreach ($film as $item):?>
+                            <?php foreach ($film_pop as $item):?>
                                 <li>
                                     <a href="#">
                                         <div class="image" style="background:url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center no-repeat; background-size: cover;">

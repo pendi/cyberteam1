@@ -77,8 +77,8 @@
                             <li>
                                 <div class="search-media">
                                     <div class="search">
-                                        <form action="<?php echo site_url('web/search') ?>">
-                                            <input type="text" placeholder="Search Movie" class="text">
+                                        <form method="post" action="<?php echo site_url('web/search') ?>">
+                                            <input name="title" type="text" placeholder="Search Movie" class="text">
                                             <span class="search-icon"></span>
                                         </form>
                                     </div>

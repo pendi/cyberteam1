@@ -39,26 +39,23 @@ class web extends app_crud_controller {
         }else{
             $order = 'created_time DESC';
         }
-        $this->load->library('pagination');
+        // $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
 
-        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
-        // xlog("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY $order LIMIT ?,? ");
-        // exit();
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        // $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 20))->result_array();
         
         $this->_data['film'] = $film;
-        $count = $countfilm['count'];
-        // xlog($film);exit;
+        // $count = $countfilm['count'];
 
-        $config['base_url'] = site_url('web/index');
-        $config['total_rows'] = $count;
-        $config['per_page'] = 10;
-        $config['uri_segment'] = 3;
+        // $config['base_url'] = site_url('web/index');
+        // $config['total_rows'] = $count;
+        // $config['per_page'] = 10;
+        // $config['uri_segment'] = 3;
 
-        $a = $this->pagination->initialize($config);
+        // $a = $this->pagination->initialize($config);
 
 
     }
@@ -219,11 +216,53 @@ class web extends app_crud_controller {
     }
 
     function list_movie($offset=0){
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        $this->load->library('pagination');
+        $this->_layout_view = 'layouts/web';
+        $this->load->helper('format');
+        $this->load->helper('security');
+
+        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 8))->result_array();
+        
         $this->_data['film'] = $film;
+        $count = $countfilm['count'];
+
+        $config['base_url'] = site_url('web/list_movie');
+        $config['total_rows'] = $count;
+        $config['per_page'] = 10;
+        $config['uri_segment'] = 3;
+
+        $a = $this->pagination->initialize($config);
+        // $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
+        // $this->_data['film'] = $film;
     }
 
-    function search(){
+    function search($offset = 0){
+        $this->load->library('session');
+        $this->load->library('pagination');
+
+        if($_POST){
+            // if(!empty($_POST['title'])){
+                
+                $wheres[] = "title LIKE '%" . $_POST['title']. "%'";
+            // }
+            // xlog($_POST); xlog($wheres);exit;
+            $filter = ' WHERE '.implode(' AND ', $wheres);
+            $this->session->set_userdata('filters',$filter);
+        } else {
+            $filter = $this->session->userdata('filters');
+        }
+    
+        $count = 0;
+        $this->_data['data'] = array();
+        $this->_data['data']['items'] = $this->_model()->search($filter, $this->pagination->per_page, $offset, $count);
         
+        $this->load->library('pagination'); 
+        $this->pagination->initialize(array(
+            'total_rows' => $count,
+            'per_page' => $this->pagination->per_page,
+            'uri_segment' => 3,
+            'base_url' => site_url('web/search'),
+        ));   
     }
 }

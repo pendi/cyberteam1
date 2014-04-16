@@ -4,102 +4,16 @@
 	        <div class="thumb-movie">
 	            <h2 class="title search">Search Result</h2>
 	            <ul class="flat">
-	                <!-- <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/thousandwords.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">A Thousand Words</a>
-	                    </p>
-	                </li>
+	                <?php foreach ($data['items'] as $item):?>
 	                <li>
 	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/apocalypse.jpg) center no-repeat; background-size: cover;"></div>
+	                        <div class="image" style="background: url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center no-repeat; background-size: cover;"></div>
 	                    </a>
 	                    <p class="desc">
-	                        <a href="detail-movie.php">Apocalypse Pompeii</a>
+	                        <a href="detail-movie.php"><?php echo $item['title']?></a>
 	                    </p>
 	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/arena.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Arena</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/captainphillips.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Captain Phillips</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/lankwaifong2.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Lan Kwai Fong 2</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/lankwaifong3.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Lan Kwai Fong 3</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/princeofpersia.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Prince of Persia</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/hercules.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">The Legend Of Hercules</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/thousandwords.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">A Thousand Words</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/apocalypse.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Apocalypse Pompeii</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/arena.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Arena</a>
-	                    </p>
-	                </li>
-	                <li>
-	                    <a href="detail-movie.php">
-	                        <div class="image" style="background: url(themes/img/captainphillips.jpg) center no-repeat; background-size: cover;"></div>
-	                    </a>
-	                    <p class="desc">
-	                        <a href="detail-movie.php">Captain Phillips</a>
-	                    </p>
-	                </li> -->
+                    <?php endforeach;?>
 	            </ul>
 	            <ul class="pagination">
 	                <li class="arrow-first"><a href="#">&lt;&lt;</a></li>
