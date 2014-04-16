@@ -56,13 +56,13 @@
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Username</label>
-                                                <input type="text" placeholder="Input">
+                                                <input type="text" placeholder="Username/Email">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Password</label>
-                                                <input type="text" placeholder="Input">
+                                                <input type="password" placeholder="Password">
                                             </div>
                                         </div>
                                         <div class="row">

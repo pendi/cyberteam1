@@ -1,4 +1,4 @@
-<div id="body">
+
 	<div class="container">
 	    <section class="thumbnail">
 	        <div class="thumb-movie">
@@ -27,4 +27,3 @@
 	        </div>
 	    </section>
 	</div>
-</div>
