@@ -31,10 +31,10 @@
                                     </div>
                                     <div class="title-desc">
                                         <h6 class="title">
-                                            <a href="#"><?php echo $item['title']?></a>
+                                            <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                         </h6>
                                         <p class="desc">
-                                            <?php echo $item['description']?><a href="#">Read More ></a>
+                                            <?php echo $item['description']?><a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
                                         </p>
                                     </div>
                                 </div>

@@ -39,6 +39,10 @@
                             <li>
                                 <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
                             </li>
+                            <?php if($USER['is_login']) : ?>
+							<li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
+							<li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
+							<?php else : ?>
                             <li>
                                 <a href="<?php echo site_url('web/signup') ?>">Register</a>
                             </li>
@@ -71,6 +75,7 @@
                                     </form>
                                 </div>
                             </li>
+                            <?php endif ?>
                         </ul>
                         <div class="search-media">
                             <div class="search">
