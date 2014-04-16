@@ -1,28 +1,26 @@
-<div id="outer-wrapper">
-	<div id="wrap2">
-		<div class="switch">
-			<div class="switch-left">
-				<?php foreach ($category as $key => $item) : ?>
-				<span style="color: #aaa;">Category</span> <?php echo $item['name'];?>
+<div id="body">
+    <div class="container">
+        <section class="thumbnail">
+            <div class="thumb-movie">
+            	<?php foreach ($category as $key => $item) : ?>
+                <h2 class="title"></span> <?php echo $item['name'];?></h2>
 				<?php endforeach ?>
-			</div>
-		</div>
-		<?php foreach ($film as $item):?>
-		<div class="post bar hentry">
-			<h2 class="post-title entry-title">
-				<a href="<?php echo site_url('web/detail_film/'.$item['id'])?>"><?php echo $item['title']?></a>
-			</h2>
-			<div class="post-body entry-content">
-				<a href="<?php echo site_url('web/detail_film/'.$item['id'])?>">
-		            <img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>">
-				</a>
-			</div>
-		</div>
-		<?php endforeach;?>
-		<div class="clear"></div>
-        <div>
-            <?php echo $this->pagination->create_links() ?>
-        </div>
-        <div class="clear"></div>
-	</div>
+                <ul class="flat">
+                <?php foreach ($film as $item):?>
+                    <li>
+                        <a href="#">
+                            <div class="image" style="background: url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center no-repeat; background-size: cover;"></div>
+                        </a>
+                        <p class="desc">
+                            <a href="#"><?php echo $item['title']?></a>
+                        </p>
+                    </li>
+				<?php endforeach;?>
+                </ul>
+                <div class="more">
+                    <a class="pull-right" href="#">Show All Movies</a>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
