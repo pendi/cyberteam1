@@ -37,114 +37,54 @@
     });
 </script>
 <?php endif ?>
-<!-- <div id="outer-wrapper">
-	<div id="wrap2">
-		<div class="switch">
-			<div class="switch-left">
-				<span style="color: #aaa;">Sign</span>Up
-            </div>
-		</div>
-		<form action="" method="POST" enctype="multipart/form-data">
-            <?php echo xview_error() ?>
-            <div class="post">
-                <div class="row-fluid">
-                    <div class="span2">
-                        <label><?php echo l('Email') ?></label>
-                    </div>
-                    <div class="span9"><input type="text" name="email" value="<?php echo set_value('email') ?>"></div>
-                </div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('First Name') ?></label>
-					</div>
-					<div class="span9"><input type="text" name="first_name" value="<?php echo set_value('first_name') ?>"></div>
-				</div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Last Name') ?></label>
-					</div>
-					<div class="span9"><input type="text" name="last_name" value="<?php echo set_value('last_name') ?>"></div>
-				</div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Username') ?></label>
-					</div>
-					<div class="span9"><input type="text" name="username" value="<?php echo set_value('username') ?>"></div>
-				</div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Password') ?></label>
-					</div>
-					<div class="span9"><input type="password" name="password" value="<?php echo set_value('password') ?>"></div>
-				</div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Re-type Password') ?></label>
-					</div>
-					<div class="span9"><input type="password" name="password" value="<?php echo set_value('password') ?>"></div>
-				</div>
-				<div class="row-fluid">
-					<div class="span2">
-						<label><?php echo l('Image') ?></label>
-					</div>
-					<div class="span9">
-						<input type='file' name='image' />
-					</div>
-				</div>
-    			<input type="submit"/>
-			</div>
-		</form>
-	</div>
-	<div class="clear"></div>
-</div> -->
-
 <div id="body">
     <div class="container">
         <section class="register">
             <div class="row">
                 <h2 class="title reg">Register</h2>
-                <form action="">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="wrapper">
+                        <?php echo xview_error() ?>
                         <div class="row">
                             <div class="span-12">
-                                <label>First Name</label>
-                                <input type="text" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="span-12">
-                                <label>Last Name</label>
-                                <input type="text" placeholder="Last Name">
+                                <label>Email</label>
+                                <input type="text" placeholder="Email" name="email" value="<?php echo set_value('email') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Username</label>
-                                <input type="text" placeholder="Username">
+                                <input type="text" placeholder="Username" name="username" value="<?php echo set_value('username') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
-                                <label>Email</label>
-                                <input type="text" placeholder="Email">
+                                <label>First Name</label>
+                                <input type="text" placeholder="First Name" name="first_name" value="<?php echo set_value('first_name') ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span-12">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Last Name" name="last_name" value="<?php echo set_value('last_name') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Password</label>
-                                <input type="text" placeholder="Password">
+                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Retype Password</label>
-                                <input type="text" placeholder="Password">
+                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Avatar</label>
-                                <input type="file">
+                                <input type="file" name="image">
                             </div>
                         </div>
                         <div class="row submit-area">

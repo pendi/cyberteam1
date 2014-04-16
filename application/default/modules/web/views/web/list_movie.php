@@ -6,19 +6,22 @@
                 <div class="sortby">
                     <ul class="flat">
                         <li>
-                            <a href="#">A - Z</a>
+                            <h6>Sortby :</h6>
                         </li>
                         <li>
-                            <a href="#">Z - A</a>
+                            <a href="<?php echo site_url('web/list_movie/az') ?>">A - Z</a>
                         </li>
                         <li>
-                            <a href="#">Latest</a>
+                            <a href="<?php echo site_url('web/list_movie/za') ?>">Z - A</a>
                         </li>
                         <li>
-                            <a href="#">Oldest</a>
+                            <a href="<?php echo site_url('web/list_movie/latest') ?>">Latest</a>
                         </li>
                         <li>
-                            <a href="#">Quality</a>
+                            <a href="<?php echo site_url('web/list_movie/oldest') ?>">Oldest</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('web/list_movie/quality') ?>">Quality</a>
                         </li>
                         <li>
                             <a href="#">Rate</a>

@@ -1,23 +1,48 @@
-<div id="outer-wrapper">
-	<div id="wrap2">
-		<div class="switch">
-			<div class="switch-left">
-				<span style="color: #aaa;">User</span> | <?php echo $user['first_name'] ?>
-			</div>
-		</div>
-		<div class="post">
-			<form action="">
-
-				<div class="row-fluid">
-					<div class="span3"><img src ="<?php echo base_url('data/').'/'.$user['image'] ?>" width="200"></div>
-					<div class="span9">Email :<input type="text" value="<?php echo $user['email'] ?>"></div>
-					<div class="span9">First Name :<input type="text" value="<?php echo $user['first_name'] ?>"></div>
-					<div class="span9">Last Name :<input type="text" value="<?php echo $user['last_name'] ?>"></div>
-					<div class="span9">Username :<input type="text" value="<?php echo $user['username'] ?>"></div>
-					<!-- <div class="span5"><?php echo $user['first_name'] ?> <?php echo $user['last_name'] ?></div> -->
-				</div>
-
-			</form>
-		</div>
-	</div>
+<?php $USER = $CI->auth->get_user() ?>
+<div id="body">
+    <div class="container">
+        <section class="detail profile">
+            <div class="row">
+                <h2 class="title req">Profile</h2>
+                <div class="span-4">
+                    <div class="image" style="background:url('<?php echo base_url('data/').'/'.$user['image'] ?>') center; background-size: cover;"></div>
+                    <div class="edit profile">
+                        <div class="download">
+                            <a class="submit" href="<?php echo site_url('web/edit_profile/').'/'.$USER['id'] ?>">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-8">
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Username</h6>
+                                </div>
+                                <div class="span-10 description">
+                                    <p><?php echo $user['username'] ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Name</h6>
+                                </div>
+                                <div class="span-10 description">
+                                    <p><?php echo $user['first_name'] ?> <?php echo $user['last_name'] ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Email</h6>
+                                </div>
+                                <div class="span-10 description">
+                                    <p><?php echo $user['email'] ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>

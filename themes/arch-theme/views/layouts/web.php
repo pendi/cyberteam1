@@ -43,7 +43,7 @@
                             <li>
                                 <a href="<?php echo site_url('web/request_movie') ?>">Request</a>
                             </li>
-                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
+                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><?php echo $USER['username'] ?></a></li>
                             <li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
                             <?php else : ?>
                             <li>
@@ -52,21 +52,22 @@
                             <li class="login">
                                 <a>Login</a>
                                 <div class="menu-login hide animated fadeOutUp">
-                                    <form action="">
+                                    <form action="" method="POST">
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Username</label>
-                                                <input type="text" placeholder="Input">
+                                                <input type="text" name="login" placeholder="Username/Email">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Password</label>
-                                                <input type="text" placeholder="Input">
+                                                <input type="password" name="password" placeholder="Password">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="span-12">
+                                                <input type="hidden" name="continue" value="" />
                                                 <input value="Login" type="submit" class="submit">
                                             </div>
                                         </div>
@@ -109,6 +110,7 @@
 
     <section id="<?php echo empty($uri) ? 'body':'content-body'?>">
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
+        <?php echo xview_error() ?>
     </section>
     
     <div id="footer">
