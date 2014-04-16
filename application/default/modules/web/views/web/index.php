@@ -34,7 +34,7 @@
                                             <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                         </h6>
                                         <p class="desc">
-                                            <?=word_limiter($item['description'],15)."  "?>
+                                            <?=word_limiter($item['description'],12)."  "?>
                                         </p>
                                         <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
                                     </div>
