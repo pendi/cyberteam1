@@ -3,14 +3,14 @@
 	.span2{
 		color: #02ADD8;
 		font-size: 15px;
-	}	
+	}
 </style>
-<div id="outer-wrapper">
+<!-- <div id="outer-wrapper">
 	<div id="wrap2">
 		<div class="switch">
 			<div class="switch-left">
 				<span style="color: #aaa;">MOVIE | </span><?php echo $film['title']?>
-				<!-- <span style="color: #aaa;">PAPA</span> jahat -->
+				<span style="color: #aaa;">PAPA</span> jahat
 			</div>
 		</div>
 		<div class="post">
@@ -22,7 +22,7 @@
 				<div class="span6">
 					<div class="row-fluid">
 						<div class="span2">
-							<b><?php echo l('Category') ?></b>		
+							<b><?php echo l('Category') ?></b>
 						</div>
 						<div class="span4">
 							<?php echo format_model_param($film['category_id'],'category'); ?>
@@ -30,7 +30,7 @@
 					</div>
 					<div class="row-fluid">
 						<div class="span2">
-							<b><?php echo l('Size') ?></b>		
+							<b><?php echo l('Size') ?></b>
 						</div>
 						<div class="span4">
 							<?php echo ($film['size']); ?>
@@ -57,17 +57,103 @@
 							<b><?php echo l('Trailer') ?></b>
 						</div>
 						<div class="span9">
-							<?php  
+							<?php
 								$film_code = $film['trailer'];
 								$youtube = explode("v=", $film_code);
 							?>
 							<?php if(!empty($film['trailer'])) : ?>
 								<iframe width="560" height="315" src="//www.youtube.com/embed/<?php echo $youtube[1] ?>" frameborder="0" allowfullscreen></iframe>
 							<?php endif ?>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div> -->
+
+<div id="body">
+    <div class="container">
+        <section class="detail">
+            <div class="row">
+                <h2 class="title"><?php echo $film['title']?></h2>
+                <div class="span-4">
+                    <div class="image" style="background:url('<?php echo base_url('data/').'/'.$film['cover'] ?>') center; background-size: cover;"></div>
+                    <div class="download">
+                        <a class="submit" href="<?php echo base_url('data/film/filmnya/').'/'.$film['title'].'.zip' ?>">Download</a>
+                    </div>
+                </div>
+                <div class="span-8">
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Category</h6>
+                                </div>
+                                <div class="span-10">
+                                    <h6><?php echo format_model_param($film['category_id'],'category'); ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Size</h6>
+                                </div>
+                                <div class="span-10">
+                                    <h6><?php echo ($film['size']); ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Quality</h6>
+                                </div>
+                                <div class="span-10">
+                                    <h6><?php echo format_param_short($film['quality'],'quality'); ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Sinopsis</h6>
+                                </div>
+                                <div class="span-10 description">
+                                    <p>
+                                        <?php echo nl2br($film['description']) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="row">
+                                <div class="span-2">
+                                    <h6>Trailer</h6>
+                                </div>
+                                <div class="span-10">
+                                    <?php  
+										$film_code = $film['trailer'];
+										$youtube = explode("v=", $film_code);
+									?>
+									<?php if(!empty($film['trailer'])) : ?>
+										<iframe width="560" height="315" src="//www.youtube.com/embed/<?php echo $youtube[1] ?>" frameborder="0" allowfullscreen></iframe>
+									<?php endif ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>

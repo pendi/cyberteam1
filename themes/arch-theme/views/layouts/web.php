@@ -11,7 +11,7 @@
     <meta name="keywords" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia, Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi " />
     <meta name="description" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia,Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="image/x-icon" href="<?php echo theme_url('favicon.ico') ?>" rel="Shortcut icon" />
+	<link type="image/x-icon" href="<?php echo theme_url('img/favicon.ico') ?>" rel="Shortcut icon" />
     <link href="<?php echo theme_url('js/jquery.bxslider/jquery.bxslider.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/naked.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/main.css') ?>" rel="stylesheet" media="all" />
@@ -29,7 +29,7 @@
             <div class="row">
                 <nav>
                     <h1 class="brand">
-                        <a href="index.php">
+                        <a href="<?php echo site_url('web/index') ?>">
                             <span class="logo"></span>
                             Xinix Movie
                         </a>
@@ -40,33 +40,31 @@
                                 <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
                             </li>
                             <?php if($USER['is_login']) : ?>
-							<li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
-							<li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
-							<?php else : ?>
+                            <li>
+                                <a href="<?php echo site_url('web/request_movie') ?>">Request</a>
+                            </li>
+                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><span style="color: #02ADD8;"><?php echo $USER['username'] ?></span></a></li>
+                            <li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
+                            <?php else : ?>
                             <li>
                                 <a href="<?php echo site_url('web/signup') ?>">Register</a>
                             </li>
                             <li class="login">
                                 <a>Login</a>
                                 <div class="menu-login hide animated fadeOutUp">
-                                    <form action="" method="post">
+                                    <form action="">
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Username</label>
-                                                <input type="text" name="login" value=""  placeholder="<?php echo l('Username/Email') ?>" />
+                                                <input type="text" placeholder="Input">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Password</label>
-                                                <input type="password"name="password" value="" placeholder="<?php echo l('Password') ?>" />
+                                                <input type="text" placeholder="Input">
                                             </div>
                                         </div>
-                                        <!-- <div class="row">
-                                            <div class="span-12 forgot">
-                                                <a href="#">Forgot Password?</a>
-                                            </div>
-                                        </div> -->
                                         <div class="row">
                                             <div class="span-12">
                                                 <input value="Login" type="submit" class="submit">
@@ -76,54 +74,35 @@
                                 </div>
                             </li>
                             <?php endif ?>
+                            <li>
+                                <div class="search-media">
+                                    <div class="search">
+                                        <form action="<?php echo site_url('web/search') ?>">
+                                            <input type="text" placeholder="Search Movie" class="text">
+                                            <span class="search-icon"></span>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
-                        <div class="search-media">
-                            <div class="search">
-                                <form action="">
-                                    <input type="text" placeholder="Search" class="text">
-                                    <span class="search-icon"></span>
-                                </form>
-                            </div>
-                            <div class="media">
-                                <ul class="flat">
-                                    <li class="fb">
-                                        <a href="#">FB</a>
-                                    </li>
-                                    <li class="tw">
-                                        <a href="#">TW</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                 </nav>
             </div>
         </div>
     </header>
+    <?php  
+    	$category_film = $this->db->query("SELECT * FROM category")->result_array();
+        $this->_data['category_film'] = $category_film;
+    ?>
     <div class="category">
         <div class="container">
             <ul class="flat">
+            	<?php foreach ($category_film as $cat):?>
                 <li>
-                    <a href="#">Horror</a>
+                    <a href="<?php echo site_url ('web/cat_list/'.$cat['id']) ?>"><?php echo $cat['name'] ?></a>
                 </li>
-                <li>
-                    <a href="#">Biography</a>
-                </li>
-                <li>
-                    <a href="#">Action</a>
-                </li>
-                <li>
-                    <a href="#">Comedy</a>
-                </li>
-                <li>
-                    <a href="#">Adult</a>
-                </li>
-                <li>
-                    <a href="#">Cartoon</a>
-                </li>
-                <li>
-                    <a href="#">Anime</a>
-                </li>
+                <?php endforeach;?>
             </ul>
         </div>
     </div>
@@ -138,7 +117,7 @@
                 <div class="nav-foot">
                     <ul class="flat">
                         <li>
-                            <a href="#">Privacy</a>
+                            <a href="<?php echo site_url('web/index') ?>">Home</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('site/index') ?>">Dashboard</a>

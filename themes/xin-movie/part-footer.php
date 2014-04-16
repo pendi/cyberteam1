@@ -4,7 +4,7 @@
                 <div class="nav-foot">
                     <ul class="flat">
                         <li>
-                            <a href="#">Privacy</a>
+                            <a href="index.php">Home</a>
                         </li>
                         <li>
                             <a href="#">Dashboard</a>
