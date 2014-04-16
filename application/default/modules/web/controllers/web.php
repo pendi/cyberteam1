@@ -107,11 +107,19 @@ class web extends app_crud_controller {
 
     }
 
-    function detail_film($id){
-
+    function detail_film($id=null, $rate=null){
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
+        
+        if ($_POST) {
+            $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
+        } else {
+            if (!empty($id)) {
+                $id = $this->uri->segment(3);
+                $this->_data['id'] = $id;
+            }
+        }
     }
 
     function detail_user($id=null){
@@ -177,6 +185,10 @@ class web extends app_crud_controller {
     }
 
     function list_movie($sort=null,$offset=0){
+        $this->load->library('pagination');
+        $this->_layout_view = 'layouts/web';
+        $this->load->helper('format');
+        $this->load->helper('security');
 
         $order = 'created_time';
         $q = ' DESC';
@@ -202,16 +214,16 @@ class web extends app_crud_controller {
                 $order = 'created_time';
                 $q = ' ASC';
             }
+            if ($sort == "rate") {
+                $order = 'rate';
+                $q = ' DESC';
+            }
         }
-        $this->load->library('pagination');
-        $this->_layout_view = 'layouts/web';
-        $this->load->helper('format');
-        $this->load->helper('security');
 
-        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
         $sql = "SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY ".$order.$q." LIMIT ?,?";
         $film = $this->db->query($sql, array(intval($offset), 8))->result_array();
-        // xlog($film);exit;
+        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        // xlog($countfilm);exit;
         
         $this->_data['film'] = $film;
         $count = $countfilm['count'];
@@ -222,18 +234,16 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 3;
 
         $a = $this->pagination->initialize($config);
-        // $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
-        // $this->_data['film'] = $film;
     }
 
-    function list_movie_old($offset=0){
+    function list_movile($offset=0){
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
 
         $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 8))->result_array();
+        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?", array(intval($offset), 8))->result_array();
         
         $this->_data['film'] = $film;
         $count = $countfilm['count'];
@@ -244,8 +254,6 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 3;
 
         $a = $this->pagination->initialize($config);
-        // $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 10))->result_array();
-        // $this->_data['film'] = $film;
     }
 
     function search($offset = 0){

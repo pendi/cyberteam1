@@ -24,7 +24,7 @@
                             <a href="<?php echo site_url('web/list_movie/quality') ?>">Quality</a>
                         </li>
                         <li>
-                            <a href="#">Rate</a>
+                            <a href="<?php echo site_url('web/list_movie/rate') ?>">Rate</a>
                         </li>
                     </ul>
                 </div>

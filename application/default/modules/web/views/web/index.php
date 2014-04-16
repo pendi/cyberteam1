@@ -51,7 +51,7 @@
         </section>
         <?php 
             $offset=0;
-            $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 8))->result_array();
+            $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY rate DESC LIMIT ?,? ", array(intval($offset), 4))->result_array();
         ?>
         <section class="popular-movie">
             <div class="row">
@@ -61,12 +61,12 @@
                         <ul class="flat">
                             <?php foreach ($film_pop as $item):?>
                                 <li>
-                                    <a href="#">
+                                    <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">
                                         <div class="image" style="background:url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center no-repeat; background-size: cover;">
                                         </div>
                                     </a>
                                     <p class="desc">
-                                        <a href="#"><?php echo $item['title']?></a>
+                                        <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                     </p>
                                 </li>
                             <?php endforeach;?>
