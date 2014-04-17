@@ -1,10 +1,3 @@
-<?php 
-    if(!empty($quser)){
-        $USER = $quser; 
-    }else{
-        $USER = $CI->auth->get_user(); 
-    }
-?>
 <div id="body">
     <div class="container">
         <section class="detail profile">
@@ -12,11 +5,6 @@
                 <h2 class="title req">Profile</h2>
                 <div class="span-4">
                     <div class="image" style="background:url('<?php echo base_url('data/user/').'/'.$user['image'] ?>') center; background-size: cover;"></div>
-                    <div class="edit profile">
-                        <div class="download">
-                            <a class="submit" href="<?php echo site_url('web/edit_profile/').'/'.$user['id'] ?>">Edit Profile</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="span-8">
                     <div class="row">

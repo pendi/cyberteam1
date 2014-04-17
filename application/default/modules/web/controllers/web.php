@@ -24,32 +24,44 @@ class web extends app_crud_controller {
         return TRUE;
     }
 
-    function index2(){
-        redirect(site_url('web/index'));
+    function cek_user(){
+        $sess_user = @$_SESSION['UserFB'];
+        if(isset($sess_user)){
+            $user_existing = $this->db->query("SELECT * FROM user WHERE status !=0 AND sso_facebook = ? ", array($sess_user['id']))->row_array();
+            // xlog($sess_user);exit;
+
+            if(empty($user_existing)){
+                redirect(site_url('web/signup'));
+            }else{
+                $quser = $this->db->query("SELECT * FROM user WHERE status !=0 AND id = ? ", array($user_existing['id']))->row_array();
+                $this->_data['quser'] = $quser;
+                $this->_data['user'] = $quser;
+            }
+            $this->_data['sess_user'] = $sess_user;
+        }
+
     }
 
-    function index($offset=0,$sort=null,$mode = ''){
+    function logout(){
+        $this->session->sess_destroy();
+        redirect(site_url());
+    }
+
+    function index($param=null){
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
         $this->load->helper('security');
         $this->_data['err_string'] = '';
-
-        if ($_POST || !empty($mode)) {
-            $is_login = $this->auth->login(($_POST) ? $_POST['login'] : '', ($_POST) ? $_POST['password'] : '', $mode);
-            if ($is_login) {
-                $this->_model('user')->add_trail('login');
-                // redirect(site_url('web/index/'));
-            } else {
-                $this->_data['err_string'] = '<h6>Username/email or password not found<span></h6>';
-            }
-        } else {
-            $this->_model('user')->add_trail('logout');
-            // $this->auth->logout();
+        $films = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT 10 ")->result_array();
+        $film_rev = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT 3")->result_array();
+        $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY rate DESC LIMIT 4")->result_array();
+        $this->_data['film_pop'] = $film_pop;
+        $this->_data['film_rev'] = $film_rev;
+        $this->_data['films'] = $films;
+        if(!empty($param)){
+            $this->_data['param'] = $param;
         }
-
-        $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,? ", array(intval($offset), 20))->result_array();
-
-        $this->_data['film'] = $film;
+        $this->cek_user();
     }
 
     function category(){
@@ -78,23 +90,22 @@ class web extends app_crud_controller {
     }
 
 
-    function request_movie($offset=0){
+    function request_movie($id=null){
         $this->load->library('pagination');
+        $this->cek_user();
         $this->load->helper('format');
-        $user = $this->auth->get_user();
+        $request = $this->_model('request')->get($id);
 
-        $_request = $this->db->query("SELECT * FROM request WHERE status !=0")->result_array();
-        $sql = "SELECT * FROM request WHERE status !=0 LIMIT ?,?";
-        $request = $this->db->query($sql, array(intval($offset), 5))->result_array();
+        $request = $this->db->query("SELECT * FROM request WHERE status !=0 ORDER BY created_time DESC")->result_array();
         $this->_data['request'] = $request;
-        $count = count($_request);
+        $count = count($request);
         // xlog(count($request));exit;
 
         if ($_POST) {
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
-                    $_POST['user_id'] = $user['id'];
+                    // $_POST['user_id'] = $user['id'];
                     $new_id = $this->_model('request')->save($_POST);
                     if ($this->input->is_ajax_request()) {
                         echo true;
@@ -123,8 +134,9 @@ class web extends app_crud_controller {
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
 
-        if ($_POST) {
+        if (!empty($rate)) {
             $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
+            redirect(site_url('web/detail_film').'/'.$id);
         } else {
             if (!empty($id)) {
                 $id = $this->uri->segment(3);
@@ -136,7 +148,7 @@ class web extends app_crud_controller {
     function detail_user($id=null){
 
         // xlog($id);exit;
-        $this->load->helper('format');
+        // $this->load->helper('format');
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
     }
@@ -144,6 +156,9 @@ class web extends app_crud_controller {
     function signup($id=null){
 
         $model = $this->_model('user');
+        if(isset($_SESSION['UserFB'])){
+            $this->_data['sess_user'] = $_SESSION['UserFB'];
+        }
 
 
         if ($_POST || $_FILES) {
@@ -179,7 +194,7 @@ class web extends app_crud_controller {
                         echo true;
                         exit;
                     } else {
-                        redirect($this->_get_uri());
+                        redirect(site_url('web/index'));
                         exit;
                     }
                 } catch (Exception $e) {
@@ -250,26 +265,6 @@ class web extends app_crud_controller {
         $a = $this->pagination->initialize($config);
     }
 
-    // function list_movile($offset=0){
-    //     $this->load->library('pagination');
-    //     $this->_layout_view = 'layouts/web';
-    //     $this->load->helper('format');
-    //     $this->load->helper('security');
-
-    //     $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
-    //     $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?", array(intval($offset), 8))->result_array();
-
-    //     $this->_data['film'] = $film;
-    //     $count = $countfilm['count'];
-
-    //     $config['base_url'] = site_url('web/list_movie');
-    //     $config['total_rows'] = $count;
-    //     $config['per_page'] = 10;
-    //     $config['uri_segment'] = 3;
-
-    //     $a = $this->pagination->initialize($config);
-    // }
-
     function search($offset = 0){
         $this->load->library('pagination');
 
@@ -306,7 +301,7 @@ class web extends app_crud_controller {
 
         if ($id != null || $id != 1) {
             if ($_POST || $_FILES) {
-
+                                    // xlog($_FILES);exit;
                 if ($this->_validate()) {
                     $this->db->trans_start();
                     try {
@@ -320,7 +315,7 @@ class web extends app_crud_controller {
                                     $config['upload_path'] = './data/user/';
                                     $config['allowed_types'] = 'jpg|png|jpeg';
                                     $config['encrypt_name'] = true;
-                                    $config['field'] = 'image';
+                                    $config['field'] = $key;
 
                                     $this->upload->initialize($config);
                                     if (!file_exists($config['upload_path'])) {
@@ -338,7 +333,7 @@ class web extends app_crud_controller {
                             echo true;
                             exit;
                         } else {
-                            redirect(current_url());
+                            redirect(site_url('web/detail_user'.'/'.$user['id']));
                             exit;
                         }
                     } catch (Exception $e) {
@@ -355,5 +350,54 @@ class web extends app_crud_controller {
         } else {
             redirect (site_url ());
         }
+    }
+
+    function view_user($id=null){
+        $user = $this->_model('user')->get($id);
+        $this->_data['user'] = $user;
+    }
+
+    function login_fb(){
+        require ARCHPATH.'/libraries/facebook.php';
+
+        $this->config->load ("facebook");
+
+        $config_fb['appId'] = $this->config->item('appId');
+        $config_fb['secret'] = $this->config->item('secret');
+
+        $facebook = new Facebook($config_fb);
+
+        //get the user facebook id
+        $user = $facebook->getUser();
+
+        if($user){
+            try{
+                //get the facebook user profile data
+                $user_profile = $facebook->api('/me');
+                $params = array('next' => site_url('web/logout'));
+                //logout url
+                $logout = $facebook->getLogoutUrl($params);
+                $ses_user = $_SESSION['UserFB'] = $user_profile;
+                $_SESSION['logout']=$logout;
+
+                echo "<script>window.close();</script>";
+                exit ();
+            }catch(FacebookApiException $e){
+                error_log($e);
+                $user = NULL;
+            }
+        }
+
+        if(empty($user)){
+            // login url
+            $loginurl = $facebook->getLoginUrl(array(
+                'scope'         => 'email,read_stream, publish_stream, user_birthday, user_location, user_work_history, user_hometown, user_photos',
+                'redirect_uri'  => site_url('web/login_fb'),
+                'display'=>'popup'
+            ));
+
+            header('Location: '.$loginurl);
+        }
+        exit;  
     }
 }
