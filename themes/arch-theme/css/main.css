@@ -170,7 +170,8 @@ h2.reg { margin-bottom: 30px; }
 .sortby ul li:last-child { margin-right: 0; }
 .sortby ul li h6 { margin: 0; line-height: 21px; }
 .sortby ul li a { text-transform: uppercase; color: #333; }
-.sortby ul li a:hover { color: #0094c6; }
+.sortby ul li a:hover,
+.sortby ul li a.active{ color: #0094c6; }
 .detail .row > .span-4 { padding-right: 20px; }
 .detail .row > .span-8 { padding-left: 20px; }
 .detail .row .span-8 .row { margin-bottom: 10px; }

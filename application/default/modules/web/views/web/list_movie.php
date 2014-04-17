@@ -9,22 +9,22 @@
                             <h6>Sortby :</h6>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/az') ?>">A - Z</a>
+                            <a href="<?php echo site_url('web/list_movie/latest') ?>"<?php if($sort == 'latest'){ echo 'class="active"';} ?> >Latest</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/za') ?>">Z - A</a>
+                            <a href="<?php echo site_url('web/list_movie/az') ?>"<?php if($sort == 'az'){ echo 'class="active"';} ?> >A - Z</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/latest') ?>">Latest</a>
+                            <a href="<?php echo site_url('web/list_movie/za') ?>" <?php if($sort == 'za'){ echo 'class="active"';} ?>>Z - A</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/oldest') ?>">Oldest</a>
+                            <a href="<?php echo site_url('web/list_movie/oldest') ?>" <?php if($sort == 'oldest'){ echo 'class="active"';} ?> >Oldest</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/quality') ?>">Quality</a>
+                            <a href="<?php echo site_url('web/list_movie/quality') ?>" <?php if($sort == 'quality'){ echo 'class="active"';} ?>>Quality</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('web/list_movie/rate') ?>">Rate</a>
+                            <a href="<?php echo site_url('web/list_movie/rate') ?>" <?php if($sort == 'rate'){ echo 'class="active"';} ?> >Rate</a>
                         </li>
                     </ul>
                 </div>
