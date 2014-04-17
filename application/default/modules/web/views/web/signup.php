@@ -72,13 +72,13 @@
                         <div class="row">
                             <div class="span-12">
                                 <label>Password</label>
-                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
+                                <input type="password" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Retype Password</label>
-                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
+                                <input type="password" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">
