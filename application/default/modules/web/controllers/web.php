@@ -78,14 +78,18 @@ class web extends app_crud_controller {
     }
 
 
-    function request_movie($id=null){
-
+    function request_movie($offset=0){
+        $this->load->library('pagination');
         $this->load->helper('format');
-        $request = $this->_model('request')->get($id);
-
         $user = $this->auth->get_user();
-        $request = $this->db->query("SELECT * FROM request WHERE status !=0 ORDER BY created_time DESC")->result_array();
+
+        $_request = $this->db->query("SELECT * FROM request WHERE status !=0")->result_array();
+        $sql = "SELECT * FROM request WHERE status !=0 LIMIT ?,?";
+        $request = $this->db->query($sql, array(intval($offset), 5))->result_array();
         $this->_data['request'] = $request;
+        $count = count($_request);
+        // xlog(count($request));exit;
+
         if ($_POST) {
             if ($this->_validate()) {
                 $this->db->trans_start();
@@ -104,6 +108,13 @@ class web extends app_crud_controller {
                 }
             }
         }
+
+        $config['base_url'] = site_url('web/request_movie/');
+        $config['total_rows'] = $count;
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 3;
+
+        $this->pagination->initialize($config);
 
     }
 
@@ -233,7 +244,7 @@ class web extends app_crud_controller {
 
         $config['base_url'] = site_url('web/list_movie/'.$sort);
         $config['total_rows'] = $count;
-        $config['per_page'] = 10;
+        $config['per_page'] = 8;
         $config['uri_segment'] = 4;
 
         $a = $this->pagination->initialize($config);
