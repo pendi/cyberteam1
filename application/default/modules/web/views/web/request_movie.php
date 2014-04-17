@@ -1,8 +1,8 @@
-<?php 
+<?php
     if(!empty($quser)){
-        $USER = $quser; 
+        $USER = $quser;
     }else{
-        $USER = $CI->auth->get_user(); 
+        $USER = $CI->auth->get_user();
     }
 ?>
 <div class="container">
@@ -47,9 +47,11 @@
                         </div>
                     </div>
 				<?php endforeach;?>
+                <div clas="row">
+                    <?php echo $this->pagination->new_create_links() ?>
+                </div>
             </div>
 
-                <?php echo $this->pagination->create_links() ?>
 
         </div>
     </section>

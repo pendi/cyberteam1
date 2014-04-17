@@ -89,4 +89,15 @@ class MY_Pagination extends CI_Pagination {
         return $links;
     }
 
+    function new_create_links() {
+        $links = parent::create_links();
+        if ($links) {
+            $links = "
+                <div class=\"pagination\">
+                    $links
+                </div>";
+        }
+        return $links;
+    }
+
 }

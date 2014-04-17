@@ -26,6 +26,14 @@ $(document).ready(function(){
         }
     });
 
+    $(".error p").click(function() {
+        $(this).addClass("hide");
+    });
+
+    $(".info p").click(function() {
+        $(this).addClass("hide");
+    });
+
     stylized ();
 
 });
