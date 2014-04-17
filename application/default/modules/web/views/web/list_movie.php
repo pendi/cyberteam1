@@ -9,13 +9,13 @@
                             <h6>Sortby :</h6>
                         </li>
                         <li>
+                            <a href="<?php echo site_url('web/list_movie/latest') ?>">Latest</a>
+                        </li>
+                        <li>
                             <a href="<?php echo site_url('web/list_movie/az') ?>">A - Z</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('web/list_movie/za') ?>">Z - A</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('web/list_movie/latest') ?>">Latest</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('web/list_movie/oldest') ?>">Oldest</a>
