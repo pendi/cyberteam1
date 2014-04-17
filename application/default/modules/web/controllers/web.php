@@ -265,26 +265,6 @@ class web extends app_crud_controller {
         $a = $this->pagination->initialize($config);
     }
 
-    // function list_movile($offset=0){
-    //     $this->load->library('pagination');
-    //     $this->_layout_view = 'layouts/web';
-    //     $this->load->helper('format');
-    //     $this->load->helper('security');
-
-    //     $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
-    //     $film = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?", array(intval($offset), 8))->result_array();
-
-    //     $this->_data['film'] = $film;
-    //     $count = $countfilm['count'];
-
-    //     $config['base_url'] = site_url('web/list_movie');
-    //     $config['total_rows'] = $count;
-    //     $config['per_page'] = 10;
-    //     $config['uri_segment'] = 3;
-
-    //     $a = $this->pagination->initialize($config);
-    // }
-
     function search($offset = 0){
         $this->load->library('pagination');
 
@@ -418,8 +398,6 @@ class web extends app_crud_controller {
 
             header('Location: '.$loginurl);
         }
-
-        
         exit;  
     }
 }
