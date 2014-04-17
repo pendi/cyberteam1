@@ -21,8 +21,33 @@
 	<script type="text/javascript" src="<?php echo theme_url('js/jquery-1.9.1.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo theme_url('js/jquery.bxslider/jquery.bxslider.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo theme_url('js/main.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo theme_url ('js/oauthpopup.js') ?>"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#facebook').click(function(e){
+                $.oauthpopup({
+                    path: '<?php echo site_url()."/web/login_fb" ?>',
+                    width:600,
+                    height:300,
+                    callback: function(){
+                        window.location.reload();
+                    }
+                });
+                e.preventDefault();
+            });
+
+            // ga('send', 'pageview', '/FBConnect');
+        });
+    </script>
 </head>
-<?php $USER = $CI->auth->get_user() ?>
+       
+<?php 
+    if(!empty($quser)){
+        $USER = $quser; 
+    }else{
+        $USER = $CI->auth->get_user(); 
+    }
+?>
 <body>
 	<header>
         <div class="container">
@@ -39,12 +64,12 @@
                             <li>
                                 <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
                             </li>
-                            <?php if($USER['is_login']) : ?>
+                            <?php if(!empty($user['id'])) : ?>
                             <li>
                                 <a href="<?php echo site_url('web/request_movie') ?>">Request</a>
                             </li>
-                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$USER['id'])?>'><?php echo $USER['username'] ?></a></li>
-                            <li><a href='<?php echo site_url('user/logout')?>'>Logout</a></li>
+                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$user['id'])?>'><?php echo $user['username'] ?></a></li>
+                            <li><a href='<?php echo site_url('web/logout')?>'>Logout</a></li>
                             <?php else : ?>
                             <li>
                                 <a href="<?php echo site_url('web/signup') ?>">Register</a>
@@ -52,7 +77,7 @@
                             <li class="login">
                                 <a>Login</a>
                                 <div class="menu-login hide animated fadeOutUp">
-                                    <form action="" method="POST">
+                                    <form action="<?php echo site_url('user/login') ?>" method="POST">
                                         <div class="row">
                                             <div class="span-12">
                                                 <label>Username</label>
@@ -63,6 +88,11 @@
                                             <div class="span-12">
                                                 <label>Password</label>
                                                 <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div clas="row">
+                                            <div class="span-12">
+                                                <a id="facebook" href="<?php echo site_url('web/login_fb') ?>">Login FB</a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -109,8 +139,9 @@
     </div>
 
     <section id="<?php echo empty($uri) ? 'body':'content-body'?>">
-        <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
         <?php echo xview_error() ?>
+        <?php echo xview_info() ?>
+        <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
     </section>
     
     <div id="footer">

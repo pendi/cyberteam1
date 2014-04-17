@@ -43,12 +43,12 @@
             <div class="row">
                 <h2 class="title reg">Register</h2>
                 <form action="" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="sso_facebook" value="<?php echo @$sess_user['id']; ?>">
                     <div class="wrapper">
-                        <?php echo xview_error() ?>
                         <div class="row">
                             <div class="span-12">
                                 <label>Email</label>
-                                <input type="text" placeholder="Email" name="email" value="<?php echo set_value('email') ?>">
+                                <input type="text" placeholder="Email" name="email" value="<?php echo @$sess_user['email']; ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -60,25 +60,25 @@
                         <div class="row">
                             <div class="span-12">
                                 <label>First Name</label>
-                                <input type="text" placeholder="First Name" name="first_name" value="<?php echo set_value('first_name') ?>">
+                                <input type="text" placeholder="First Name" name="first_name" value="<?php echo @$sess_user['first_name'] ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Last Name</label>
-                                <input type="text" placeholder="Last Name" name="last_name" value="<?php echo set_value('last_name') ?>">
+                                <input type="text" placeholder="Last Name" name="last_name" value="<?php echo @$sess_user['last_name'] ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Password</label>
-                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
+                                <input type="password" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="span-12">
                                 <label>Retype Password</label>
-                                <input type="text" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
+                                <input type="password" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
                             </div>
                         </div>
                         <div class="row">

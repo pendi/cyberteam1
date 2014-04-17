@@ -1,3 +1,10 @@
+<?php 
+    if(!empty($quser)){
+        $USER = $quser; 
+    }else{
+        $USER = $CI->auth->get_user(); 
+    }
+?>
 <div class="container">
     <section class="detail">
         <div class="row">
@@ -5,6 +12,7 @@
             <div class="span-4 request">
 				<form method="POST" action="" enctype="multipart/form-data">
                     <h6>Request your movie</h6>
+                    <input type="hidden" name="user_id" value="<?php echo $USER['id'] ?> ">
 					<textarea name="content" id="" rows="5"><?php echo set_value('content') ?></textarea>
                     <div class="row">
                         <div class="span-12">
@@ -19,12 +27,12 @@
                         <div class="span-12">
                             <div class="row">
                                 <div class="span-2">
-                                    <div class="avatar" style="background: url(<?php echo base_url() ?>data/<?php echo format_model_param($req['user_id'],'user','','',array('image')) ?>) center no-repeat; background-size: cover;"></div>
+                                    <div class="avatar" style="background: url(<?php echo base_url() ?>data/user/<?php echo format_model_param($req['user_id'],'user','','',array('image')) ?>) center no-repeat; background-size: cover;"></div>
                                 </div>
                                 <div class="span-10">
                                     <div class="username">
                                         <h6>
-                                            <a href="<?php echo site_url('web/detail_user')?>"><?php echo format_model_param($req['user_id'],'user','','',array('username')); ?></a>
+                                            <a href="<?php echo site_url('web/view_user').'/'.format_model_param($req['user_id'],'user','','',array('id'))?>"><?php echo format_model_param($req['user_id'],'user','','',array('username')); ?></a>
                                             Request
                                         </h6>
                                     </div>

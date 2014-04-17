@@ -1,3 +1,12 @@
+<?php 
+    if(!empty($quser)){
+        $user = $quser; 
+    }else{
+        $user = $CI->auth->get_user(); 
+    }
+?>
+<?php if(!empty($param)) : ?>
+    <?php endif ?>
 <div id="body">
     <div class="container">
         <section class="flashmovie">
@@ -6,7 +15,7 @@
                     <div class="wrapper">
                         <div class="flashnews">
                             <ul class="flashnews-slide flat">
-                                <?php foreach ($film as $item):?>
+                                <?php foreach ($films as $item):?>
                                     <li>
                                         <div class="movie">
                                             <div class="slide-movie" style="background:url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center; background-size: cover;"></div>
@@ -20,10 +29,6 @@
                         </div>
                     </div>
                 </div>
-                <?php 
-                    $offset=0;
-                    $film_rev = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT ?,? ", array(intval($offset), 3))->result_array();
-                ?>
                 <div class="span-4">
                     <div class="wrapper">
                         <div class="review">
@@ -31,7 +36,9 @@
                             <?php foreach ($film_rev as $item):?>
                                 <div class="review-movie">
                                     <div class="image">
-                                        <img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>">
+                                        <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">
+                                            <img src ="<?php echo base_url('data/').'/'.$item['cover'] ?>">
+                                        </a>
                                     </div>
                                     <div class="title-desc">
                                         <h6 class="title">
@@ -49,10 +56,6 @@
                 </div>
             </div>
         </section>
-        <?php 
-            $offset=0;
-            $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY rate DESC LIMIT ?,? ", array(intval($offset), 4))->result_array();
-        ?>
         <section class="popular-movie">
             <div class="row">
                 <div class="span-12">
