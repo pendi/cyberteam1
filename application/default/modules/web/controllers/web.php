@@ -228,6 +228,7 @@ class web extends app_crud_controller {
         // xlog($countfilm);exit;
 
         $this->_data['film'] = $film;
+        $this->_data['sort'] = $sort;
         $count = $countfilm['count'];
 
         $config['base_url'] = site_url('web/list_movie/'.$sort);
