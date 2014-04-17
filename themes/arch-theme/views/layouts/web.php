@@ -43,9 +43,9 @@
        
 <?php 
     if(!empty($quser)){
-        $USER = $quser; 
+        $user = $quser; 
     }else{
-        $USER = $CI->auth->get_user(); 
+        $user = $CI->auth->get_user(); 
     }
 ?>
 <body>

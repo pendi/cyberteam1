@@ -91,14 +91,14 @@ class web extends app_crud_controller {
 
 
     function request_movie($id=null){
-
+        $this->load->library('pagination');
         $this->cek_user();
         $this->load->helper('format');
         $request = $this->_model('request')->get($id);
 
         $request = $this->db->query("SELECT * FROM request WHERE status !=0 ORDER BY created_time DESC")->result_array();
         $this->_data['request'] = $request;
-        $count = count($_request);
+        $count = count($request);
         // xlog(count($request));exit;
 
         if ($_POST) {
