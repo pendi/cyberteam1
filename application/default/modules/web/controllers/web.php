@@ -130,10 +130,12 @@ class web extends app_crud_controller {
 
     }
 
-    function detail_film($id=null, $rate=null){
+    function detail_film($id=null, $rate=null,$offset=0){
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
+        $user = $this->auth->get_user();
+        $this->load->library('pagination');
 
         if (!empty($rate)) {
             $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
@@ -144,6 +146,40 @@ class web extends app_crud_controller {
                 $this->_data['id'] = $id;
             }
         }
+
+        $_comment = $this->db->query("SELECT * FROM comment WHERE status !=0 ORDER BY created_time DESC")->result_array();
+        $sql = "SELECT * FROM comment WHERE status !=0 LIMIT ?,?";
+        $comment = $this->db->query($sql, array(intval($offset), 5))->result_array();
+        $this->_data['comment'] = $comment;
+        $count = count($_comment);
+        // xlog($comment);exit;
+
+        if ($_POST) {
+            if ($this->_validate()) {
+                $this->db->trans_start();
+                try {
+                    $_POST['user_id'] = $user['id'];
+                    $_POST['film_id'] = $film['id'];
+                    $new_id = $this->_model('comment')->save($_POST);
+                    if ($this->input->is_ajax_request()) {
+                        echo true;
+                        exit;
+                    } else {
+                        redirect(site_url('web/detail_film'));
+                        exit;
+                    }
+                } catch (Exception $e) {
+                    $this->_data['errors'] = '<p>' . $e->getMessage() . '</p>';
+                }
+            }
+        }
+
+        $config['base_url'] = site_url('web/detail_film/'.'/'.$id);
+        $config['total_rows'] = $count;
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 4;
+
+        $this->pagination->initialize($config);
     }
 
     function detail_user($id=null){
@@ -172,20 +208,20 @@ class web extends app_crud_controller {
                     if (!empty($_FILES)) {
                         foreach ($_FILES as $key => $file) {
                             if ($file['error'] == 0) {
-
                                 $config = array();
-                                $config['upload_path'] = './data/user';
-                                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                                $config['upload_path'] = './data/user/';
+                                $config['allowed_types'] = 'jpg|png|jpeg';
                                 $config['encrypt_name'] = true;
-                                $config['field'] = 'image';
-                                $this->upload->initialize($config);
+                                $config['field'] = $key;
 
+                                $this->upload->initialize($config);
                                 if (!file_exists($config['upload_path'])) {
                                     mkdir($config['upload_path'], 0777, true);
                                 }
                                 $this->upload->do_upload($config['field']);
+
                                 $upload_data = $this->upload->data();
-                                $_POST[$key] = 'user/' . $upload_data[0]['file_name'];
+                                $_POST[$key] = $upload_data[0]['file_name'];
                             }
                         }
                     }

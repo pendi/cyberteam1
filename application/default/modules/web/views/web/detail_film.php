@@ -78,24 +78,29 @@
                         </div>
                         <div class="row comment-field">
                             <div class="span-12">
-                                <div class="row comment-content">
-                                    <div class="span-4">
-                                        <div class="avatar" style="background: url(themes/img/aliaraaab.jpg) center no-repeat; background-size: cover;"></div>
+                                <?php foreach ($comment as $com):?>
+                                    <div class="row comment-content">
+                                        <div class="span-4">
+                                            <div class="avatar" style="background: url(<?php echo base_url() ?>data/user/<?php echo format_model_param($com['user_id'],'user','','',array('image')) ?>) center no-repeat; background-size: cover;"></div>
+                                        </div>
+                                        <div class="span-8">
+                                            <div class="username">
+                                                <h6>
+                                                    <a href="<?php echo site_url('web/view_user').'/'.format_model_param($com['user_id'],'user','','',array('id'))?>"><?php echo format_model_param($com['user_id'],'user','','',array('username')); ?></a>
+                                                    Comment
+                                                </h6>
+                                            </div>
+                                            <div class="date">
+                                                <span><?php echo $com['created_time']; ?></span>
+                                            </div>
+                                            <div class="content-com">
+                                                <p><?php echo $com['comment']; ?></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="span-8">
-                                        <div class="username">
-                                            <h6>
-                                                <a href="#">wahyu</a>
-                                                Comment
-                                            </h6>
-                                        </div>
-                                        <div class="date">
-                                            <span>2014-04-17 15:34:28</span>
-                                        </div>
-                                        <div class="content-req">
-                                            <p>content</p>
-                                        </div>
-                                    </div>
+                                <?php endforeach;?>
+                                <div clas="row">
+                                    <?php echo $this->pagination->new_create_links() ?>
                                 </div>
                             </div>
                         </div>
