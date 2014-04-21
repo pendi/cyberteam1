@@ -1,524 +1,248 @@
 <?php
-
 /**
- * facebook.php
+ * Copyright 2011 Facebook, Inc.
  *
- * @package     arch-php
- * @author      xinixman <xinixman@xinix.co.id>
- * @copyright   Copyright(c) 2012 PT Sagara Xinix Solusitama.  All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
  *
- * Created on 2011/11/21 00:00:00
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * This software is the proprietary information of PT Sagara Xinix Solusitama.
- *
- * History
- * =======
- * (dd/mm/yyyy hh:mm:ss) (author)
- * 2011/11/21 00:00:00   xinixman <xinixman@xinix.co.id>
- *
- *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
  */
 
-	class facebook {
-		
-		private $_api_url;
-		private $_api_key;
-		private $_api_secret;
-		private $_errors = array();
-		private $_enable_debug = FALSE;
-		
-		function __construct()
-		{
-			$this->_obj =& get_instance();
-			
-			$this->_obj->load->library('session');
-			$this->_obj->load->config('facebook');
-			$this->_obj->load->helper('url');
-			$this->_obj->load->helper('facebook');
-			
-			$this->_api_url 	= $this->_obj->config->item('facebook_api_url');
-			$this->_api_key 	= $this->_obj->config->item('facebook_app_id');
-			$this->_api_secret 	= $this->_obj->config->item('facebook_api_secret');
-			
-			$this->session = new facebookSession();
-			$this->connection = new facebookConnection();
-		}
-		
-		public function logged_in()
-		{
-			return $this->session->logged_in();
-		}
-		
-		public function login($scope = NULL)
-		{
-			return $this->session->login($scope);
-		}
-		
-		public function login_url($scope = NULL)
-		{
-			return $this->session->login_url($scope);
-		}
-		
-		public function logout()
-		{
-			return $this->session->logout();
-		}
-		
-		public function user()
-		{
-			return $this->session->get();
-		}
-		
-		public function call($method, $uri, $data = array())
-		{
-			$response = FALSE;
-			
-			try
-			{
-				switch ( $method )
-				{
-					case 'get':
-						$response = $this->connection->get($this->append_token($this->_api_url.$uri), $data);
-					break;
-					
-					case 'post':
-						$response = $this->connection->post($this->append_token($this->_api_url.$uri), $data);
-					break;
-				}
-			}
-			catch (facebookException $e)
-			{
-				$this->_errors[] = $e;
-				
-				if ( $this->_enable_debug )
-				{
-					echo $e;
-				}
-			}
-			
-			return $response;
-		}
-		
-		public function errors()
-		{
-			return $this->_errors;
-		}
-		
-		public function last_error()
-		{
-			if ( count($this->_errors) == 0 ) return NULL;
-			
-			return $this->_errors[count($this->_errors) - 1];
-		}
-		
-		public function append_token($url)
-		{
-			return $this->session->append_token($url);
-		}
-		
-		public function set_callback($url)
-		{
-			return $this->session->set_callback($url);
-		}
-		
-		public function enable_debug($debug = TRUE)
-		{
-			$this->_enable_debug = (bool) $debug;
-			
-			
-		}
-	}
-	
-	class facebookConnection {
-		
-		// Allow multi-threading.
-		
-		private $_mch = NULL;
-		private $_properties = array();
-		
-		function __construct()
-		{
-			$this->_mch = curl_multi_init();
-			
-			$this->_properties = array(
-				'code' 		=> CURLINFO_HTTP_CODE,
-				'time' 		=> CURLINFO_TOTAL_TIME,
-				'length'	=> CURLINFO_CONTENT_LENGTH_DOWNLOAD,
-				'type' 		=> CURLINFO_CONTENT_TYPE
-			);
-		}
-		
-		private function _initConnection($url)
-		{
-			$this->_ch = curl_init($url);
-			curl_setopt($this->_ch, CURLOPT_RETURNTRANSFER, TRUE);
-		}
-		
-		public function get($url, $params = array())
-		{
-			if ( count($params) > 0 )
-			{
-                                $url .= (strpos($url, '?') === FALSE) ? '?' : '&';
-			
-				foreach( $params as $k => $v )
-				{
-					$url .= "{$k}={$v}&";
-				}
-				
-				$url = substr($url, 0, -1);
-			}
-			
-			$this->_initConnection($url);
-			$response = $this->_addCurl($url, $params);
 
-		    return $response;
-		}
-		
-		public function post($url, $params = array())
-		{
-			// Todo
-			$post = '';
-			
-			foreach ( $params as $k => $v )
-			{
-				$post .= "{$k}={$v}&";
-			}
-			
-			$post = substr($post, 0, -1);
-			
-			$this->_initConnection($url, $params);
-			curl_setopt($this->_ch, CURLOPT_POST, 1);
-			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $post);
-			
-			$response = $this->_addCurl($url, $params);
+require_once "base_facebook.php";
 
-		    return $response;
-		}
-		
-		private function _addCurl($url, $params = array())
-		{
-			$ch = $this->_ch;
-			
-			$key = (string) $ch;
-			$this->_requests[$key] = $ch;
-			
-			$response = curl_multi_add_handle($this->_mch, $ch);
+/**
+ * Extends the BaseFacebook class with the intent of using
+ * PHP sessions to store user ids and access tokens.
+ */
+class Facebook extends BaseFacebook
+{
+  /**
+   * Cookie prefix
+   */
+  const FBSS_COOKIE_NAME = 'fbss';
 
-			if ( $response === CURLM_OK || $response === CURLM_CALL_MULTI_PERFORM )
-			{
-				do {
-					$mch = curl_multi_exec($this->_mch, $active);
-				} while ( $mch === CURLM_CALL_MULTI_PERFORM );
-				
-				return $this->_getResponse($key);
-			}
-			else
-			{
-				return $response;
-			}
-		}
-		
-		private function _getResponse($key = NULL)
-		{
-			if ( $key == NULL ) return FALSE;
-			
-			if ( isset($this->_responses[$key]) )
-			{
-				return $this->_responses[$key];
-			}
-			
-			$running = NULL;
-			
-			do
-			{
-				$response = curl_multi_exec($this->_mch, $running_curl);
-				
-				if ( $running !== NULL && $running_curl != $running )
-				{
-					$this->_setResponse($key);
-					
-					if ( isset($this->_responses[$key]) )
-					{
-						$response = new facebookResponse( (object) $this->_responses[$key] );
-						
-						if ( $response->__resp->code !== 200 )
-						{
-							$error = $response->__resp->code.' | Request Failed';
-							
-							if ( isset($response->__resp->data->error->type) )
-							{
-								$error .= ' - '.$response->__resp->data->error->type.' - '.$response->__resp->data->error->message;
-							}
-							
-							throw new facebookException($error);
-						}
-						
-						return $response;
-					}
-				}
-				
-				$running = $running_curl;
-				
-			} while ( $running_curl > 0);
-			
-		}
-		
-		private function _setResponse($key)
-		{
-			while( $done = curl_multi_info_read($this->_mch) )
-			{
-				$key = (string) $done['handle'];
-				$this->_responses[$key]['data'] = curl_multi_getcontent($done['handle']);
-				
-				foreach ( $this->_properties as $curl_key => $value )
-				{
-					$this->_responses[$key][$curl_key] = curl_getinfo($done['handle'], $value);
-					
-					curl_multi_remove_handle($this->_mch, $done['handle']);
-				}
-		  }
-		}
-	}
-	
-	class facebookResponse {
-		
-		private $__construct;
+  /**
+   * We can set this to a high number because the main session
+   * expiration will trump this.
+   */
+  const FBSS_COOKIE_EXPIRE = 31556926; // 1 year
 
-		public function __construct($resp)
-		{
-			$this->__resp = $resp;
+  /**
+   * Stores the shared session ID if one is set.
+   *
+   * @var string
+   */
+  protected $sharedSessionID;
 
-			$data = json_decode($this->__resp->data);
-			
-			if ( $data !== NULL )
-			{
-				$this->__resp->data = $data;
-			}
-		}
+  /**
+   * Identical to the parent constructor, except that
+   * we start a PHP session to store the user ID and
+   * access token if during the course of execution
+   * we discover them.
+   *
+   * @param array $config the application configuration. Additionally
+   * accepts "sharedSession" as a boolean to turn on a secondary
+   * cookie for environments with a shared session (that is, your app
+   * shares the domain with other apps).
+   *
+   * @see BaseFacebook::__construct
+   */
+  public function __construct($config) {
+    if ((function_exists('session_status') 
+      && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
+      session_start();
+    }
 
-		public function __get($name)
-		{
-			if ($this->__resp->code < 200 || $this->__resp->code > 299) return FALSE;
+    $_REQUEST += $_GET;
 
-			$result = array();
+    if($config == null){
+      $this->_ci =& get_instance();
+      $this->_ci->load->config('facebook');
+      $config = array(
+        'appId' => $this->_ci->config->item('appId'),
+        'secret' => $this->_ci->config->item('secret'),
+        );
+    }
+    
+    if( !isset($config['appId']) || !isset($config['secret']) ){
+      $this->_ci =& get_instance();
+      $this->_ci->load->config('facebook');
+      $config['appId'] = $this->_ci->config->item('appId');
+      $config['secret'] = $this->_ci->config->item('secret');
+    }
 
-			if ( is_string($this->__resp->data ) )
-			{
-				parse_str($this->__resp->data, $result);
-				$this->__resp->data = (object) $result;
-			}
-			
-			if ( $name === '_result')
-			{
-				return $this->__resp->data;
-			}
-			
-			return $this->__resp->data->$name;
-		}
-	}
-	
-	class facebookException extends Exception {
-		
-		function __construct($string)
-		{
-			parent::__construct($string);
-		}
-		
-		public function __toString() {
-			return "exception '".__CLASS__ ."' with message '".$this->getMessage()."' in ".$this->getFile().":".$this->getLine()."\nStack trace:\n".$this->getTraceAsString();
-		}
-	}
-	
-	class facebookSession {
-		
-		private $_api_key;
-		private $_api_secret;
-		private $_token_url 	= 'oauth/access_token';
-		private $_user_url		= 'me';
-		private $_data			= array();
-		
-		function __construct()
-		{
-			$this->_obj =& get_instance();
-			
-			$this->_api_key 	= $this->_obj->config->item('facebook_app_id');
-			$this->_api_secret 	= $this->_obj->config->item('facebook_api_secret');
-			
-			$this->_token_url 	= $this->_obj->config->item('facebook_api_url').$this->_token_url;
-			$this->_user_url 	= $this->_obj->config->item('facebook_api_url').$this->_user_url;
-			
-			$this->_set('scope', $this->_obj->config->item('facebook_default_scope'));
-			
-			$this->connection = new facebookConnection();
-			
-			if ( !$this->logged_in() )
-			{
-				 // Initializes the callback to this page URL.
-				$this->set_callback();
-			}
-			
-		}
-		
-		public function logged_in()
-		{
-			return ( $this->get() === NULL ) ? FALSE : TRUE;
-		}
-		
-		public function logout()
-		{
-			$this->_unset('token');
-			$this->_unset('user');
-		}
-		
-		public function login_url($scope = NULL)
-		{
-			$url = "http://www.facebook.com/dialog/oauth?client_id=".$this->_api_key.'&redirect_uri='.urlencode($this->_get('callback'));
-			
-			if ( empty($scope) )
-			{
-				$scope = $this->_get('scope');
-			}
-			else
-			{
-				$this->_set('scope', $scope);
-			}
-			
-			if ( !empty($scope) )
-			{
-				$url .= '&scope='.$scope;
-			}
-			
-			return $url;
-		}
-		
-		public function login($scope = NULL)
-		{
-			$this->logout();
-			
-			if ( !$this->_get('callback') ) $this->_set('callback', current_url());
-			
-			$url = $this->login_url($scope);
-				
-			return redirect($url);
-		}
-		
-		public function get()
-		{
-			$token = $this->_find_token();
-			if ( empty($token) ) return NULL;
-			
-			// $user = $this->_get('user');
-			// if ( !empty($user) ) return $user;
-			
-			try 
-			{
-				$user = $this->connection->get($this->_user_url.'?'.$this->_token_string());
-			}
-			catch ( facebookException $e )
-			{
-				$this->logout();
-				return NULL;
-			}
-			
-			// $this->_set('user', $user);
-			return $user;
-		}
-		
-		private function _find_token()
-		{
-			$token = unserialize (serialize ($this->_get('token')));
-			
-			if ( !empty($token) )
-			{
-				if ( !empty($token->expires) && intval($token->expires) >= time() )
-				{
-					// Problem, token is expired!
-					return $this->logout();
-				}
-				
-				$this->_set('token', $token);
-				return $this->_token_string();
-			}
-			
-			if ( !isset($_GET['code']) )
-			{
-				return $this->logout();
-			}
-			
-			if ( !$this->_get('callback') ) $this->_set('callback', current_url());
-			$token_url = $this->_token_url.'?client_id='.$this->_api_key."&client_secret=".$this->_api_secret."&code=".$_GET['code'].'&redirect_uri='.urlencode($this->_get('callback'));
-			
-			try 
-			{
-				$token = $this->connection->get($token_url);
-			}
-			catch ( facebookException $e )
-			{
-				$this->logout();
-				redirect($this->_strip_query());
-				return NULL;
-			}
-			
-			$this->_unset('callback');
-			
-			if ( $token->access_token )
-			{
-				if ( !empty($token->expires) )
-				{
-					$token->expires = strval(time() + intval($token->expires));
-				}
-				
-				$this->_set('token', $token);
-				redirect($this->_strip_query());
-			}
-			
-			return $this->_token_string();
-		}
-		
-		private function _get($key)
-		{
-			$key = '_facebook_'.$key;
-			return $this->_obj->session->userdata($key);
-		}
-		
-		private function _set($key, $data)
-		{
-			$key = '_facebook_'.$key;
-			$this->_obj->session->set_userdata($key, $data);
-		}
-		
-		private function _unset($key)
-		{
-			$key = '_facebook_'.$key;
-			$this->_obj->session->unset_userdata($key);
-		}
-		
-		public function set_callback($url = NULL)
-		{
-			$this->_set('callback', $this->_strip_query($url));
-		}
-		
-		private function _token_string()
-		{
-			return 'access_token='.$this->_get('token')->access_token;
-		}
-		
-		public function append_token($url)
-		{
-			if ( $this->_get('token') ) $url .= '?'.$this->_token_string();
-			
-			return $url;
-		}
-		
-		private function _strip_query($url = NULL)
-		{
-			if ( $url === NULL )
-			{
-				$url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'off' ) ? 'http' : 'https';
-				$url .= '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-			}
-			
-			$parts = explode('?', $url);
-			return $parts[0];
-		}
-	}
+    parent::__construct($config);
+    if (!empty($config['sharedSession'])) {
+      $this->initSharedSession();
+
+      // re-load the persisted state, since parent
+      // attempted to read out of non-shared cookie
+      $state = $this->getPersistentData('state');
+      if (!empty($state)) {
+        $this->state = $state;
+      } else {
+        $this->state = null;
+      }
+
+    }
+  }
+
+  /**
+   * Supported keys for persistent data
+   *
+   * @var array
+   */
+  protected static $kSupportedKeys =
+    array('state', 'code', 'access_token', 'user_id');
+
+  /**
+   * Initiates Shared Session
+   */
+  protected function initSharedSession() {
+    $cookie_name = $this->getSharedSessionCookieName();
+    if (isset($_COOKIE[$cookie_name])) {
+      $data = $this->parseSignedRequest($_COOKIE[$cookie_name]);
+      if ($data && !empty($data['domain']) &&
+          self::isAllowedDomain($this->getHttpHost(), $data['domain'])) {
+        // good case
+        $this->sharedSessionID = $data['id'];
+        return;
+      }
+      // ignoring potentially unreachable data
+    }
+    // evil/corrupt/missing case
+    $base_domain = $this->getBaseDomain();
+    $this->sharedSessionID = md5(uniqid(mt_rand(), true));
+    $cookie_value = $this->makeSignedRequest(
+      array(
+        'domain' => $base_domain,
+        'id' => $this->sharedSessionID,
+      )
+    );
+    $_COOKIE[$cookie_name] = $cookie_value;
+    if (!headers_sent()) {
+      $expire = time() + self::FBSS_COOKIE_EXPIRE;
+      setcookie($cookie_name, $cookie_value, $expire, '/', '.'.$base_domain);
+    } else {
+      // @codeCoverageIgnoreStart
+      self::errorLog(
+        'Shared session ID cookie could not be set! You must ensure you '.
+        'create the Facebook instance before headers have been sent. This '.
+        'will cause authentication issues after the first request.'
+      );
+      // @codeCoverageIgnoreEnd
+    }
+  }
+
+  /**
+   * Provides the implementations of the inherited abstract
+   * methods. The implementation uses PHP sessions to maintain
+   * a store for authorization codes, user ids, CSRF states, and
+   * access tokens.
+   */
+
+  /**
+   * {@inheritdoc}
+   *
+   * @see BaseFacebook::setPersistentData()
+   */
+  protected function setPersistentData($key, $value) {
+    if (!in_array($key, self::$kSupportedKeys)) {
+      self::errorLog('Unsupported key passed to setPersistentData.');
+      return;
+    }
+
+    $session_var_name = $this->constructSessionVariableName($key);
+    $_SESSION[$session_var_name] = $value;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @see BaseFacebook::getPersistentData()
+   */
+  protected function getPersistentData($key, $default = false) {
+    if (!in_array($key, self::$kSupportedKeys)) {
+      self::errorLog('Unsupported key passed to getPersistentData.');
+      return $default;
+    }
+
+    $session_var_name = $this->constructSessionVariableName($key);
+    return isset($_SESSION[$session_var_name]) ?
+      $_SESSION[$session_var_name] : $default;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @see BaseFacebook::clearPersistentData()
+   */
+  protected function clearPersistentData($key) {
+    if (!in_array($key, self::$kSupportedKeys)) {
+      self::errorLog('Unsupported key passed to clearPersistentData.');
+      return;
+    }
+
+    $session_var_name = $this->constructSessionVariableName($key);
+    if (isset($_SESSION[$session_var_name])) {
+      unset($_SESSION[$session_var_name]);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @see BaseFacebook::clearAllPersistentData()
+   */
+  protected function clearAllPersistentData() {
+    foreach (self::$kSupportedKeys as $key) {
+      $this->clearPersistentData($key);
+    }
+    if ($this->sharedSessionID) {
+      $this->deleteSharedSessionCookie();
+    }
+  }
+
+  /**
+   * Deletes Shared session cookie
+   */
+  protected function deleteSharedSessionCookie() {
+    $cookie_name = $this->getSharedSessionCookieName();
+    unset($_COOKIE[$cookie_name]);
+    $base_domain = $this->getBaseDomain();
+    setcookie($cookie_name, '', 1, '/', '.'.$base_domain);
+  }
+
+  /**
+   * Returns the Shared session cookie name
+   *
+   * @return string The Shared session cookie name
+   */
+  protected function getSharedSessionCookieName() {
+    return self::FBSS_COOKIE_NAME . '_' . $this->getAppId();
+  }
+
+  /**
+   * Constructs and returns the name of the session key.
+   *
+   * @see setPersistentData()
+   * @param string $key The key for which the session variable name to construct.
+   *
+   * @return string The name of the session key.
+   */
+  protected function constructSessionVariableName($key) {
+    $parts = array('fb', $this->getAppId(), $key);
+    if ($this->sharedSessionID) {
+      array_unshift($parts, $this->sharedSessionID);
+    }
+    return implode('_', $parts);
+  }
+}

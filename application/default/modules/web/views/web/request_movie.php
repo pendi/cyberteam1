@@ -47,9 +47,11 @@
                         </div>
                     </div>
 				<?php endforeach;?>
+                <div clas="row">
+                    <?php echo $this->pagination->new_create_links() ?>
+                </div>
             </div>
 
-                <?php echo $this->pagination->create_links() ?>
 
         </div>
     </section>

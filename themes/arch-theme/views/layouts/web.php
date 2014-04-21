@@ -90,15 +90,17 @@
                                                 <input type="password" name="password" placeholder="Password">
                                             </div>
                                         </div>
-                                        <div clas="row">
-                                            <div class="span-12">
-                                                <a id="facebook" href="<?php echo site_url('web/login_fb') ?>">Login FB</a>
+                                        <!-- <div clas="row">
+                                            <div class="span-12 fb-login">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="row">
-                                            <div class="span-12">
+                                            <div class="span-6">
                                                 <input type="hidden" name="continue" value="" />
                                                 <input value="Login" type="submit" class="submit">
+                                            </div>
+                                            <div class="span-6 fb-login">
+                                                <a class="submit pull-right" id="facebook" href="<?php echo site_url('web/login_fb') ?>">Login FB</a>
                                             </div>
                                         </div>
                                     </form>
