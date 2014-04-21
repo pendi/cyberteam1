@@ -391,6 +391,7 @@ class web extends app_crud_controller {
     function view_user($id=null){
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
+        $this->cek_user();
     }
 
     function login_fb(){
