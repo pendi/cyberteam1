@@ -86,10 +86,12 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
+        $this->cek_user();
     }
 
 
     function request_movie($offset=0){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
         $user = $this->auth->get_user();
@@ -126,10 +128,10 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 3;
 
         $this->pagination->initialize($config);
-
     }
 
     function detail_film($id=null, $rate=null, $offset=0){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
@@ -187,6 +189,7 @@ class web extends app_crud_controller {
     }
 
     function detail_user($id=null){
+        $this->cek_user();
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
     }
@@ -247,6 +250,7 @@ class web extends app_crud_controller {
     }
 
     function list_movie($sort='latest',$offset=0){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
@@ -301,6 +305,7 @@ class web extends app_crud_controller {
     }
 
     function search($offset = 0){
+        $this->cek_user();
         $this->load->library('pagination');
 
         if($_POST){
@@ -324,6 +329,7 @@ class web extends app_crud_controller {
     }
 
     function edit_profile($id = null){
+        $this->cek_user();
         $this->load->helper('format');
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
@@ -427,7 +433,6 @@ class web extends app_crud_controller {
 
             header('Location: '.$loginurl);
         }
-        // redirect(site_url('web/signup'));
         exit;
     }
 }

@@ -1,10 +1,3 @@
-<?php 
-    if(!empty($quser)){
-        $USER = $quser; 
-    }else{
-        $USER = $CI->auth->get_user(); 
-    }
-?>
 <div id="body">
     <div class="container">
         <section class="detail profile">
