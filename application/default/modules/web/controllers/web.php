@@ -129,11 +129,12 @@ class web extends app_crud_controller {
 
     }
 
-    function detail_film($id=null, $rate=null, $offset=0){
+    function detail_film($id=null, $offset=0, $rate=null){
         $this->load->library('pagination');
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
+        $this->_data['offset'] = $offset;
         $user = $this->auth->get_user();
 
         if (!empty($rate)) {
