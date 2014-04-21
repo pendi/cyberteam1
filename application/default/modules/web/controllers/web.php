@@ -86,10 +86,12 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
+        $this->cek_user();
     }
 
 
     function request_movie($offset=0){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
         $user = $this->auth->get_user();
@@ -104,7 +106,8 @@ class web extends app_crud_controller {
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
-                    $_POST['user_id'] = $user['id'];
+                    // $_POST['user_id'] = $user['id'];
+            // xlog($_POST);exit;
                     $new_id = $this->_model('request')->save($_POST);
                     if ($this->input->is_ajax_request()) {
                         echo true;
@@ -126,16 +129,17 @@ class web extends app_crud_controller {
         $config['uri_segment'] = 3;
 
         $this->pagination->initialize($config);
-
     }
 
     function detail_film($id=null, $offset=0, $rate=null){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
         $this->_data['offset'] = $offset;
         $user = $this->auth->get_user();
+        // xlog($user);exit;
 
         if (!empty($rate)) {
             $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
@@ -153,11 +157,10 @@ class web extends app_crud_controller {
         $count = count($_comment);
 
         if ($_POST) {
-            if (!empty($user['id'])) {
+            if (!empty($_POST['user_id'])) {
                 if ($this->_validate()) {
                     $this->db->trans_start();
                     try {
-                        $_POST['user_id'] = $user['id'];
                         $_POST['film_id'] = $film['id'];
                         $new_id = $this->_model('comment')->save($_POST);
                         if ($this->input->is_ajax_request()) {
@@ -188,6 +191,7 @@ class web extends app_crud_controller {
     }
 
     function detail_user($id=null){
+        $this->cek_user();
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
     }
@@ -248,6 +252,7 @@ class web extends app_crud_controller {
     }
 
     function list_movie($sort='latest',$offset=0){
+        $this->cek_user();
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
         $this->load->helper('format');
@@ -302,6 +307,7 @@ class web extends app_crud_controller {
     }
 
     function search($offset = 0){
+        $this->cek_user();
         $this->load->library('pagination');
 
         if($_POST){
@@ -325,6 +331,7 @@ class web extends app_crud_controller {
     }
 
     function edit_profile($id = null){
+        $this->cek_user();
         $this->load->helper('format');
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
@@ -386,6 +393,7 @@ class web extends app_crud_controller {
     function view_user($id=null){
         $user = $this->_model('user')->get($id);
         $this->_data['user'] = $user;
+        $this->cek_user();
     }
 
     function login_fb(){
@@ -428,7 +436,6 @@ class web extends app_crud_controller {
 
             header('Location: '.$loginurl);
         }
-        // redirect(site_url('web/signup'));
         exit;
     }
 }

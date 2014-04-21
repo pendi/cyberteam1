@@ -1,8 +1,8 @@
-<?php
+<?php 
     if(!empty($quser)){
-        $USER = $quser;
+        $user = $quser; 
     }else{
-        $USER = $CI->auth->get_user();
+        $user = $CI->auth->get_user(); 
     }
 ?>
 <div class="container">
@@ -12,7 +12,7 @@
             <div class="span-4 request">
 				<form method="POST" action="" enctype="multipart/form-data">
                     <h6>Request your movie</h6>
-                    <input type="hidden" name="user_id" value="<?php echo $USER['id'] ?> ">
+                    <input type="hidden" name="user_id" value="<?php echo $user['id'] ?> ">
 					<textarea name="content" id="" rows="5"><?php echo set_value('content') ?></textarea>
                     <div class="row">
                         <div class="span-12">

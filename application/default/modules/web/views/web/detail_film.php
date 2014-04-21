@@ -142,6 +142,7 @@
                                         <h6>Comment</h6>
                                     </div>
                                     <div class="span-10">
+                                        <input type="hidden" name="user_id" value="<?php echo $user['id'] ?> ">
                                         <textarea name="comment" id="" cols="30" rows="10"></textarea>
                                     </div>
                                     <div class="span-12">

@@ -43,9 +43,9 @@
        
 <?php 
     if(!empty($quser)){
-        $USER = $quser; 
+        $user = $quser; 
     }else{
-        $USER = $CI->auth->get_user(); 
+        $user = $CI->auth->get_user(); 
     }
 ?>
 <body>
@@ -65,47 +65,47 @@
                                 <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
                             </li>
                             <?php if(!empty($user['id'])) : ?>
-                            <li>
-                                <a href="<?php echo site_url('web/request_movie') ?>">Request</a>
-                            </li>
-                            <li><a href='<?php echo site_url('web/detail_user'.'/'.$user['id'])?>'><?php echo $user['username'] ?></a></li>
-                            <li><a href='<?php echo site_url('web/logout')?>'>Logout</a></li>
+                                <li>
+                                    <a href="<?php echo site_url('web/request_movie') ?>">Request</a>
+                                </li>
+                                <li><a href='<?php echo site_url('web/detail_user'.'/'.$user['id'])?>'><?php echo $user['username'] ?></a></li>
+                                <li><a href='<?php echo site_url('web/logout')?>'>Logout</a></li>
                             <?php else : ?>
-                            <li>
-                                <a href="<?php echo site_url('web/signup') ?>">Register</a>
-                            </li>
-                            <li class="login">
-                                <a>Login</a>
-                                <div class="menu-login hide animated fadeOutUp">
-                                    <form action="<?php echo site_url('user/login') ?>" method="POST">
-                                        <div class="row">
-                                            <div class="span-12">
-                                                <label>Username</label>
-                                                <input type="text" name="login" placeholder="Username/Email">
+                                <li>
+                                    <a href="<?php echo site_url('web/signup') ?>">Register</a>
+                                </li>
+                                <li class="login">
+                                    <a>Login</a>
+                                    <div class="menu-login hide animated fadeOutUp">
+                                        <form action="<?php echo site_url('user/login') ?>" method="POST">
+                                            <div class="row">
+                                                <div class="span-12">
+                                                    <label>Username</label>
+                                                    <input type="text" name="login" placeholder="Username/Email">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="span-12">
-                                                <label>Password</label>
-                                                <input type="password" name="password" placeholder="Password">
+                                            <div class="row">
+                                                <div class="span-12">
+                                                    <label>Password</label>
+                                                    <input type="password" name="password" placeholder="Password">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- <div clas="row">
-                                            <div class="span-12 fb-login">
+                                            <!-- <div clas="row">
+                                                <div class="span-12 fb-login">
+                                                </div>
+                                            </div> -->
+                                            <div class="row">
+                                                <div class="span-6">
+                                                    <input type="hidden" name="continue" value="" />
+                                                    <input value="Login" type="submit" class="submit">
+                                                </div>
+                                                <div class="span-6 fb-login">
+                                                    <a class="submit pull-right" id="facebook" href="<?php echo site_url('web/login_fb') ?>">Login FB</a>
+                                                </div>
                                             </div>
-                                        </div> -->
-                                        <div class="row">
-                                            <div class="span-6">
-                                                <input type="hidden" name="continue" value="" />
-                                                <input value="Login" type="submit" class="submit">
-                                            </div>
-                                            <div class="span-6 fb-login">
-                                                <a class="submit pull-right" id="facebook" href="<?php echo site_url('web/login_fb') ?>">Login FB</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
+                                        </form>
+                                    </div>
+                                </li>
                             <?php endif ?>
                             <li>
                                 <div class="search-media">
