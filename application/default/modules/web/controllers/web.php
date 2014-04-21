@@ -136,6 +136,7 @@ class web extends app_crud_controller {
         $this->load->helper('format');
         $film = $this->_model('film')->get($id);
         $this->_data['film'] = $film;
+        $this->_data['offset'] = $offset;
         $user = $this->auth->get_user();
 
         if (!empty($rate)) {

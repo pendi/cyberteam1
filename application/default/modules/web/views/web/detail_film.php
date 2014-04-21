@@ -1,3 +1,10 @@
+<?php
+    if(!empty($quser)){
+        $user = $quser;
+    }else{
+        $user = $CI->auth->get_user();
+    }
+?>
 <div id="body">
     <div class="container">
         <section class="detail">
@@ -54,27 +61,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
-                            <div class="span-12">
-                                <div class="row rate">
-                                    <div class="span-4">
-                                        <h6>Comment</h6>
-                                    </div>
-                                    <div class="span-8">
-                                        <h6>Like <?php echo $film['rate'] ?></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="download">
                                 <div class="span-6">
-                                    <a class="submit pull-left" href="<?php echo site_url('web/detail_film').'/'.$film['id'].'/1'; ?>">Like</a>
+                                    <a class="submit pull-left" href="<?php echo site_url('web/detail_film').'/'.$film['id'].'/'.$offset.'/1'; ?>">Like</a>
                                 </div>
                                 <div class="span-6">
                                     <a class="submit pull-right" href="<?php echo base_url('data/film/filmnya/').'/'.$film['title'].'.zip' ?>">Download</a>
                                 </div>
-                            </div>                                
+                            </div>
                         </div>
                         <div class="row comment-field">
                             <div class="span-12">
