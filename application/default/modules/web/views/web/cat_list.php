@@ -22,18 +22,9 @@
                     </li>
 				<?php endforeach;?>
                 </ul>
-                <!-- <ul class="pagination" style="float: left; margin: 10px 0 0; border-bottom: 0px">
-                </ul> -->
-                <ul class="pagination">
-			        <?php echo $this->pagination->create_links() ?>
-                    <!-- <li class="arrow-first"><a href="#">&lt;&lt;</a></li>
-                    <li class="prev"><a href="#">&lt;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="next"><a href="#">&gt;</a></li>
-                    <li class="arrow-last"><a href="#">&gt;&gt;</a></li> -->
-                </ul>
+                <div clas="row">
+                    <?php echo $this->pagination->new_create_links() ?>
+                </div>
                 <div class="clear"></div>
             </div>
         </section>

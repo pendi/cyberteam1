@@ -28,7 +28,8 @@ class user extends base_user_controller {
             $is_login = $this->auth->login(($_POST) ? $_POST['login'] : '', ($_POST) ? $_POST['password'] : '', $mode);
 
             if ($is_login) {
-                redirect(site_url('web/index'));
+                add_info(l('Welcome'));
+                redirect(site_url());
             } else {
                 add_error(l('Username/email or password not found'));
                 redirect(site_url('web/index'));

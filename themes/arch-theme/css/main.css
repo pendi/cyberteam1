@@ -47,6 +47,7 @@ input[type="reset"]:hover,
 .container { width: 984px; margin: 0 auto; }
 .hide { display: none; }
 .error p { margin: 0; background: red; color: #fff; padding: 5px 0px; text-align: center; cursor: pointer; margin-bottom: 2px; }
+.info p { margin: 0; background: green; color: #fff; padding: 5px 0px; text-align: center; cursor: pointer; margin-bottom: 2px; }
 header { background: #f9f9f9; }
 nav { display: table; width: 100%; padding: 20px 0; }
 nav h1 { margin: 0; float: left; font-family: montserratregular; font-size: 30px; line-height: 68px; text-transform: uppercase; }

@@ -151,7 +151,7 @@
                                     </div>
                                     <div class="span-12">
                                         <div class="row">
-                                            <input value="Submit" type="submit" class="submit pull-right">
+                                            <input value="Comment" type="submit" class="submit pull-right">
                                         </div>
                                     </div>
                                 </form>
