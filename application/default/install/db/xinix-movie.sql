@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2014 at 02:50 AM
+-- Generation Time: Apr 21, 2014 at 11:03 AM
 -- Server version: 5.5.35-0ubuntu0.12.04.2
 -- PHP Version: 5.3.10-1ubuntu3.11
 
@@ -572,6 +572,53 @@ INSERT INTO `city` (`id`, `code`, `name`, `province_code`, `province_id`, `statu
 (495, '9435', 'KABUPATEN INTAN JAYA', '94', 33, 1, NULL, 0, NULL, 0),
 (496, '9436', 'KABUPATEN DEIYAI', '94', 33, 1, NULL, 0, NULL, 0),
 (497, '9471', 'KOTA JAYAPURA ', '94', 33, 1, NULL, 0, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `film_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `status` int(11) unsigned NOT NULL,
+  `created_time` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_time` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `user_id`, `film_id`, `comment`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 1, 0, 'test', 1, '2014-04-18 10:34:04', '1', '2014-04-18 10:34:04', '1'),
+(2, 1, 0, 'test', 1, '2014-04-18 10:34:24', '1', '2014-04-18 10:34:24', '1'),
+(5, 1, 1, 'test', 1, '2014-04-18 10:37:23', '1', '2014-04-18 10:37:23', '1'),
+(6, 1, 1, 'asu', 1, '2014-04-18 10:43:30', '1', '2014-04-18 10:43:30', '1'),
+(7, 1, 1, 'sau', 1, '2014-04-18 10:43:36', '1', '2014-04-18 10:43:36', '1'),
+(8, 1, 1, 'sas', 1, '2014-04-18 10:43:41', '1', '2014-04-18 10:43:41', '1'),
+(9, 1, 1, 'sasas', 1, '2014-04-18 10:46:46', '1', '2014-04-18 10:46:46', '1'),
+(10, 13, 1, 'wahyu ganteng', 0, '2014-04-18 16:40:26', '13', '2014-04-21 10:02:01', '1'),
+(11, 13, 12, 'wahyu ganteng', 0, '2014-04-18 16:40:54', '13', '2014-04-21 10:02:01', '1'),
+(12, 13, 12, 'cinta wahyu', 0, '2014-04-18 16:41:28', '13', '2014-04-21 10:02:01', '1'),
+(13, 13, 12, 'i love wahyu', 0, '2014-04-18 16:41:43', '13', '2014-04-21 10:02:01', '1'),
+(14, 13, 12, 'love u too wahyu', 0, '2014-04-18 16:41:53', '13', '2014-04-21 10:02:01', '1'),
+(15, 13, 12, 'kesayangan wahyu', 0, '2014-04-18 16:42:01', '13', '2014-04-21 10:02:01', '1'),
+(16, 13, 12, 'hidup bareng wahyu', 0, '2014-04-18 16:42:11', '13', '2014-04-21 10:02:30', '1'),
+(17, 1, 13, 'tete', 1, '2014-04-18 17:06:41', '1', '2014-04-18 17:06:41', '1'),
+(18, 1, 1, 'tutut cantik', 1, '2014-04-18 17:22:01', '1', '2014-04-18 17:22:01', '1'),
+(19, 1, 1, '', 1, '2014-04-18 17:38:04', '1', '2014-04-18 17:38:04', '1'),
+(20, 18, 13, 'say', 1, '2014-04-18 18:04:47', '18', '2014-04-18 18:04:47', '18'),
+(21, 18, 13, 'sayko', 1, '2014-04-18 18:04:57', '18', '2014-04-18 18:04:57', '18'),
+(22, 18, 13, 'saykoji', 1, '2014-04-18 18:05:03', '18', '2014-04-18 18:05:03', '18'),
+(23, 18, 13, 'saykoji igor', 1, '2014-04-18 18:05:12', '18', '2014-04-18 18:05:12', '18'),
+(24, 18, 13, 'sasa', 1, '2014-04-18 18:05:21', '18', '2014-04-18 18:05:21', '18');
 
 -- --------------------------------------------------------
 
@@ -7656,19 +7703,19 @@ CREATE TABLE IF NOT EXISTS `film` (
 --
 
 INSERT INTO `film` (`id`, `title`, `description`, `trailer`, `cover`, `category_id`, `size`, `quality`, `publish`, `rate`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'Insidious: Chapter 2', 'The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world.', 'http://www.youtube.com/watch?v=fBbi4NeebAk', 'film/cover/4bb9009ec6649cc809268b644b52f020.jpg', 1, '733 MB', '2', 1, 1, 1, '2014-02-19 11:48:11', '1', '2014-04-17 02:19:36', '3'),
+(1, 'Insidious: Chapter 2', 'The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world.', 'http://www.youtube.com/watch?v=fBbi4NeebAk', 'film/cover/4bb9009ec6649cc809268b644b52f020.jpg', 1, '733 MB', '2', 1, 28, 1, '2014-02-19 11:48:11', '1', '2014-04-17 02:19:36', '3'),
 (2, 'The Conjuring', 'Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.', 'http://www.youtube.com/watch?v=Vjk2So3KvSQ', 'film/cover/df071b0e9519a81f06c89d54f2d999a6.jpg', 2, '0', '4', 1, 0, 1, '2014-02-19 11:50:31', '1', '2014-04-16 12:05:08', '1'),
 (3, 'Mama', 'Annabel and Lucas are faced with the challenge of raising his young nieces that were left alone in the forest for 5 years.... but how alone were they?', '', 'film/cover/fcd09db6a5f6f047c0319af6dd6f672d.jpg', 1, '734 MB', '2', 1, 0, 1, '2014-02-19 11:55:15', '1', '2014-04-16 12:01:49', '1'),
 (4, 'Abraham Lincoln Vampire Hunter', 'Abraham Lincoln, the 16th President of the United States, discovers vampires are planning to take over the United States. \nHe makes it his mission to eliminate them.', 'https://www.youtube.com/watch?v=34x6m-ahGIo', 'film/cover/9ed0b8da974244137ca1f95be8e72212.jpg', 2, '418 MB', '3', 1, 0, 1, '2014-02-19 14:32:05', '1', '2014-04-16 12:02:22', '1'),
-(5, 'After Earth', 'A crash landing leaves Kitai Raige and his father Cypher stranded on Earth, a millennium after events forced humanitys escape. With Cypher injured, Kitai must embark on a perilous journey to signal for help.', '', 'film/cover/3ddfdd28cac1e75df58922628c0ae618.jpg', 2, '800 MB', '2', 1, 0, 1, '2014-02-19 14:35:20', '1', '2014-04-14 14:12:05', '1'),
+(5, 'After Earth', 'A crash landing leaves Kitai Raige and his father Cypher stranded on Earth, a millennium after events forced humanitys escape. With Cypher injured, Kitai must embark on a perilous journey to signal for help.', '', 'film/cover/3ddfdd28cac1e75df58922628c0ae618.jpg', 2, '800 MB', '2', 1, 1, 1, '2014-02-19 14:35:20', '1', '2014-04-14 14:12:05', '1'),
 (6, 'Avengers', 'Nick Fury is director of S.H.I.E.L.D, an international peace keeping agency. The agency is a whos who of Marvel Super Heroes, with Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When global security is threatened by Loki and his cohorts, Nick Fury and his team will need all their powers to save the world from disaster.', '', 'film/cover/89a797a76bcfa50b67f9318e15292948.jpg', 2, '1,3 GB', '2', 1, 0, 1, '2014-02-19 14:44:42', '1', '2014-04-14 14:12:08', '1'),
 (7, 'Captain Philips', 'The true story of Captain Richard Phillips and the 2009 hijacking by Somali pirates of the US-flagged MV Maersk Alabama, the first American cargo ship to be hijacked in two hundred years.', '', 'film/cover/b4445a48d747acd7df9f325fb3b2418c.jpg', 2, '0', '4', 1, 11, 1, '2014-02-19 14:49:08', '1', '2014-04-16 12:04:48', '1'),
-(8, 'Chennai Express', 'Rahul (Shahrukh Khan) is a forty-year old bachelor and lives in Mumbai. Rahul''s parents died in a car accident when he was eight years old and it was his grandparents who brought him up. His grandfather has a sweet-selling business - Y.Y. Mithaiwala - and he owns a chain of stores in Mumbai. Before his birth centenary celebration two of Rahul''s friends suggest going to Goa for a vacation which he accepts. Right before the birth centenary, his grandfather dies. His grandmother tells him that his grandfather desired to have his ashes divided into two parts and have one part of it immersed at Rameswaram. She requests Rahul to go to Rameswaram and immerse the ashes. Rahul reluctantly accepts her request. On the other hand he was eager to attend the Goa trip, so, he and his friends make plans to dump the ashes at Goa. But, they were forced to change their plan when Rahul''s grandmother told him that she would be coming to see him off at the station. This forces Rahul to travel by train and he booked a single ticket on the Chennai Express. He plans to meet his friends after commencing the journey at the Kalyan Junction station from where they would travel to Goa by car. Right after commencing the journey from Mumbai railway station, when the train was leaving the platform, Rahul sees a girl running to catch the train. He helps her to board the moving train.', '', 'film/cover/9f0e8bb775e76f54eee629eb0353f6e8.jpg', 2, '1 GB', '2', 1, 0, 1, '2014-02-19 14:56:41', '1', '2014-04-16 12:02:26', '1'),
-(9, 'Curse Of Chucky', 'After her mother''s mysterious death, Nica begins to suspect that the talking, red-haired doll her visiting niece has been playing with may be the key to recent bloodshed and chaos.', '', 'film/cover/d6b2b65585cff34380326fafaec64d3c.jpg', 1, '734 MB', '2', 1, 0, 1, '2014-02-19 15:22:31', '1', '2014-04-16 12:01:55', '1'),
+(8, 'Chennai Express', 'Rahul (Shahrukh Khan) is a forty-year old bachelor and lives in Mumbai. Rahul''s parents died in a car accident when he was eight years old and it was his grandparents who brought him up. His grandfather has a sweet-selling business - Y.Y. Mithaiwala - and he owns a chain of stores in Mumbai. Before his birth centenary celebration two of Rahul''s friends suggest going to Goa for a vacation which he accepts. Right before the birth centenary, his grandfather dies. His grandmother tells him that his grandfather desired to have his ashes divided into two parts and have one part of it immersed at Rameswaram. She requests Rahul to go to Rameswaram and immerse the ashes. Rahul reluctantly accepts her request. On the other hand he was eager to attend the Goa trip, so, he and his friends make plans to dump the ashes at Goa. But, they were forced to change their plan when Rahul''s grandmother told him that she would be coming to see him off at the station. This forces Rahul to travel by train and he booked a single ticket on the Chennai Express. He plans to meet his friends after commencing the journey at the Kalyan Junction station from where they would travel to Goa by car. Right after commencing the journey from Mumbai railway station, when the train was leaving the platform, Rahul sees a girl running to catch the train. He helps her to board the moving train.', '', 'film/cover/9f0e8bb775e76f54eee629eb0353f6e8.jpg', 2, '1 GB', '2', 1, 6, 1, '2014-02-19 14:56:41', '1', '2014-04-16 12:02:26', '1'),
+(9, 'Curse Of Chucky', 'After her mother''s mysterious death, Nica begins to suspect that the talking, red-haired doll her visiting niece has been playing with may be the key to recent bloodshed and chaos.', '', 'film/cover/d6b2b65585cff34380326fafaec64d3c.jpg', 1, '734 MB', '2', 1, 5, 1, '2014-02-19 15:22:31', '1', '2014-04-16 12:01:55', '1'),
 (10, 'Due West Our Sex Journey', 'After breaking up with girlfriend Zeta, Frankie heads north for prostitution where he meets an attractive girl Celia and develops feeling for her.', 'http://www.youtube.com/watch?v=_7fj5j69D9E', 'film/cover/2eb83d757630903c8b414ebdafe18046.jpg', 2, '0', '1', 1, 0, 1, '2014-02-19 15:29:28', '1', '2014-04-16 12:05:01', '1'),
 (11, 'Fast and Furious 1', 'Los Angeles police officer Brian O''Connor must decide where his loyalties really lie when he becomes enamored with the street racing world he has been sent undercover to destroy.', '', 'film/cover/108b5f839c0b2e4b5bd991314c1f8a17.jpg', 2, '1,5 GB', '2', 1, 0, 1, '2014-02-19 15:35:42', '1', '2014-04-16 12:02:35', '1'),
-(12, 'Fast and Furious 2', 'Brian O''Conner and childhood friend Roman Pearce are re-united by the FBI to bring down a Miami drug exporter in exchange for clear records.', '', 'film/cover/a116c16b7b4a16d8ed1e7f54f20c45bd.jpg', 2, '733 MB', '2', 1, 10, 1, '2014-02-19 15:46:54', '1', '2014-04-17 02:26:02', '3'),
-(13, '5CM', 'Genta (Fedi Nuril), Arial (Denny Sumargo), Zafran (Herjunot Ali), Riani (Raline Shah) dan Ian (Igor Saykoji) adalah lima remaja yang telah menjalin persahabatan sepuluh tahun lamanya. Mereka memiliki karakter yang berbeda-beda. Zafran yang puitis, sedikit "gila", apa adanya, idealis, agak narsis, dan memiliki bakat untuk menjadi orang terkenal. Riani yang merupakan gadis cerdas, cerewet, dan mempunyai ambisi untuk cita-citanya. Genta, pria yang tidak senang mementingkan dirinya sendiri sehingga memiliki jiwa pemimpin dan mampu membuat orang lain nyaman di sekitarnya. Arial, pria termacho di antara pemain lainnya, hobi berolah raga, paling taat aturan, namun paling canggung kenalan dengan wanita. Ian, dia memiliki badan yang paling subur dibandingkan teman-temannya, penggemar indomie dan bola, paling telat wisuda. Ada pula Dinda (Pevita Pearce) yang merupakan adik dari Arial, seorang mahasiswi cantik yang sebenarnya dicintai Zafran. Suatu hari mereka berlima merasa jenuh dengan persahabatan mereka dan akhirnya kelimanya memutuskan untuk berpisah, tidak saling berkomunikasi satu sama lain selama tiga bulan lamanya.\n\nSelama tiga bulan berpisah penuh kerinduan, banyak yang terjadi dalam kehidupan mereka berlima', 'http://www.youtube.com/watch?v=s0ncD-MQwKA', 'film/cover/6c98b25881319c7018f5478ad1b71ef9.jpg', 5, '459 MB', '3', 1, 1, 1, '2014-03-18 14:00:44', '3', '2014-04-17 02:02:32', '3');
+(12, 'Fast and Furious 2', 'Brian O''Conner and childhood friend Roman Pearce are re-united by the FBI to bring down a Miami drug exporter in exchange for clear records.', '', 'film/cover/a116c16b7b4a16d8ed1e7f54f20c45bd.jpg', 2, '733 MB', '2', 1, 32, 1, '2014-02-19 15:46:54', '1', '2014-04-17 02:26:02', '3'),
+(13, '5CM', 'Genta (Fedi Nuril), Arial (Denny Sumargo), Zafran (Herjunot Ali), Riani (Raline Shah) dan Ian (Igor Saykoji) adalah lima remaja yang telah menjalin persahabatan sepuluh tahun lamanya. Mereka memiliki karakter yang berbeda-beda. Zafran yang puitis, sedikit "gila", apa adanya, idealis, agak narsis, dan memiliki bakat untuk menjadi orang terkenal. Riani yang merupakan gadis cerdas, cerewet, dan mempunyai ambisi untuk cita-citanya. Genta, pria yang tidak senang mementingkan dirinya sendiri sehingga memiliki jiwa pemimpin dan mampu membuat orang lain nyaman di sekitarnya. Arial, pria termacho di antara pemain lainnya, hobi berolah raga, paling taat aturan, namun paling canggung kenalan dengan wanita. Ian, dia memiliki badan yang paling subur dibandingkan teman-temannya, penggemar indomie dan bola, paling telat wisuda. Ada pula Dinda (Pevita Pearce) yang merupakan adik dari Arial, seorang mahasiswi cantik yang sebenarnya dicintai Zafran. Suatu hari mereka berlima merasa jenuh dengan persahabatan mereka dan akhirnya kelimanya memutuskan untuk berpisah, tidak saling berkomunikasi satu sama lain selama tiga bulan lamanya.\n\nSelama tiga bulan berpisah penuh kerinduan, banyak yang terjadi dalam kehidupan mereka berlima', 'http://www.youtube.com/watch?v=s0ncD-MQwKA', 'film/cover/6c98b25881319c7018f5478ad1b71ef9.jpg', 5, '459 MB', '3', 1, 81, 1, '2014-03-18 14:00:44', '3', '2014-04-17 02:02:32', '3');
 
 -- --------------------------------------------------------
 
@@ -7703,25 +7750,6 @@ INSERT INTO `menu` (`id`, `title`, `uri`, `position`, `parent_id`, `status`, `cr
 (6, 'Menu', 'menu/listing', 3, 2, 1, '2014-02-13 11:15:26', 0, '2014-02-13 11:15:26', 0),
 (7, 'Organization', 'organization/listing', 7, 2, 1, '2014-02-13 11:15:26', 0, '2014-02-13 11:15:26', 0),
 (8, 'Post', 'post/listing', 3, 2, 1, '2014-02-13 11:15:26', 0, '2014-02-13 11:15:26', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `movie`
---
-
-CREATE TABLE IF NOT EXISTS `movie` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `film_id` int(11) NOT NULL,
-  `movie` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `status` int(11) unsigned NOT NULL,
-  `created_time` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `updated_time` datetime NOT NULL,
-  `updated_by` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7923,7 +7951,7 @@ CREATE TABLE IF NOT EXISTS `request` (
   `updated_time` datetime NOT NULL,
   `updated_by` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `request`
@@ -7936,7 +7964,15 @@ INSERT INTO `request` (`id`, `content`, `user_id`, `status`, `created_time`, `cr
 (4, 'testsdfgh', 2, 1, '2014-03-13 16:00:22', '2', '2014-03-13 16:00:22', '2'),
 (5, 'request njir', 3, 1, '2014-03-17 14:35:36', '18', '2014-03-17 14:35:36', '18'),
 (6, 'gue ganteng', 18, 1, '2014-04-17 00:04:41', '18', '2014-04-17 00:04:41', '18'),
-(7, 'lo gembel', 18, 1, '2014-04-17 00:05:54', '18', '2014-04-17 00:05:54', '18');
+(7, 'lo gembel', 18, 1, '2014-04-17 00:05:54', '18', '2014-04-17 00:05:54', '18'),
+(8, 'wahyu', 3, 1, '2014-04-17 15:34:28', '3', '2014-04-17 15:34:28', '3'),
+(9, 'asdasda', 13, 1, '2014-04-17 20:08:38', '13', '2014-04-17 20:08:38', '13'),
+(10, 'test', 13, 1, '2014-04-17 20:13:37', '13', '2014-04-17 20:13:37', '13'),
+(11, 'test wahyu', 23, 1, '2014-04-17 20:14:27', '0', '2014-04-17 20:14:27', '0'),
+(12, 'test', 23, 1, '2014-04-17 21:29:11', '23', '2014-04-17 21:29:11', '23'),
+(13, 'test', 3, 1, '2014-04-17 21:47:01', '3', '2014-04-17 21:47:01', '3'),
+(14, 'tot', 13, 1, '2014-04-17 23:15:00', '13', '2014-04-17 23:15:00', '13'),
+(15, 'test', 1, 1, '2014-04-18 17:05:50', '1', '2014-04-18 17:05:50', '1');
 
 -- --------------------------------------------------------
 
@@ -8124,20 +8160,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_by` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `gender`, `image`, `address`, `yahoo_id`, `google_id`, `skype_id`, `timezone`, `locale`, `sso_facebook`, `sso_twitter`, `sso_verified`, `status`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@example.net', 'Admin', 'Ganteng', 0, 'user/5d3039211f46b80e95b45e62cafda344.gif', '', '', '', '', 'UP7', 'en_US', '', '', 0, 1, '2014-02-13 11:15:28', 0, '2014-04-17 00:32:54', 0),
-(2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@user.com', 'User', 'Name', 1, 'user/5d3039211f46b80e95b45e62cafda344.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-02-20 12:51:48', 1, '2014-03-17 14:32:05', 0),
-(3, 'wahyutaufik37', 'ef2fe3b1c1ebc3e1248c937b73d72cef', 'wahyutaufik37@gmail.com', 'Wahyu', 'Ganteng', 0, 'user/896bad1da62a2ad69eb6b576610018a8.gif', '', '', '', '', '', '', '', '', 0, 1, '2014-03-18 13:20:49', 0, '2014-04-17 00:33:20', 0),
-(4, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '2014-04-15 11:03:54', 0, '2014-04-15 11:34:14', 1),
-(9, 'admin2', '98c6c14acce440c6ab3058d2970d5a0f', 'admin@example.net', 'ad', 'ad', 0, '', '', '', '', '', '', '', '', '', 0, 1, '2014-04-15 15:04:03', 0, '2014-04-15 15:04:03', 0),
-(13, 'tutut', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin2@example.net', 'asasas', 'asasas', 0, '', '', '', '', '', '', '', '', '', 0, 1, '2014-04-15 15:07:58', 0, '2014-04-17 01:40:06', 3),
-(18, 'way_opick', '5f4dcc3b5aa765d61d8327deb882cf99', 'wahyutaufik54@rocketmail.com', 'Way', 'Opick', 0, 'user/b5721822fde7263f77e3c80edfb50769.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-04-16 23:39:04', 0, '2014-04-17 00:26:28', 0);
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@example.net', 'Admin', 'Kece', 0, '426245d4b746d020d366f74db85f28ac.jpg', '', '', '', '', 'UP7', 'en_US', '', '', 0, 1, '2014-02-13 11:15:28', 0, '2014-04-21 10:59:58', 0),
+(2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@user.com', 'User', 'Name', 1, '19b5d0b966e15b8e0148c203040e5109.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-02-20 12:51:48', 1, '2014-04-17 21:25:19', 2),
+(3, 'wahyutaufik', 'ef2fe3b1c1ebc3e1248c937b73d72cef', 'wahyutaufik37@gmail.com', 'Wahyu', 'Taufik', 0, 'ffc4f3871ac5ec3f4dad827ea8ce7bcb.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-03-18 13:20:49', 0, '2014-04-17 21:56:16', 3),
+(13, 'tutut', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin2@example.net', 'asasas', 'asasas', 0, 'b0fdcdf43dec2a3a88ed52e09059c4ca.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-04-15 15:07:58', 0, '2014-04-21 10:53:53', 0),
+(18, 'way_opick', '5f4dcc3b5aa765d61d8327deb882cf99', 'wahyutaufik54@rocketmail.com', 'Way', 'Opick', 0, '655f39f771fe7d4b60f10a8e807e886f.jpg', '', '', '', '', '', '', '', '', 0, 1, '2014-04-16 23:39:04', 0, '2014-04-18 17:52:00', 18),
+(21, 'pendi', '5f4dcc3b5aa765d61d8327deb882cf99', 'pendi@email.cpm', 'pendi', 'selalu umroh', 0, '', '', '', '', '', '', '', '', '', 0, 1, '2014-04-17 19:18:32', 0, '2014-04-17 19:30:33', 0),
+(24, 'wahyutaufik37', '5f4dcc3b5aa765d61d8327deb882cf99', 'wahyutaufik37@gmail.com', 'Wahyu', 'Taufik', 0, '', '', '', '', '', '', '', '', '', 0, 1, '2014-04-17 21:16:26', 1, '2014-04-17 21:16:26', 1),
+(26, 'aliaraaab', '5f4dcc3b5aa765d61d8327deb882cf99', 'muhammadali.alaydrus@gmail.com', 'muhammad', 'ali', 0, 'user/', '', '', '', '', '', '', '', '', 0, 1, '2014-04-17 23:27:08', 0, '2014-04-18 16:57:24', 0),
+(29, 'wahyutaufik54', '5f4dcc3b5aa765d61d8327deb882cf99', 'wahyutaufik54@rocketmail.com', 'Wahyu', 'Taufik', 0, '8d61cb9416b3be69301c70dc7c806144.jpg', '', '', '', '', '', '', '1473881101', '', 0, 1, '2014-04-21 11:00:48', 0, '2014-04-21 11:00:58', 0);
 
 -- --------------------------------------------------------
 
@@ -8229,7 +8267,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `updated_time` datetime NOT NULL,
   `updated_by` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `user_role`
@@ -8240,8 +8278,7 @@ INSERT INTO `user_role` (`id`, `user_id`, `role_id`, `status`, `created_time`, `
 (4, 1, 1, 1, '2014-03-13 22:30:31', 1, '2014-03-13 22:30:31', 1),
 (5, 18, 1, 1, '2014-03-17 14:35:04', 1, '2014-03-17 14:35:04', 1),
 (6, 19, 2, 1, '2014-03-18 11:34:21', 1, '2014-03-18 11:34:21', 1),
-(7, 20, 1, 1, '2014-03-18 13:13:21', 1, '2014-03-18 13:13:21', 1),
-(8, 3, 1, 1, '2014-03-18 13:21:05', 1, '2014-03-18 13:21:05', 1);
+(7, 20, 1, 1, '2014-03-18 13:13:21', 1, '2014-03-18 13:13:21', 1);
 
 -- --------------------------------------------------------
 
