@@ -106,7 +106,8 @@ class web extends app_crud_controller {
             if ($this->_validate()) {
                 $this->db->trans_start();
                 try {
-                    $_POST['user_id'] = $user['id'];
+                    // $_POST['user_id'] = $user['id'];
+            // xlog($_POST);exit;
                     $new_id = $this->_model('request')->save($_POST);
                     if ($this->input->is_ajax_request()) {
                         echo true;
@@ -130,7 +131,7 @@ class web extends app_crud_controller {
         $this->pagination->initialize($config);
     }
 
-    function detail_film($id=null, $rate=null, $offset=0){
+    function detail_film($id=null, $offset=0, $rate=null){
         $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
@@ -138,6 +139,7 @@ class web extends app_crud_controller {
         $this->_data['film'] = $film;
         $this->_data['offset'] = $offset;
         $user = $this->auth->get_user();
+        // xlog($user);exit;
 
         if (!empty($rate)) {
             $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
@@ -155,11 +157,10 @@ class web extends app_crud_controller {
         $count = count($_comment);
 
         if ($_POST) {
-            if (!empty($user['id'])) {
+            if (!empty($_POST['user_id'])) {
                 if ($this->_validate()) {
                     $this->db->trans_start();
                     try {
-                        $_POST['user_id'] = $user['id'];
                         $_POST['film_id'] = $film['id'];
                         $new_id = $this->_model('comment')->save($_POST);
                         if ($this->input->is_ajax_request()) {
