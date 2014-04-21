@@ -1,8 +1,8 @@
 <?php 
     if(!empty($quser)){
-        $user = $quser; 
+        $USER = $quser; 
     }else{
-        $user = $CI->auth->get_user(); 
+        $USER = $CI->auth->get_user(); 
     }
 ?>
 <div id="body">
