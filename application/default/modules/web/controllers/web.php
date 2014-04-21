@@ -394,7 +394,6 @@ class web extends app_crud_controller {
 
         $config_fb['appId'] = $this->config->item('facebook_app_id');
         $config_fb['secret'] = $this->config->item('facebook_api_secret');
-        // xlog($config_fb);exit;
         $facebook = new Facebook($config_fb);
 
         //get the user facebook id
@@ -428,7 +427,7 @@ class web extends app_crud_controller {
 
             header('Location: '.$loginurl);
         }
-        exit;
         // redirect(site_url('web/signup'));
+        exit;
     }
 }
