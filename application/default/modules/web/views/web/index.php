@@ -1,8 +1,8 @@
-<?php 
+<?php
     if(!empty($quser)){
-        $user = $quser; 
+        $user = $quser;
     }else{
-        $user = $CI->auth->get_user(); 
+        $user = $CI->auth->get_user();
     }
 ?>
 <?php if(!empty($param)) : ?>

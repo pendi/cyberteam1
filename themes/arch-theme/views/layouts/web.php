@@ -40,12 +40,12 @@
         });
     </script>
 </head>
-       
-<?php 
+
+<?php
     if(!empty($quser)){
-        $user = $quser; 
+        $user = $quser;
     }else{
-        $user = $CI->auth->get_user(); 
+        $user = $CI->auth->get_user();
     }
 ?>
 <body>
@@ -124,7 +124,7 @@
             </div>
         </div>
     </header>
-    <?php  
+    <?php
     	$category_film = $this->db->query("SELECT * FROM category")->result_array();
         $this->_data['category_film'] = $category_film;
     ?>
@@ -145,7 +145,7 @@
         <?php echo xview_info() ?>
         <?php echo $this->load->view($CI->_view, $CI->_data, true) ?>
     </section>
-    
+
     <div id="footer">
         <div class="container">
             <div class="wrapper">
