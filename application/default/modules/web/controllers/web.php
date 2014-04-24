@@ -30,7 +30,7 @@ class web extends app_crud_controller {
             $user_existing = $this->db->query("SELECT * FROM user WHERE status !=0 AND sso_facebook = ? ", array($sess_user['id']))->row_array();
 
             if(empty($user_existing)){
-                redirect(site_url('web/signup'));
+                redirect(site_url('web/x'));
             }else{
                 $quser = $this->db->query("SELECT * FROM user WHERE status !=0 AND id = ? ", array($user_existing['id']))->row_array();
                 $this->_data['quser'] = $quser;
@@ -157,25 +157,19 @@ class web extends app_crud_controller {
         $count = count($_comment);
 
         if ($_POST) {
-            if (!empty($_POST['user_id'])) {
-                if ($this->_validate()) {
-                    $this->db->trans_start();
-                    try {
-                        $_POST['film_id'] = $film['id'];
-                        $new_id = $this->_model('comment')->save($_POST);
-                        if ($this->input->is_ajax_request()) {
-                            echo true;
-                            exit;
-                        } else {
-                            add_info(l('Comment Added'));
-                            redirect(site_url('web/detail_film'.'/'.$id));
-                            exit;
-                        }
-                    } catch (Exception $e) {
-                        add_error(l('Failed !!!'));
-                        $this->_data['errors'] = '<p>' . $e->getMessage() . '</p>';
+            // var_dump($_POST);exit;
+            // xlog($_POST);exit;
+            if (trim($_POST['user_id'])) {
+                    $_POST['film_id'] = $film['id'];
+                    $new_id = $this->_model('comment')->save($_POST);
+                    if ($this->input->is_ajax_request()) {
+                        echo true;
+                        exit;
+                    } else {
+                        add_info(l('Comment Added'));
+                        redirect(site_url('web/detail_film'.'/'.$id));
+                        exit;
                     }
-                }
             } else {
                 add_error(l('You Must Login To Add Comment !!!'));
                 redirect(site_url('web/detail_film'.'/'.$id));

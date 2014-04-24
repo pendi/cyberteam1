@@ -1,8 +1,8 @@
-<?php
+<?php 
     if(!empty($quser)){
-        $user = $quser;
+        $user = $quser; 
     }else{
-        $user = $CI->auth->get_user();
+        $user = $CI->auth->get_user(); 
     }
 ?>
 <div id="body">
@@ -134,6 +134,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php //if(empty($user['id'])) : ?>
+                    <?php //else : ?>
                     <div class="row">
                         <div class="span-12">
                             <div class="row comment">
@@ -142,7 +144,7 @@
                                         <h6>Comment</h6>
                                     </div>
                                     <div class="span-10">
-                                        <input type="hidden" name="user_id" value="<?php echo $user['id'] ?> ">
+                                        <input type="hidden" name="user_id" value="<?php echo $user['id'] ?>">
                                         <textarea name="comment" id="" cols="30" rows="10"></textarea>
                                     </div>
                                     <div class="span-12">
@@ -154,6 +156,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php //endif ?>
                 </div>
             </div>
         </section>
