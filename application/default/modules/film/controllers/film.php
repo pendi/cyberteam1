@@ -15,10 +15,10 @@ class film extends app_crud_controller {
                     'trash' => 'film/trash',
                     'publish' => 'film/publish'
                     );
-       
+
         return $config;
     }
-    
+
     function publish($id){
         $data = $this->_model()->get($id);
         $status = '';
@@ -38,7 +38,7 @@ class film extends app_crud_controller {
 
                 if (!$this->input->is_ajax_request()){
                     redirect($this->_get_uri('listing'));
-                }  
+                }
             } catch (Exception $e) {
                 add_error(l($e->getMessage()));
             }
@@ -48,7 +48,7 @@ class film extends app_crud_controller {
     function _category($value){
 
         $result = $this->db->query('SELECT name FROM category WHERE id = ?', array($value))->row_array();
-        
+
         return $result['name'];
     }
 
@@ -73,7 +73,7 @@ class film extends app_crud_controller {
 
         $categorys = $this->_model()->query('SELECT * FROM category')->result_array();
         $this->_data['categorys'] = $categorys;
-            
+
         $this->_data['category_options']= array(''=> l('(Please select)'));
         foreach ($categorys as $cat) {
             $this->_data['category_options'][$cat['id']] = $cat['name'];
@@ -126,7 +126,7 @@ class film extends app_crud_controller {
                 $_POST = $model->get($id);
             }
         }
-    } 
+    }
 
     function cat($cat_id, $offset = 0){
         $this->load->library('pagination');
@@ -150,5 +150,5 @@ class film extends app_crud_controller {
             'base_url' => site_url('web/cat/'.$cat_id),
         ));
         $this->_data['films'] = $films;
-    } 
+    }
 }

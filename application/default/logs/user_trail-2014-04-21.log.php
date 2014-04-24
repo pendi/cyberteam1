@@ -155,3 +155,8 @@
 13,web/detail_film,web/detail_film/13,POST,"*""user_id"":""13 "",""comment"":""zzzz""}",127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-21 12:43:47",tutut
 13,web/detail_film,web/detail_film/13,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36",,1,,"2014-04-21 12:43:47",tutut
 >>>>>>> cf69d4de475ef4a6b75c867504d678fe249e0e08
+13,web/index,/,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-21 12:22:39",tutut
+13,web/request_movie,web/request_movie,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-21 12:22:43",tutut
+13,web/request_movie,web/request_movie,POST,"{""user_id"":""13 "",""content"":""apa lo?\r\n""}",127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-21 12:22:53",tutut
+13,web/request_movie,web/request_movie,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-21 12:22:54",tutut
+13,web/request_movie,web/request_movie,GET,,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",,1,,"2014-04-21 12:23:28",tutut
