@@ -18,7 +18,7 @@
                                 <?php foreach ($films as $item):?>
                                     <li>
                                         <div class="movie">
-                                            <div class="slide-movie" style="background:url(<?php echo base_url('data/').'/'.$item['cover'] ?>) center; background-size: cover;"></div>
+                                            <div class="slide-movie" style="background:url(<?php echo base_url('data/').'/'.$item['cover'] ?>) top center; background-size: cover;"></div>
                                         </div>
                                         <div class="description">
                                             <h2><a href="<?php echo site_url('web/detail_film/'.$item['id'])?>"><?php echo $item['title']?></a></h2>
@@ -45,7 +45,7 @@
                                             <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>"><?php echo $item['title']?></a>
                                         </h6>
                                         <p class="desc">
-                                            <?=word_limiter($item['description'],12)."  "?>
+                                            <?=word_limiter($item['description'],14)."  "?>
                                         </p>
                                         <a href="<?php echo site_url('web/detail_film/'.$item['id']); ?>">Read More ></a>
                                     </div>

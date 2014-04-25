@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
     <title><?php echo $CI->_page_title; ?></title>
 
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="creator" content="Ali" />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia, Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi " />
@@ -35,8 +35,6 @@
                 });
                 e.preventDefault();
             });
-
-            // ga('send', 'pageview', '/FBConnect');
         });
     </script>
 </head>
@@ -90,10 +88,6 @@
                                                     <input type="password" name="password" placeholder="Password">
                                                 </div>
                                             </div>
-                                            <!-- <div clas="row">
-                                                <div class="span-12 fb-login">
-                                                </div>
-                                            </div> -->
                                             <div class="row">
                                                 <div class="span-6">
                                                     <input type="hidden" name="continue" value="" />

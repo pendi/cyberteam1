@@ -101,7 +101,7 @@ nav .search input[type="text"]:focus { background: transparent; padding-left: 20
 .bx-wrapper .bx-viewport { background: transparent; border: 0; box-shadow: none; left: 0; }
 .bx-controls .bx-pager { display: none; }
 .category .bx-controls .bx-controls-direction a { width: 20px; height: 20px; top: 26%; margin-top: 0; }
-.category .bx-controls .bx-controls-direction .bx-prev { background: url('../img/categoryleft-bg.png') no-repeat; left: -20px; background-size: contain; }
+.category .bx-controls .bx-controls-direction .bx-prev { background: url('../img/categoryleft-bg.png') no-repeat; left: -12px; background-size: contain; }
 .category .bx-controls .bx-controls-direction .bx-next { background: url('../img/categoryright-bg.png') no-repeat; right: -20px; background-size: contain; }
 .flashnews {
     -webkit-box-shadow: 0px 0px 6px rgba(0,0,0,0.55);
@@ -139,7 +139,7 @@ nav .search input[type="text"]:focus { background: transparent; padding-left: 20
     box-shadow: 0px 0px 6px rgba(0,0,0,0.55);
 }
 .review .review-movie .title-desc .title { margin-top: 0; margin-bottom: 10px; }
-.review .review-movie .title-desc .title a { color: #E58100; }
+.review .review-movie .title-desc .title a { color: #E58100; text-overflow: ellipsis; display: block; max-width: 100%; white-space: nowrap; overflow: hidden; }
 .review .review-movie .title-desc .title a:hover { color: #0094c6; }
 .review .review-movie .title-desc .desc { margin: 0; line-height: 20px; font-size: 13px; }
 
