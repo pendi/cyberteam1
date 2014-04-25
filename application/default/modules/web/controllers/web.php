@@ -30,7 +30,7 @@ class web extends app_crud_controller {
             $user_existing = $this->db->query("SELECT * FROM user WHERE status !=0 AND sso_facebook = ? ", array($sess_user['id']))->row_array();
 
             if(empty($user_existing)){
-                redirect(site_url('web/x'));
+                redirect(site_url('web/signup'));
             }else{
                 $quser = $this->db->query("SELECT * FROM user WHERE status !=0 AND id = ? ", array($user_existing['id']))->row_array();
                 $this->_data['quser'] = $quser;
