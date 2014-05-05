@@ -11,7 +11,7 @@
     <meta name="keywords" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia, Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi " />
     <meta name="description" content="Xinix, Xinix-Tech, Xinix-Technology, IT consultant, IT solution, Web Developer, Web Designer, perusahaan IT Indonesia, IT solution Indonesia, IT solution Jakarta, content management system, PT Sagara XINIX solusitama, ESB Implementor Jakarta Indonesia,Business Intelligence, Java Programmer, J2EE Developer, PHP programmer, IT developer Team, camel, IT Company, Indonesia, Jakarta, Solusi teknologi informasi" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="image/x-icon" href="<?php echo theme_url('img/favicon.ico') ?>" rel="Shortcut icon" />
+	<link type="image/x-icon" href="<?php echo theme_url('img/satelit.ico') ?>" rel="Shortcut icon" />
     <link href="<?php echo theme_url('js/jquery.bxslider/jquery.bxslider.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/naked.css') ?>" rel="stylesheet" media="all" />
     <link href="<?php echo theme_url('css/main.css') ?>" rel="stylesheet" media="all" />
@@ -54,13 +54,13 @@
                     <h1 class="brand">
                         <a href="<?php echo site_url() ?>">
                             <span class="logo"></span>
-                            Xinix Movie
+                            CYBERTEAM
                         </a>
                     </h1>
                     <div class="menu pull-right">
                         <ul class="flat navigation">
                             <li>
-                                <a href="<?php echo site_url('web/list_movie') ?>">Movies</a>
+                                <a href="<?php echo site_url('web/list_article') ?>">Articles</a>
                             </li>
                             <?php if(!empty($user['id'])) : ?>
                                 <li>
@@ -70,7 +70,7 @@
                                 <li><a href='<?php echo site_url('web/logout')?>'>Logout</a></li>
                             <?php else : ?>
                                 <li>
-                                    <a href="<?php echo site_url('web/signup') ?>">Register</a>
+                                    <a href="<?php echo site_url('web/signup') ?>">&nbsp;</a>
                                 </li>
                                 <li class="login">
                                     <a>Login</a>
@@ -105,7 +105,7 @@
                                 <div class="search-media">
                                     <div class="search">
                                         <form method="post" action="<?php echo site_url('web/search') ?>">
-                                            <input name="title" type="text" placeholder="Search Movie" class="text">
+                                            <input name="title" type="text" placeholder="Search Article" class="text">
                                             <span class="search-icon"></span>
                                         </form>
                                     </div>
@@ -119,17 +119,17 @@
         </div>
     </header>
     <?php
-    	$category_film = $this->db->query("SELECT * FROM category")->result_array();
-        $this->_data['category_film'] = $category_film;
+    	$category_article = $this->db->query("SELECT * FROM category")->result_array();
+        $this->_data['category_article'] = $category_article;
     ?>
     <div class="category">
         <div class="container">
             <ul class="flat">
-            	<?php foreach ($category_film as $cat):?>
+            	<?php //foreach ($category_article as $cat):?>
                 <li>
-                    <a href="<?php echo site_url ('web/cat_list/'.$cat['id']) ?>"><?php echo $cat['name'] ?></a>
+                    <a href="<?php //echo site_url ('web/cat_list/'.$cat['id']) ?>"><?php //echo $cat['name'] ?></a>
                 </li>
-                <?php endforeach;?>
+                <?php //endforeach;?>
             </ul>
         </div>
     </div>

@@ -2,14 +2,13 @@
     .desktop {text-align: center;}
 </style>
 <fieldset>
-	<legend><?php echo $film['title'] ?></legend>
+	<legend><?php echo $article['title'] ?></legend>
 	<div class="row-fluid">
 		<div class="span2">
-	       	<img src="<?php echo base_url() ?>data/<?php echo $film['cover']; ?>" width="150" height="" />
+	       	<img src="<?php echo base_url() ?>data/<?php echo $article['cover']; ?>" width="150" height="" />
 		</div>
 		<div class="span8">
-			<?php echo nl2br($film['description']) ?><br>
-			<a class="btn btn-primary" href="<?php echo base_url('data/film/filmnya/').'/'.$film['title'].'.zip' ?>"><?php echo l('Download') ?></a>
+			<?php echo nl2br($article['description']) ?><br>
 		</div>
 		<div class="span2">
 		</div>

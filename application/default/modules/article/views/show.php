@@ -11,7 +11,7 @@ echo $this->admin_panel->breadcrumb(array(
 		<div class="row-fluid">
 			<div class="span12">
 				<fieldset>
-					<legend><b>MOVIE LIST</b></legend>
+					<legend><b>LIST ARTICLE</b></legend>
 					<div class="row-fluid">
 						<span class="span3">
 							<?php echo l('Title'); ?>
@@ -24,7 +24,7 @@ echo $this->admin_panel->breadcrumb(array(
 						</span>
 						<textarea name="description" rows="10" class="span9"><?php echo set_value('description'); ?></textarea>
 					</div>
-					<div class="row-fluid">
+					<!-- <div class="row-fluid">
 						<span class="span3">
 							<?php echo l('Trailer'); ?>
 						</span>
@@ -53,7 +53,7 @@ echo $this->admin_panel->breadcrumb(array(
 							<?php echo l('Rate'); ?>
 						</span>
 						<input type="text" class="span9" name="size" value="<?php echo set_value('rate'); ?>">
-					</div>
+					</div> -->
 					<div class="row-fluid">
 						<span class="span3">
 							<?php echo l('Cover'); ?>

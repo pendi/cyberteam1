@@ -20,7 +20,7 @@
             <div class="login-form">
 
                 <div class="logo">
-                    <div class="title">Unauthorized<br /><strong>Xinix-Movie</strong></div>
+                    <div class="title">Unauthorized<br /><strong>Cyberteam</strong></div>
                 </div>
 
                 <div class="system-time">
@@ -41,10 +41,10 @@
                     <?php endif ?>
                 </div>
                 <div style="text-align: center">
-                	<p>
-	                    <a href="<?php echo $CI->auth->login_page() ?>" class="btn"><?php echo l('Login') ?></a>
-						<a href="<?php echo site_url('web/signup') ?>" class="btn"><?php echo l('Signup') ?></a>
-                	</p>
+                    <p>
+                        <a href="<?php echo $CI->auth->login_page() ?>" class="btn"><?php echo l('Login') ?></a>
+                        <a href="<?php echo site_url('web/signup') ?>" class="btn"><?php echo l('Signup') ?></a>
+                    </p>
                 </div>
             </div>
         </form>

@@ -20,8 +20,8 @@
  */
 
 $config = array(
-	'app_id'            => 'xinix-movie',
-	'page_title'        => 'XINIX-MOVIE',
+	'app_id'            => 'cyberteam',
+	'page_title'        => 'CYBERTEAM',
 	'theme'             => 'arch-theme',
 	'lang_force'        => true,
 	'enable_profiler'   => false,

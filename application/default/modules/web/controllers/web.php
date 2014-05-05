@@ -51,12 +51,12 @@ class web extends app_crud_controller {
         $this->load->helper('format');
         $this->load->helper('security');
         $this->_data['err_string'] = '';
-        $films = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT 10 ")->result_array();
-        $film_rev = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT 3")->result_array();
-        $film_pop = $this->db->query("SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY rate DESC LIMIT 4")->result_array();
-        $this->_data['film_pop'] = $film_pop;
-        $this->_data['film_rev'] = $film_rev;
-        $this->_data['films'] = $films;
+        $articles = $this->db->query("SELECT * FROM article WHERE status !=0 AND publish=1 ORDER BY created_time DESC LIMIT 10 ")->result_array();
+        $article_rev = $this->db->query("SELECT * FROM article WHERE status !=0 AND publish=1 ORDER BY RAND() DESC LIMIT 3")->result_array();
+        $article_pop = $this->db->query("SELECT * FROM article WHERE status !=0 AND publish=1 ORDER BY created_time ASC LIMIT 4")->result_array();
+        $this->_data['article_pop'] = $article_pop;
+        $this->_data['article_rev'] = $article_rev;
+        $this->_data['articles'] = $articles;
         if(!empty($param)){
             $this->_data['param'] = $param;
         }
@@ -65,8 +65,8 @@ class web extends app_crud_controller {
 
     function category(){
 
-        $category_film = $this->db->query("SELECT * FROM category")->result_array();
-        $this->_data['category_film'] = $category_film;
+        $category_article = $this->db->query("SELECT * FROM category")->result_array();
+        $this->_data['category_article'] = $category_article;
 
     }
 
@@ -75,10 +75,10 @@ class web extends app_crud_controller {
         $category = $this->db->query('SELECT * FROM category WHERE id = ?',array(intval($id)))->result_array();
         $this->_data['category'] = $category;
 
-        $countfilm = $this->db->query('SELECT count(*) AS count FROM film WHERE category_id = ? AND status !=0 AND publish=1',array(intval($id)))->result_array();
-        $film = $this->db->query('SELECT * FROM film WHERE category_id = ? AND status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?', array(intval($id), intval($offset), 8))->result_array();
-        $this->_data['film'] = $film;
-        $count = $countfilm[0]['count'];
+        $countarticle = $this->db->query('SELECT count(*) AS count FROM article WHERE category_id = ? AND status !=0 AND publish=1',array(intval($id)))->result_array();
+        $article = $this->db->query('SELECT * FROM article WHERE category_id = ? AND status !=0 AND publish=1 ORDER BY created_time DESC LIMIT ?,?', array(intval($id), intval($offset), 8))->result_array();
+        $this->_data['article'] = $article;
+        $count = $countarticle[0]['count'];
 
         $config['base_url'] = site_url('web/cat_list/'.$id);
         $config['total_rows'] = $count;
@@ -131,27 +131,27 @@ class web extends app_crud_controller {
         $this->pagination->initialize($config);
     }
 
-    function detail_film($id=null, $offset=0, $rate=null){
+    function detail_article($id=null, $offset=0, $rate=null){
         $this->cek_user();
         $this->load->library('pagination');
         $this->load->helper('format');
-        $film = $this->_model('film')->get($id);
-        $this->_data['film'] = $film;
+        $article = $this->_model('article')->get($id);
+        $this->_data['article'] = $article;
         $this->_data['offset'] = $offset;
         $user = $this->auth->get_user();
         // xlog($user);exit;
 
         if (!empty($rate)) {
-            $this->db->query("UPDATE film set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
-            redirect(site_url('web/detail_film').'/'.$id);
+            $this->db->query("UPDATE article set rate = (rate+1) where id=? LIMIT 1", array(intval($id)));
+            redirect(site_url('web/detail_article').'/'.$id);
         } else {
             if (!empty($id)) {
                 $id = $this->uri->segment(3);
                 $this->_data['id'] = $id;
             }
         }
-        $_comment = $this->db->query("SELECT * FROM comment WHERE  film_id = ? AND status !=0 ORDER BY created_time DESC",array(intval($id)))->result_array();
-        $sql = "SELECT * FROM comment WHERE film_id = ? AND status !=0 ORDER BY created_time DESC LIMIT ?,?";
+        $_comment = $this->db->query("SELECT * FROM comment WHERE  article_id = ? AND status !=0 ORDER BY created_time DESC",array(intval($id)))->result_array();
+        $sql = "SELECT * FROM comment WHERE article_id = ? AND status !=0 ORDER BY created_time DESC LIMIT ?,?";
         $comment = $this->db->query($sql, array(intval($id),intval($offset), 5))->result_array();
         $this->_data['comment'] = $comment;
         $count = count($_comment);
@@ -160,23 +160,23 @@ class web extends app_crud_controller {
             // var_dump($_POST);exit;
             // xlog($_POST);exit;
             if (trim($_POST['user_id'])) {
-                    $_POST['film_id'] = $film['id'];
+                    $_POST['article_id'] = $article['id'];
                     $new_id = $this->_model('comment')->save($_POST);
                     if ($this->input->is_ajax_request()) {
                         echo true;
                         exit;
                     } else {
                         add_info(l('Comment Added'));
-                        redirect(site_url('web/detail_film'.'/'.$id));
+                        redirect(site_url('web/detail_article'.'/'.$id));
                         exit;
                     }
             } else {
                 add_error(l('You Must Login To Add Comment !!!'));
-                redirect(site_url('web/detail_film'.'/'.$id));
+                redirect(site_url('web/detail_article'.'/'.$id));
             }
         }
 
-        $config['base_url'] = site_url('web/detail_film'.'/'.$id);
+        $config['base_url'] = site_url('web/detail_article'.'/'.$id);
         $config['total_rows'] = $count;
         $config['per_page'] = 5;
         $config['uri_segment'] = 4;
@@ -245,7 +245,7 @@ class web extends app_crud_controller {
         }
     }
 
-    function list_movie($sort='latest',$offset=0){
+    function list_article($sort='latest',$offset=0){
         $this->cek_user();
         $this->load->library('pagination');
         $this->_layout_view = 'layouts/web';
@@ -283,16 +283,16 @@ class web extends app_crud_controller {
             }
         // }
 
-        $sql = "SELECT * FROM film WHERE status !=0 AND publish=1 ORDER BY ".$order.$q." LIMIT ?,?";
-        $film = $this->db->query($sql, array(intval($offset), 8))->result_array();
+        $sql = "SELECT * FROM article WHERE status !=0 AND publish=1 ORDER BY ".$order.$q." LIMIT ?,?";
+        $article = $this->db->query($sql, array(intval($offset), 8))->result_array();
 
-        $countfilm = $this->db->query("SELECT count(*) as count FROM film WHERE status !=0 AND publish=1 ")->row_array();
+        $countarticle = $this->db->query("SELECT count(*) as count FROM article WHERE status !=0 AND publish=1 ")->row_array();
 
-        $this->_data['film'] = $film;
+        $this->_data['article'] = $article;
         $this->_data['sort'] = $sort;
-        $count = $countfilm['count'];
+        $count = $countarticle['count'];
 
-        $config['base_url'] = site_url('web/list_movie/'.$sort);
+        $config['base_url'] = site_url('web/list_article/'.$sort);
         $config['total_rows'] = $count;
         $config['per_page'] = 8;
         $config['uri_segment'] = 4;

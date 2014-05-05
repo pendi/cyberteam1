@@ -56,10 +56,4 @@ $config['xmenu_items'][2]['children'][3]['uri'] = 'district/listing';
 
 $config['xmenu_items'][3]['title'] = 'Movie';
 $config['xmenu_items'][3]['children'][0]['title'] = 'List';
-$config['xmenu_items'][3]['children'][0]['uri'] = 'film/listing';
-$config['xmenu_items'][3]['children'][2]['title'] = 'Category';
-$config['xmenu_items'][3]['children'][2]['uri'] = 'category/listing';
-
-$config['xmenu_items'][4]['title'] = 'Request';
-$config['xmenu_items'][4]['children'][0]['title'] = 'List';
-$config['xmenu_items'][4]['children'][0]['uri'] = 'request/listing';
+$config['xmenu_items'][3]['children'][0]['uri'] = 'article/listing';

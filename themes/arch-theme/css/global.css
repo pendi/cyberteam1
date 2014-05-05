@@ -2,7 +2,7 @@
 
 body { background:#F6F7F2; font-family:"Arimo", sans-serif }
 body.body-login { 
-    background:#fff url(../img/poster_film.png) center center no-repeat; background-size:cover;
+    background:#fff url(../img/lautan.jpg) center center no-repeat; background-size:cover;
     -webkit-box-shadow:0 0 500px rgba(0,0,0,0.5) inset;
     -moz-box-shadow:0 0 500px rgba(0,0,0,0.5) inset;
     -ms-box-shadow:0 0 500px rgba(0,0,0,0.5) inset;

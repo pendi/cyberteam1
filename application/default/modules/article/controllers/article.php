@@ -4,16 +4,16 @@
  * @author generator
  */
 
-class film extends app_crud_controller {
+class article extends app_crud_controller {
 	function _config_grid() {
         $config = parent::_config_grid();
-        $config['fields'] = array('cover','title','description','size','quality','category_id','publish');
-        $config['names'] = array('Cover','Title','Deskripsi','Size','Quality','Category','Publish');
-        $config['formats'] = array('callback_foto_1','row_detail','plain_limit(30)','','param_short','callback__category','param_short');
+        $config['fields'] = array('cover','title','description','publish');
+        $config['names'] = array('Cover','Title','Deskripsi','Publish');
+        $config['formats'] = array('callback_foto_1','row_detail','plain_limit(30)','param_short');
         $config['actions'] = array(
-                    'edit' => 'film/edit',
-                    'trash' => 'film/trash',
-                    'publish' => 'film/publish'
+                    'edit' => 'article/edit',
+                    'trash' => 'article/trash',
+                    'publish' => 'article/publish'
                     );
 
         return $config;
@@ -32,7 +32,7 @@ class film extends app_crud_controller {
             try{
                 $this -> _model() ->before_save($_POST,$id);
                 $this->db->where('id',$id);
-                $this->db->update('film', $_POST);
+                $this->db->update('article', $_POST);
 
                 add_info(($id)? l('Record updated') : l('Record added'));
 
@@ -62,8 +62,8 @@ class film extends app_crud_controller {
     }
 
     function detail($id){
-        $film = $this->_model()->get($id);
-        $this->_data['film'] = $film;
+        $article = $this->_model()->get($id);
+        $this->_data['article'] = $article;
     }
 
     function _save($id = null) {
@@ -90,7 +90,7 @@ class film extends app_crud_controller {
                             if ($file['error'] == 0) {
 
                                 $config = array();
-                                $config['upload_path'] = './data/film/' . $key;
+                                $config['upload_path'] = './data/article/' . $key;
                                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                                 $config['encrypt_name'] = true;
                                 $config['field'] = $key;
@@ -101,7 +101,7 @@ class film extends app_crud_controller {
                                 }
                                 $this->upload->do_upload($config['field']);
                                 $upload_data = $this->upload->data();
-                                $_POST[$key] = 'film/' . $key . '/' . $upload_data[0]['file_name'];
+                                $_POST[$key] = 'article/' . $key . '/' . $upload_data[0]['file_name'];
                             }
                         }
                     }
@@ -138,9 +138,9 @@ class film extends app_crud_controller {
         $this->load->library('xgrid', $config_grid, 'listing_grid');
         $count = 0;
         $per_page = 8;
-        $count = $this->db->query('SELECT COUNT(*) count FROM film WHERE status !=0 AND category_id = ? ORDER BY created_time DESC', array($cat_id) )->row()->count;
-        $films = $this->db->query('SELECT * FROM film WHERE category_id = ? ORDER BY updated_time DESC LIMIT ?, ?', array($cat_id, intval($offset), intval($per_page)))->result_array();
-        // xlog($films);exit;
+        $count = $this->db->query('SELECT COUNT(*) count FROM article WHERE status !=0 AND category_id = ? ORDER BY created_time DESC', array($cat_id) )->row()->count;
+        $articles = $this->db->query('SELECT * FROM article WHERE category_id = ? ORDER BY updated_time DESC LIMIT ?, ?', array($cat_id, intval($offset), intval($per_page)))->result_array();
+        // xlog($articles);exit;
         $this->load->library('pagination');
                // xlog($this->db->last_query());
         $this->pagination->initialize(array(
@@ -149,6 +149,6 @@ class film extends app_crud_controller {
             'uri_segment' => 4,
             'base_url' => site_url('web/cat/'.$cat_id),
         ));
-        $this->_data['films'] = $films;
+        $this->_data['articles'] = $articles;
     }
 }
